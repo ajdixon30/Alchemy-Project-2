@@ -27,18 +27,26 @@ This project will be done in teams of 5-6 members that will be assigned when we 
 11. DevOps CI/CD pipeline is used to build and deploy project to a publicly available remote location
 
 
-## Hotel App
+## Movie App
 You will need to write a small paragraph describing your application. It should be 4-6 sentences and briefly cover the important points and features.
 
 ### Minimum Viable Product
 Your team will need to work with the trainer to come up with a satisfactory list of user stories for MVP as well as bonus stories. They should begin with "As a [stakeholder] I can... and describe what the user should be able to do. Aim for at least 2 different roles, user and administrator. Try to come up with 8 or so user stories for MVP. Carefully consider what your team can accomplish in 3 weeks and try not to set yourselves too great a task.
 
-* As a user, I can see...
-* As a user, I can purchase...
-* As a user, I can check...
-* As an administrator, I can schedule...
-* As an administrator, I can cancel...
-* As an administrator, I can view...
+* As a user, I can see all upcoming and current movies
+* As a user, I can filter movies
+* As a user, I can view information on actors/actressess
+* As an administrator, I can add movies
+* As an administrator, I can remove movies
+* As an administrator, I can promote users to admin
+
+
+// As a user, I can see all upcoming and current movies
+// As a user, I can filter movies
+// As a user, I can view information on actors/actressess
+// As an administrator, I can add movies
+// As an administrator, I can remove movies
+// As an administrator, I can promote users to admin
 
 ### Bonus Stories
 * As an administrator, I can...
