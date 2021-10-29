@@ -41,12 +41,12 @@ Your team will need to work with the trainer to come up with a satisfactory list
 * As an administrator, I can view...
 
 
-// As a user, I can see all upcoming and current movies
-// As a user, I can filter movies
-// As a user, I can view information on actors/actressess
-// As an administrator, I can add movies
-// As an administrator, I can remove movies
-// As an administrator, I can promote users to admin
+[ ] As a user, I can see all upcoming and current movies
+[ ] As a user, I can filter movies
+[ ] As a user, I can view information on actors/actressess
+[ ] As an administrator, I can add movies
+[ ] As an administrator, I can remove movies
+[ ] As an administrator, I can promote users to admin
 
 ### Bonus Stories
 * As an administrator, I can...
