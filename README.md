@@ -27,17 +27,16 @@ This project will be done in teams of 5-6 members that will be assigned when we 
 11. DevOps CI/CD pipeline is used to build and deploy project to a publicly available remote location
 
 
-## Movie List Application
-We are creating a service for rating movies using a star/point system. Our app will allow users to search for movies.The users can view a list of movies stored in our database. They will be able to filter this list. Finally, they can request that the admin(s) add a new movie to the list. 
+## CineFile
+CineFile is a social web service which allows movie lovers to find and rate their favorite films. CineFile displays a list of available films, which users can filter to quickly locate the movie they would like to rate. If the user doesn’t see the movie they are looking for, they can utilize the built-in option for requesting additions to our list.
 
-## Features:
-Rate a movie 1-5 points/stars
+## Features
+Rate a movie 1-5 points
 Filter movies (search?)
-Requesting/creating additions to the movie list
+Request, add, or remove movies in the list
 Display list of movies users can rate
-Minimum Viable Product:
 
-## User Stories:
+## User Stories
 [ ] As a user, I can login and sign up
 
 [ ] As a user, I can rate movies
