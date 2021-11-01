@@ -39,16 +39,25 @@ Minimum Viable Product:
 
 ## User Stories:
 [ ] As a user, I can login and sign up
+
 [ ] As a user, I can rate movies
+
+
 [ ] As a user, I can request that a movie be added to the list
+
 [ ] As a user, I can view the list of movies
+
 [ ] As a user, I can filter the list of movies
+
 [ ] As an administrator, I can add movies
+
 [ ] As an administrator, I can remove movies
 
 ## Bonus Stories
 [ ] As a user, I can view a synopsis for each movie
+
 [ ] As a user, I can view upcoming movies
+
 [ ] As an administrator, I can elevate users to admin
 
 ## Tech Stack
