@@ -27,29 +27,29 @@ This project will be done in teams of 5-6 members that will be assigned when we 
 11. DevOps CI/CD pipeline is used to build and deploy project to a publicly available remote location
 
 
-## Movie App
-You will need to write a small paragraph describing your application. It should be 4-6 sentences and briefly cover the important points and features.
+## Movie List Application
+We are creating a service for rating movies using a star/point system. Our app will allow users to search for movies.The users can view a list of movies stored in our database. They will be able to filter this list. Finally, they can request that the admin(s) add a new movie to the list. 
 
-### Minimum Viable Product
-Your team will need to work with the trainer to come up with a satisfactory list of user stories for MVP as well as bonus stories. They should begin with "As a [stakeholder] I can... and describe what the user should be able to do. Aim for at least 2 different roles, user and administrator. Try to come up with 8 or so user stories for MVP. Carefully consider what your team can accomplish in 3 weeks and try not to set yourselves too great a task.
+## Features:
+Rate a movie 1-5 points/stars
+Filter movies (search?)
+Requesting/creating additions to the movie list
+Display list of movies users can rate
+Minimum Viable Product:
 
-* As a user, I can see...
-* As a user, I can purchase...
-* As a user, I can check...
-* As an administrator, I can schedule...
-* As an administrator, I can cancel...
-* As an administrator, I can view...
+## User Stories:
+[ ] As a user, I can login and sign up
+[ ] As a user, I can rate movies
+[ ] As a user, I can request that a movie be added to the list
+[ ] As a user, I can view the list of movies
+[ ] As a user, I can filter the list of movies
+[ ] As an administrator, I can add movies
+[ ] As an administrator, I can remove movies
 
-
-- [ ] As a user, I can see all upcoming and current movies
-- [ ] As a user, I can filter movies
-- [ ] As a user, I can view information on actors/actressess
-- [ ] As an administrator, I can add movies
-- [ ] As an administrator, I can remove movies
-- [ ] As an administrator, I can promote users to admin
-
-### Bonus Stories
-* As an administrator, I can...
+## Bonus Stories
+[ ] As a user, I can view a synopsis for each movie
+[ ] As a user, I can view upcoming movies
+[ ] As an administrator, I can elevate users to admin
 
 ## Tech Stack
 You should be employing the following technologies in your project.
