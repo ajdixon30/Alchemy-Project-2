@@ -32,8 +32,11 @@ CineFile is a social web service which allows movie lovers to find and rate thei
 
 ## Features
 Rate a movie 1-5 points
+
 Filter movies (search?)
+
 Request, add, or remove movies in the list
+
 Display list of movies users can rate
 
 ## User Stories
