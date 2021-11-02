@@ -1,24 +1,7 @@
 package com.Revature.Project2.beans.repos;
 
-public class UserRepo {
+import com.Revature.Project2.pojos.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-    public void getById(int id){
-        //TODO: Write this method
-    }
-
-    public void getByUsername(String username){
-        //TODO: Write this method
-    }
-
-    public void getAllUsers(){
-        //TODO: Write this method maybe
-    }
-
-    public void saveUser(){
-        //TODO: Write this method
-    }
-
-    public void deleteUser(){
-        //TODO: Write this method
-    }
+public interface UserRepo extends JpaRepository<User, Integer> {
 }

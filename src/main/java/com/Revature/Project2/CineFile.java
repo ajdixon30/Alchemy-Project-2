@@ -2,12 +2,14 @@ package com.Revature.Project2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class CineFile {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CineFile.class, args);
+		ConfigurableApplicationContext context = SpringApplication.run(CineFile.class, args);
+
 	}
 
 }
