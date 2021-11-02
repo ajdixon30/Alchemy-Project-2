@@ -1,4 +1,4 @@
-package com.Revature.Project2.utils;
+package com.Revature.Project2.service.utils;
 
 import com.Revature.Project2.pojos.Admin;
 import com.Revature.Project2.pojos.Movie;

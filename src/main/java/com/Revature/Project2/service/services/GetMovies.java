@@ -1,4 +1,4 @@
-package com.Revature.Project2.services;
+package com.Revature.Project2.service.services;
 
 //This class interacts with the 3rd party API to get the movies.
 public class GetMovies {

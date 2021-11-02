@@ -1,6 +1,6 @@
-package com.Revature.Project2.repos;
+package com.Revature.Project2.persistence.beans.repos;
 
-public class UserRepo {
+public class AdminRepo {
 
     public void getById(int id){
         //TODO: Write this method
@@ -10,15 +10,16 @@ public class UserRepo {
         //TODO: Write this method
     }
 
-    public void getAllUsers(){
-        //TODO: Write this method maybe
+    public void getAllAdmins(){
+        //TODO: Write this method if necessary
     }
 
-    public void saveUser(){
+    public void saveAdmin(){
         //TODO: Write this method
     }
 
-    public void deleteUser(){
+    public void deleteAdmin(){
         //TODO: Write this method
     }
+
 }

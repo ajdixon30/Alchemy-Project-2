@@ -1,4 +1,4 @@
-package com.Revature.Project2.repos;
+package com.Revature.Project2.persistence.beans.repos;
 
 public class MovieRepo {
 

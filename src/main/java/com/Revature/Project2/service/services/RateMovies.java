@@ -1,4 +1,4 @@
-package com.Revature.Project2.services;
+package com.Revature.Project2.service.services;
 
 public class RateMovies {
 

@@ -1,4 +1,4 @@
-package com.Revature.Project2.utils;
+package com.Revature.Project2.service.utils;
 
 import java.io.FileWriter;
 import java.io.IOException;
