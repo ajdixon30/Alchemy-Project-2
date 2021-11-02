@@ -1,8 +1,8 @@
 package com.Revature.Project2.utils;
 
-import com.Revature.Project2.pojos.Admin;
-import com.Revature.Project2.pojos.Movie;
-import com.Revature.Project2.pojos.User;
+import com.Revature.Project2.beans.pojos.Admin;
+import com.Revature.Project2.beans.pojos.Movie;
+import com.Revature.Project2.beans.pojos.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

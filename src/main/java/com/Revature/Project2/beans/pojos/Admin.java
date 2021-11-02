@@ -1,4 +1,4 @@
-package com.Revature.Project2.pojos;
+package com.Revature.Project2.beans.pojos;
 
 //Stubbed out Admin model
 public class Admin {
