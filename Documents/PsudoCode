@@ -1,0 +1,31 @@
+- Create login class
+    - set up validation for username and password
+
+- Create register class
+    - set up validation for all data received from the UI
+    - save data to the database
+
+- Create rate movies class
+    - set up rating system
+    - discuss if we want the user to be able to change their rating
+
+- Create class for requesting movie additions
+    - method that handles the request
+    - method for getting requests
+    - maybe method for approving requests???
+    - May just use methods from class that manages movies
+
+- Create class for displaying movie lists
+    - method that displays all movies
+    - method that either filters movies or calls methods from another class
+
+- Maybe create a class for filtering movies
+
+- Create a class for adding and deleting movies from the database
+    - may include update method
+
+- Create class for validation stuff
+    - Maybe create multiple classes if validation is differs enough
+
+- Maybe refactor the FileLogger class and the class for setting up session (HibernateUtil)
+
