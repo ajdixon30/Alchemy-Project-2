@@ -13,6 +13,12 @@ public class FileLogger {
     private static boolean printToConsole;
     private static boolean printToConsoleTemp;
 
+    private FileLogger() {
+        printToConsole = false;
+        printToConsoleTemp = false;
+        threshold = 3;
+    }
+
     //Gets the file logger and sets up the file path
     public static FileLogger getFileLogger(){
         if(fileLogger == null) {
@@ -24,8 +30,7 @@ public class FileLogger {
     //Adds the exception data to the log file
     public void writeLog(String message, int level) {
 
-        try{
-            FileWriter fileWriter = new FileWriter(getLogFileName(), true);
+        try(FileWriter fileWriter = new FileWriter(getLogFileName(), true)){
             String logEntry;
 
             logEntry = formatLogEntry(message);
@@ -33,7 +38,11 @@ public class FileLogger {
                 fileWriter.write(logEntry);
             }
 
-            fileWriter.close();
+            if(printToConsole || printToConsoleTemp) {
+                System.out.println(logEntry);
+                printToConsoleTemp = false;
+            }
+
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -52,4 +61,31 @@ public class FileLogger {
         String timestamp = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
         return String.format("%s [%s] %s", timestamp, stackInfo, message);
     }
+
+    public FileLogger console() {
+        printToConsoleTemp = true;
+        return fileLogger;
+    }
+
+    public FileLogger threshold(int th) {
+        threshold = th;
+        return fileLogger;
+    }
+
+    public static boolean isPrintToConsole() {
+        return printToConsole;
+    }
+
+    public static void setPrintToConsole(boolean printToConsole) {
+        FileLogger.printToConsole = printToConsole;
+    }
+
+    public static int getThreshold() {
+        return threshold;
+    }
+
+    public static void setThreshold(int threshold) {
+        FileLogger.threshold = threshold;
+    }
+
 }
