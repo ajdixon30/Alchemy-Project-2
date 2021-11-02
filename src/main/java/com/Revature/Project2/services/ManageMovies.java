@@ -1,4 +1,4 @@
-package com.Revature.Project2.service.services;
+package com.Revature.Project2.services;
 
 public class ManageMovies {
 

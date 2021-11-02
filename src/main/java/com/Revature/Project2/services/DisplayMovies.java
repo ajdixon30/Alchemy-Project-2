@@ -1,4 +1,4 @@
-package com.Revature.Project2.service.services;
+package com.Revature.Project2.services;
 
 //Methods for displaying list of movies
 public class DisplayMovies {

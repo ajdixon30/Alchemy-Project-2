@@ -1,4 +1,4 @@
-package com.Revature.Project2.persistence.beans.repos;
+package com.Revature.Project2.beans.repos;
 
 public class AdminRepo {
 

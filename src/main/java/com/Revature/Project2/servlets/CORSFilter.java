@@ -1,4 +1,4 @@
-package com.Revature.Project2.api.servlets;
+package com.Revature.Project2.servlets;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package com.Revature.Project2.service.utils;
+package com.Revature.Project2.utils;
 
 //TODO: May merge this with DisplayMovies
 public class FilterMovies {
