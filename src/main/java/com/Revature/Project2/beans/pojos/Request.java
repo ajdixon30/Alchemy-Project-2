@@ -16,12 +16,16 @@ public class Request {
     @Column
     private String request;
 
+    @Column
+    private boolean status;
+
     public Request() {
     }
 
-    public Request(Integer id, String request) {
+    public Request(Integer id, String request, boolean status) {
         this.id = id;
         this.request = request;
+        this.status = status;
     }
 
     public Integer getId() {
@@ -38,5 +42,13 @@ public class Request {
 
     public void setRequest(String request) {
         this.request = request;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }
