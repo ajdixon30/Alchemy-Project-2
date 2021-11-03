@@ -1,4 +1,4 @@
-package com.Revature.Project2.beans.servicebeans;
+package com.Revature.Project2.services;
 
 import java.io.FileWriter;
 import java.io.IOException;
