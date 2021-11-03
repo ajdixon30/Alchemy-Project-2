@@ -1,4 +1,4 @@
-package com.Revature.Project2.pojos;
+package com.Revature.Project2.beans.pojos;
 
 //Stubbed out User model
 public class User {
