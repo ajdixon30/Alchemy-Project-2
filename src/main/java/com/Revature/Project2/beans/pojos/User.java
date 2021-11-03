@@ -1,14 +1,57 @@
 package com.Revature.Project2.beans.pojos;
 
-//Stubbed out User model
-public class User {
-    private String firstName;
-    private String lastName;
-    private String username;
-    private String password;
-    //TODO: Decide what other columns we want in this table
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-    //TODO: Finish this class
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class User {
+
+    @Id
+    @Column(unique = true)
+    private String username;
+
+    @Column
+    private String password;
+
+    @Column
+    private String firstName;
+
+    @Column
+    private String lastName;
+
+    @OneToMany(mappedBy = "user")
+    private List<Rating> ratings;
+
+
+    public User() {
+    }
+
+    public User(String username, String password, String firstName, String lastName, List<Rating> ratings) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.ratings = ratings;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -26,19 +69,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUsername() {
-        return username;
+    public List<Rating> getRatings() {
+        return ratings;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
     }
 }
