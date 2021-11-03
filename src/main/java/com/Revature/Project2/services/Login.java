@@ -6,7 +6,6 @@ import com.Revature.Project2.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.Validator;
 
 import javax.transaction.Transactional;
 
@@ -23,18 +22,26 @@ public class Login {
         this.adminRepo = adminRepo;
     }
 
-    public int userRole(User user){
-        return user.getUserType();
+//    public int userRole(User user){
+//        return user.getUserType();
+//    }
+
+    public void save(User user){
+        userRepo.save(user);
+    }
+
+    public User get(String username){
+        return userRepo.getById(username);
     }
 
     //Login for users
-    public HttpStatus userLogin(User currentUser){
+    public HttpStatus userLogin(String username, String password){
+        System.out.println("DEBUG: I can get here: user login method");
         Validation validation = new Validation();
         HttpStatus status;
-        String username = currentUser.getUsername();
-        String password = currentUser.getPassword();
 
         User user = userRepo.getById(username);
+
         //Validate the username and password
         boolean loginTrue = validation.validateUser(username, password, user);
 

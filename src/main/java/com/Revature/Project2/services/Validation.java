@@ -11,7 +11,7 @@ public class Validation {
     }
 
     public boolean validateUser(String username, String password, User user){
-        //TODO: Write this method.
+        System.out.println("DEBUG: I can get here: validateUser method");
 
         if(username.equals(user.getUsername()) && password.equals(user.getPassword())){
             return true;
