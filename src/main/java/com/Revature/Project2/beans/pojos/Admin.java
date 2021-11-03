@@ -1,29 +1,35 @@
 package com.Revature.Project2.beans.pojos;
 
-//Stubbed out Admin model
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Admin {
-    private String firstName;
-    private String lastName;
+
+    @Id
+    @Column(unique = true)
     private String username;
+
+    @Column
     private String password;
-    //TODO: Decide what other columns we want in this table
 
-    //TODO: Finish this class
+    @Column
+    private String firstName;
 
+    @Column
+    private String lastName;
 
-    public String getFirstName() {
-        return firstName;
+    public Admin() {
     }
 
-    public void setFirstName(String firstName) {
+    public Admin(String username, String password, String firstName, String lastName) {
+        this.username = username;
+        this.password = password;
         this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -41,5 +47,21 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

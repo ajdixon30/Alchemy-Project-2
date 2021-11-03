@@ -13,7 +13,6 @@ public class CineFile {
 		ConfigurableApplicationContext context = SpringApplication.run(CineFile.class, args);
 
 
-
 	}
 
 }
