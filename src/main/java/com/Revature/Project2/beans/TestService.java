@@ -1,7 +1,7 @@
 package com.Revature.Project2.beans;
 
 import com.Revature.Project2.beans.pojos.TestEntity;
-import com.Revature.Project2.beans.repos.TestRepo;
+import com.Revature.Project2.repos.TestRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
