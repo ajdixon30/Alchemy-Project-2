@@ -1,14 +1,28 @@
 package com.Revature.Project2.services;
 
+import com.Revature.Project2.beans.pojos.Request;
 import com.Revature.Project2.beans.pojos.User;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
 import com.Revature.Project2.repos.UserRepo;
 
-import java.io.FileWriter;
 
 //TODO: Decide if we want to make this class a bean or keep it as a Util class
-public class Validation {
+public class Validation implements Validator {
 
-    public Validation() {
+    public Validation(){
+    }
+
+    @Override
+    public boolean supports(Class clazz) {
+        return User.class.equals(clazz);
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        ValidationUtils.rejectIfEmpty(errors,"username", "username is empty");
+        ValidationUtils.rejectIfEmpty(errors, "password", "password is empty");
     }
 
     public boolean validateUser(String username, String password, User user){
@@ -37,6 +51,10 @@ public class Validation {
     }
     public boolean userExists(UserRepo user, String username){
         return user.existsById(username);
+    }
+
+    public boolean validString(String string){
+        return string.matches("[a-zA-Z ]{1,30}$");
     }
 
 }
