@@ -28,4 +28,5 @@ public class UserController {
     public HttpStatus post(@RequestBody User user){
         return register.userRegister(user);
     }
+
 }

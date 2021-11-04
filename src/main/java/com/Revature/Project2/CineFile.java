@@ -1,5 +1,7 @@
 package com.Revature.Project2;
 
+import com.Revature.Project2.beans.pojos.User;
+import com.Revature.Project2.services.Validation;
 import com.Revature.Project2.services.DisplayMovies;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
