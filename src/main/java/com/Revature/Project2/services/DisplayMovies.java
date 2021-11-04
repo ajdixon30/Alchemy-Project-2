@@ -2,7 +2,7 @@ package com.Revature.Project2.services;
 
 //Methods for displaying list of movies
 public class DisplayMovies {
-
+//testing
     //This method displays all available movies
     public void displayAllMovies(){
         //TODO: Write this method
