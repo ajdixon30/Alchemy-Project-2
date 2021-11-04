@@ -23,7 +23,7 @@ public class Request {
     private Integer id;
 
     @Column
-    private String request;
+    private String addRequest;
 
     @Column
     private String status;

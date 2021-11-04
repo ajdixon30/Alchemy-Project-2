@@ -22,11 +22,5 @@ public class UserController {
         return login.userLogin(username, password);
     }
 
-//    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public User post(@RequestBody User user){
-//        login.save(user);
-//        return login.get(user.getUsername());
 
-//    }
 }
