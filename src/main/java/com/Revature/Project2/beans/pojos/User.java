@@ -31,8 +31,8 @@ public class User {
     @Column
     private String lastName;
 
-//    @Column
-//    private int userType; //0 = user and 1 = admin
+    @Column
+    private boolean admin; //true = admin, false = user
 
     @OneToMany(mappedBy = "user")
     private List<Rating> ratings;

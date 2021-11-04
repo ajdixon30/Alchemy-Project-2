@@ -18,8 +18,7 @@ public class UserController {
 
     @GetMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus get(@RequestParam String username, String password){
-
-//        login.userRole(user);
+        //May need to send the user data to the front end in a response body
         return login.userLogin(username, password);
     }
 
