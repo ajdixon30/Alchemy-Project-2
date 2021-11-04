@@ -34,27 +34,27 @@ CineFile is a social web service which allows movie lovers to find and rate thei
 Rate a movie 1-5 points; Filter movies (search?); Request, add, or remove movies in the list; Display list of movies users can rate
 
 ## User Stories
-- [ ] As a user, I can login and sign up
+- [x] As a user, I can login and sign up.. in progress (50%)
 
-[ ] As a user, I can rate movies
+- [ ] As a user, I can rate movies
 
 
-[ ] As a user, I can request that a movie be added to the list
+- [ ] As a user, I can request that a movie be added to the list
 
-[ ] As a user, I can view the list of movies
+- [ ] As a user, I can view the list of movies
 
-[ ] As a user, I can filter the list of movies
+- [ ] As a user, I can filter the list of movies
 
-[ ] As an administrator, I can add movies
+- [ ] As an administrator, I can add movies
 
-[ ] As an administrator, I can remove movies
+- [ ] As an administrator, I can remove movies
 
 ## Bonus Stories
-[ ] As a user, I can view a synopsis for each movie
+- [ ] As a user, I can view a synopsis for each movie
 
-[ ] As a user, I can view upcoming movies
+- [ ] As a user, I can view upcoming movies
 
-[ ] As an administrator, I can elevate users to admin
+- [ ] As an administrator, I can elevate users to admin
 
 ## Tech Stack
 You should be employing the following technologies in your project.
