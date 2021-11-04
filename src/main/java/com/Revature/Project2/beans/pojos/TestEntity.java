@@ -1,6 +1,11 @@
 package com.Revature.Project2.beans.pojos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +14,10 @@ import java.io.Serializable;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Getter
+@Setter
+@NoArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class TestEntity implements Serializable {
 
     @Id
@@ -17,27 +26,4 @@ public class TestEntity implements Serializable {
     @Column
     private String string;
 
-    public TestEntity() {
-    }
-
-    public TestEntity(Integer id, String string) {
-        this.id = id;
-        this.string = string;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getString() {
-        return string;
-    }
-
-    public void setString(String string) {
-        this.string = string;
-    }
 }
