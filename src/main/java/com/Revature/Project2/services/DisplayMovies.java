@@ -1,11 +1,47 @@
 package com.Revature.Project2.services;
 
-//Methods for displaying list of movies
-public class DisplayMovies {
+import com.Revature.Project2.beans.pojos.Movie;
+import com.Revature.Project2.repos.MovieRepo;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.io.IOException;
+import java.util.List;
+
+//Methods for displaying list of movies
+@Service
+@Transactional
+public class DisplayMovies {
+    public final MovieRepo movieRepo;
+
+    public DisplayMovies(MovieRepo movieRepo) {
+        this.movieRepo = movieRepo;
+    }
+
+    @Autowired
     //This method displays all available movies
-    public void displayAllMovies(){
-        //TODO: Write this method
+    public String displayAllMovies(){
+        OkHttpClient client = new OkHttpClient();
+        String movie = null;
+
+        Request request = new Request.Builder()
+                .url("https://data-imdb1.p.rapidapi.com/movie/byYear/2021/?page_size=50")
+                .get()
+                .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
+                .addHeader("x-rapidapi-key", "77a26b5fc8mshb33e4fc6e9dd843p1c3631jsn82798791ed4a")
+                .build();
+
+        try {
+            Response response = client.newCall(request).execute();
+             movie =  response.body().string();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return movie;
     }
 
     public void filterMovies(){
