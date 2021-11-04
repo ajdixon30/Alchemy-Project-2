@@ -19,9 +19,9 @@ public class MovieController {
         this.display = display;
     }
 
-    @GetMapping(value = "/all-movies", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public String get() {
-        return display.displayAllMovies();
-    }
+//    @GetMapping(value = "/all-movies", produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseStatus(HttpStatus.OK)
+//    //public String get() {
+        //return display.displayAllMovies();
+    //}
 }
