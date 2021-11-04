@@ -21,7 +21,7 @@ public class RequestController {
 
     @PostMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public Request post(@RequestBody Request request){
+    public HttpStatus post(@RequestBody Request request){
         return manageRequest.requestAddition(request);
     }
 }

@@ -1,16 +1,12 @@
 package com.Revature.Project2.services;
 
-import com.Revature.Project2.beans.pojos.Rating;
+import com.Revature.Project2.beans.pojos.Request;
 import com.Revature.Project2.beans.pojos.User;
-<<<<<<< HEAD
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
-=======
 import com.Revature.Project2.repos.UserRepo;
 
-import java.io.FileWriter;
->>>>>>> 9860dfb6a24716eba4f5bdb12f72edb8613f1046
 
 //TODO: Decide if we want to make this class a bean or keep it as a Util class
 public class Validation implements Validator {
@@ -33,11 +29,6 @@ public class Validation implements Validator {
         return username.equals(user.getUsername()) && password.equals(user.getPassword());
     }
 
-<<<<<<< HEAD
-    public void validateName(String name){
-        //TODO: Write this method
-    }
-=======
     public boolean validateName(String firstName, String lastName){
         boolean isRegularName = false;
 
@@ -61,6 +52,9 @@ public class Validation implements Validator {
     public boolean userExists(UserRepo user, String username){
         return user.existsById(username);
     }
->>>>>>> 9860dfb6a24716eba4f5bdb12f72edb8613f1046
+
+    public boolean validString(String string){
+        return string.matches("[a-zA-Z ]{1,30}$");
+    }
 
 }
