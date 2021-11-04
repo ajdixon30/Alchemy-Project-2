@@ -1,11 +1,69 @@
 package com.Revature.Project2.services;
 
+import com.Revature.Project2.repos.MovieRepo;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.io.IOException;
+import java.util.List;
+
 //Methods for displaying list of movies
+@Service
+@Transactional
 public class DisplayMovies {
-//testing
+    //public final MovieRepo movieRepo;
+
+//    public DisplayMovies(MovieRepo movieRepo) {
+//        this.movieRepo = movieRepo;
+    //}
+
+    @Autowired
     //This method displays all available movies
     public void displayAllMovies(){
-        //TODO: Write this method
+        OkHttpClient client = new OkHttpClient();
+        final String key = "77a26b5fc8mshb33e4fc6e9dd843p1c3631jsn82798791ed4a";
+
+        Request request = new Request.Builder()
+                .url("https://data-imdb1.p.rapidapi.com/movie/id/tt0086250/")
+                .get()
+                .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
+                .addHeader("x-rapidapi-key", key)
+                .build();
+
+        try {
+            Response response = client.newCall(request).execute();
+            System.out.println(response.body().string());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+//        final String byYearUrl = "https://data-imdb1.p.rapidapi.com/movie/byYear/2021/?page_size=50";
+//
+//        List<String> movies = null;
+//        String movie = null;
+//
+//        Request request = new Request.Builder()
+//                .url(byYearUrl)
+//                .get()
+//                .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
+//                .addHeader("x-rapidapi-key", key)
+//                .build();
+//
+//        try {
+//            Response response = client.newCall(request).execute();
+//            movie = response.body().string();
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//        return movies;
     }
 
     public void filterMovies(){
