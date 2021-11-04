@@ -5,9 +5,4 @@ public class Register {
     public void userRegister(){
         //TODO: Write this method
     }
-
-    //Registration for admin
-    public void adminRegister(){
-        //TODO: Write this method
-    }
 }
