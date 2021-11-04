@@ -5,7 +5,6 @@ import com.Revature.Project2.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 
 @Service
@@ -21,7 +20,6 @@ public class Login {
 
     //Login for users
     public HttpStatus userLogin(String username, String password){
-        System.out.println("DEBUG: I can get here: user login method");
         Validation validation = new Validation();
         HttpStatus status;
 
