@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ManageRequest {
     private final RequestRepo requestRepo;
-    private Request request = new Request();
     private HttpStatus status;
     private Validation validation = new Validation();
 

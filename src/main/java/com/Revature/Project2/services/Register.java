@@ -37,8 +37,6 @@ public class Register {
             status = HttpStatus.NOT_ACCEPTABLE;
         }
         return status;
-        //if successful - return alert "successful registration"
-        //TODO: Write this method
     }
 
 }
