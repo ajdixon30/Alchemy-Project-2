@@ -28,8 +28,8 @@ public class Register {
             return status;
         }
 
-        if(validation.validateName(user.getFirstName(), user.getLastName()) == true &&
-                validation.validateUserCreds(user.getUsername(), user.getPassword())==true){
+        if(validation.validateName(user.getFirstName(), user.getLastName()) &&
+                validation.validateUserCreds(user.getUsername(), user.getPassword())){
             userRepo.save(user);
             status = HttpStatus.ACCEPTED;
             System.out.println("User Registered");
