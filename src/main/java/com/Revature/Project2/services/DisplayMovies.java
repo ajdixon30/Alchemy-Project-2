@@ -1,16 +1,15 @@
 package com.Revature.Project2.services;
 
-import com.Revature.Project2.repos.MovieRepo;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import okhttp3.ResponseBody;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
-import java.util.List;
 
 //Methods for displaying list of movies
 @Service
@@ -37,7 +36,12 @@ public class DisplayMovies {
 
         try {
             Response response = client.newCall(request).execute();
-            System.out.println(response.body().string());
+            String resp = response.body().string().substring(11);
+            JSONObject json = new JSONObject(resp);
+            String title = json.getString("title");
+            int year = json.getInt("year");
+            System.out.println(title);
+            System.out.println(year);
         } catch (IOException e) {
             e.printStackTrace();
         }
