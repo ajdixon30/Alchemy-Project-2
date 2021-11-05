@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final Login login;
     private final Register register;
+
     @Autowired
     public UserController(Login login, Register register) {
         this.login = login;

@@ -26,17 +26,26 @@ public class ManageRequest {
             status = HttpStatus.NOT_ACCEPTABLE;
             return status;
         }
-        request.setStatus("Pending");
+        request.setRequestStatus("Pending");
         requestRepo.save(request);
-        status = HttpStatus.OK;
+        status = HttpStatus.CREATED;
         return status;
     }
 
-    public void getAddRequests(){
+    public Request getAddRequest(Integer id){
         //TODO: Write this method
+
+        if(requestRepo.existsById(id)) {
+            return requestRepo.getById(id);
+        }
+        return null;
     }
 
     public void approveAddRequest(){
-        //TODO: Write this method. May just remove this method and call the saveMovie method in ManageMovies.
+        //TODO: Write this method.
+    }
+
+    public void removeRequest(){
+        //TODO: Write this method.
     }
 }

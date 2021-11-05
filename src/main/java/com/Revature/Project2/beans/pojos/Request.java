@@ -26,6 +26,6 @@ public class Request {
     private String addRequest;
 
     @Column
-    private String status;
+    private String requestStatus;
 
 }
