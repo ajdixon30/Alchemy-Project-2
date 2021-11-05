@@ -18,6 +18,7 @@ public class CineFile {
 
 		GetMovies gm = new GetMovies();
 		gm.getMovie();
+
 	}
 
 }

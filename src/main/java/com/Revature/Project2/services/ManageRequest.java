@@ -26,17 +26,40 @@ public class ManageRequest {
             status = HttpStatus.NOT_ACCEPTABLE;
             return status;
         }
-        request.setStatus("Pending");
+        request.setRequestStatus("Pending");
         requestRepo.save(request);
-        status = HttpStatus.OK;
+        status = HttpStatus.CREATED;
         return status;
     }
 
-    public void getAddRequests(){
-        //TODO: Write this method
+    public Request getAddRequest(Integer id){
+        if(requestRepo.existsById(id)) {
+            return requestRepo.getById(id);
+        }
+        return null;
     }
 
-    public void approveAddRequest(){
-        //TODO: Write this method. May just remove this method and call the saveMovie method in ManageMovies.
+    public HttpStatus changeRequestStatus(Request request){
+        boolean notEmpty = validation.validString(request.getRequestStatus());
+        if(!notEmpty){
+            status = HttpStatus.NOT_ACCEPTABLE;
+            return status;
+        }
+
+        Integer id = request.getId();
+        if(requestRepo.existsById(id)){
+            Request tempRequest = requestRepo.getById(id);
+            //Gets the addRequest from the database and saves it to the Request object since it won't be in request
+            //object from the front end
+            request.setAddRequest(tempRequest.getAddRequest());
+            requestRepo.save(request);
+            return HttpStatus.ACCEPTED;
+        } else{
+            return HttpStatus.NOT_FOUND;
+        }
+    }
+
+    public void removeRequest(){
+        //TODO: Write this method.
     }
 }
