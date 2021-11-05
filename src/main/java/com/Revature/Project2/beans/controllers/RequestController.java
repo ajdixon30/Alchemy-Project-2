@@ -22,8 +22,13 @@ public class RequestController {
         return manageRequest.getAddRequest(id);
     }
 
-    @PostMapping(value = "/request",produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus post(@RequestBody Request request){
         return manageRequest.requestAddition(request);
+    }
+
+    @PutMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public HttpStatus put(@RequestBody Request request){
+        return manageRequest.changeRequestStatus(request);//Needs the request id and the requestStatus
     }
 }
