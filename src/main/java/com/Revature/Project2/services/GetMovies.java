@@ -34,22 +34,20 @@ public class GetMovies {
         try {
             response = client.newCall(request).execute();
             String s = response.body().string().substring(11, 1642);
-            System.out.println(s);
             JSONObject jso = new JSONObject(s);
-            System.out.print(jso.get("title"));
-//            jsa = new JSONArray(s);
-//            JSONObject jso = new JSONObject(jsa.toString());
-//            System.out.println();
-//            System.out.println(getValuesForGivenKey(jsa, "title"));
-        } catch (IOException e) {
+            System.out.print(jso.getString("title")
+                    + " "
+                    + getValuesForGivenKey(jso.getJSONArray("gen"), "genre"));
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
         }
 
-    public List<String> getValuesForGivenKey(JSONArray jsa, String key) {
+    public String getValuesForGivenKey(JSONArray jsa, String key) {
         return IntStream.range(0, jsa.length())
                 .mapToObj(index -> ((JSONObject)jsa.get(index)).optString(key))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()).get(0);
     }
 }
 
