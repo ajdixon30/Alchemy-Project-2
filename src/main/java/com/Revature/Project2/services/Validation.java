@@ -5,17 +5,21 @@ import com.Revature.Project2.repos.MovieRepo;
 import com.Revature.Project2.repos.RatingRepo;
 import com.Revature.Project2.repos.RequestRepo;
 import com.Revature.Project2.repos.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.criteria.CriteriaBuilder;
 
 
 //TODO: Decide if we want to make this class a bean or keep it as a Util class
+@Component
 public class Validation {
     private final UserRepo userRepo;
     private final MovieRepo movieRepo;
     private final RatingRepo ratingRepo;
     private final RequestRepo requestRepo;
 
+    @Autowired
     public Validation(UserRepo userRepo, MovieRepo movieRepo, RatingRepo ratingRepo, RequestRepo requestRepo) {
         this.userRepo = userRepo;
         this.movieRepo = movieRepo;
