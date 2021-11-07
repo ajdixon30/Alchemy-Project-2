@@ -11,28 +11,43 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 //Methods for displaying list of movies
 @Service
 @Transactional
 public class DisplayMovies {
+    private String APIKey;
     //public final MovieRepo movieRepo;
 
 //    public DisplayMovies(MovieRepo movieRepo) {
 //        this.movieRepo = movieRepo;
     //}
 
+
+    public DisplayMovies() {
+        try {
+            Properties props = new Properties();
+            ClassLoader cl = Thread.currentThread().getContextClassLoader();
+            InputStream fileIn = cl.getResourceAsStream("application.properties");
+            props.load(fileIn);
+            APIKey = props.getProperty("APIKey");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Autowired
     //This method displays all available movies
     public void displayAllMovies(){
         OkHttpClient client = new OkHttpClient();
-        final String key = "77a26b5fc8mshb33e4fc6e9dd843p1c3631jsn82798791ed4a";
 
         Request request = new Request.Builder()
                 .url("https://data-imdb1.p.rapidapi.com/movie/id/tt0086250/")
                 .get()
                 .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
-                .addHeader("x-rapidapi-key", key)
+                .addHeader("x-rapidapi-key", APIKey)
                 .build();
 
         try {
