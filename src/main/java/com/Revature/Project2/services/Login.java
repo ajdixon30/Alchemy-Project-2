@@ -11,16 +11,17 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class Login {
     private final UserRepo userRepo;
+    private final Validation validation;
 
 
     @Autowired
-    public Login(UserRepo userRepo) {
+    public Login(UserRepo userRepo, Validation validation) {
         this.userRepo = userRepo;
+        this.validation = validation;
     }
 
     //Login for users
     public HttpStatus userLogin(String username, String password){
-        Validation validation = new Validation();
         HttpStatus status;
 
         User user = userRepo.getById(username);

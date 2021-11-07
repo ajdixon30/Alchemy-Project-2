@@ -95,7 +95,6 @@ public class GetMovies {
                 .mapToObj(index -> ((JSONObject)jsa.get(index)).optString(key))
                 .collect(Collectors.toList()).get(0);
     }
-}
 
     public List<String> getMovieById(String id){
         OkHttpClient client = new OkHttpClient();

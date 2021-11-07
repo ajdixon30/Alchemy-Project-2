@@ -1,13 +1,26 @@
 package com.Revature.Project2.services;
 
 import com.Revature.Project2.beans.pojos.User;
+import com.Revature.Project2.repos.MovieRepo;
+import com.Revature.Project2.repos.RatingRepo;
+import com.Revature.Project2.repos.RequestRepo;
 import com.Revature.Project2.repos.UserRepo;
+
+import javax.persistence.criteria.CriteriaBuilder;
 
 
 //TODO: Decide if we want to make this class a bean or keep it as a Util class
 public class Validation {
+    private final UserRepo userRepo;
+    private final MovieRepo movieRepo;
+    private final RatingRepo ratingRepo;
+    private final RequestRepo requestRepo;
 
-    public Validation() {
+    public Validation(UserRepo userRepo, MovieRepo movieRepo, RatingRepo ratingRepo, RequestRepo requestRepo) {
+        this.userRepo = userRepo;
+        this.movieRepo = movieRepo;
+        this.ratingRepo = ratingRepo;
+        this.requestRepo = requestRepo;
     }
 
     //Validates that the inputted username and password match a username and associated password in the database.
@@ -39,14 +52,30 @@ public class Validation {
         return isRegularCreds;
     }
 
-    //Validates that the user exists in the database
-    public boolean userExists(UserRepo userRepo, String username){
-        return userRepo.existsById(username);
-    }
-
     //Validates that the given string is not empty and fits within the set size range (1-30 characters long)
     public boolean validString(String string){
         return string.matches("[a-zA-Z ]{1,30}$");
+    }
+
+
+    //Validates that the user exists in the database
+    public boolean userExists(String username){
+        return userRepo.existsById(username);
+    }
+
+    //Validates that the request exists in the database
+    public boolean requestExists(Integer id){
+        return requestRepo.existsById(id);
+    }
+
+    //Validates that the movie exists in the database
+    public boolean movieExists(Integer id){
+        return movieRepo.existsById(id);
+    }
+
+    //Validates that the rating exists in the database
+    public boolean ratingExists(Integer id){
+        return ratingRepo.existsById(id);
     }
 
 }
