@@ -30,4 +30,9 @@ public class RequestController {
     public HttpStatus put(@RequestBody Request request){
         return manageRequest.changeRequestStatus(request);//Needs the request id and the requestStatus
     }
+
+    @DeleteMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public HttpStatus delete(@RequestBody Request request){
+        return manageRequest.removeRequest(request);
+    }
 }
