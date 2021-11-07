@@ -7,7 +7,7 @@ import com.Revature.Project2.repos.UserRepo;
 //TODO: Decide if we want to make this class a bean or keep it as a Util class
 public class Validation {
 
-    public Validation(){
+    public Validation() {
     }
 
     //Validates that the inputted username and password match a username and associated password in the database.
