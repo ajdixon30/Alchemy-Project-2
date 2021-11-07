@@ -12,18 +12,19 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class Register {
     private final UserRepo userRepo;
+    private final Validation validation;
 
     @Autowired
-    public Register(UserRepo userRepo) {
+    public Register(UserRepo userRepo, Validation validation) {
         this.userRepo = userRepo;
+        this.validation = validation;
     }
 
     //Registration for users
     public HttpStatus userRegister(User user){
-        Validation validation = new Validation();
         HttpStatus status;
 
-        if(validation.userExists(userRepo, user.getUsername())){
+        if(validation.userExists(user.getUsername())){
            status = HttpStatus.NOT_ACCEPTABLE;
             return status;
         }

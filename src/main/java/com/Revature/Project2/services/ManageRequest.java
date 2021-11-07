@@ -11,12 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ManageRequest {
     private final RequestRepo requestRepo;
+    private final Validation validation;
     private HttpStatus status;
-    private Validation validation = new Validation();
 
     @Autowired
-    public ManageRequest(RequestRepo requestRepo) {
+    public ManageRequest(RequestRepo requestRepo, Validation validation) {
         this.requestRepo = requestRepo;
+        this.validation = validation;
     }
 
     public HttpStatus requestAddition(Request request){
@@ -32,7 +33,7 @@ public class ManageRequest {
     }
 
     public Request getAddRequest(Integer id){
-        if(requestRepo.existsById(id)) {
+        if(validation.requestExists(id)) {
             return requestRepo.getById(id);
         }
         return null;
@@ -46,7 +47,7 @@ public class ManageRequest {
         }
 
         Integer id = request.getId();
-        if(requestRepo.existsById(id)){
+        if(validation.requestExists(id)){
             Request tempRequest = requestRepo.getById(id);
             //Gets the addRequest from the database and saves it to the Request object since it won't be in request
             //object from the front end
@@ -58,7 +59,9 @@ public class ManageRequest {
         }
     }
 
-    public void removeRequest(){
-        //TODO: Write this method.
+    public void removeRequest(Integer id){
+        if(validation.requestExists(id)){
+            requestRepo.deleteById(id);
+        }
     }
 }
