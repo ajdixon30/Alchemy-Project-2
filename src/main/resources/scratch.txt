@@ -1,0 +1,1 @@
+To ensure that the resources' folder remains within the project
