@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Properties;
 
 //Methods for displaying list of movies
@@ -43,7 +44,28 @@ public class DisplayMovies {
     public void displayAllMovies(){
         OkHttpClient client = new OkHttpClient();
 
+        final String byYearUrl = "https://data-imdb1.p.rapidapi.com/movie/byYear/2021/?page_size=50";
+
+        List<String> movies = null;
+        String movie = null;
+
         Request request = new Request.Builder()
+                .url(byYearUrl)
+                .get()
+                .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
+                .addHeader("x-rapidapi-key", APIKey)
+                .build();
+
+        try {
+            Response response = client.newCall(request).execute();
+            movie = response.body().string().substring(11);
+            JSONObject json = new JSONObject(response);
+            String id = json.getString("imdb_id");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        request = new Request.Builder()
                 .url("https://data-imdb1.p.rapidapi.com/movie/id/tt0086250/")
                 .get()
                 .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
@@ -61,29 +83,6 @@ public class DisplayMovies {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-//        final String byYearUrl = "https://data-imdb1.p.rapidapi.com/movie/byYear/2021/?page_size=50";
-//
-//        List<String> movies = null;
-//        String movie = null;
-//
-//        Request request = new Request.Builder()
-//                .url(byYearUrl)
-//                .get()
-//                .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
-//                .addHeader("x-rapidapi-key", key)
-//                .build();
-//
-//        try {
-//            Response response = client.newCall(request).execute();
-//            movie = response.body().string();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//        return movies;
     }
 
     public void filterMovies(){
