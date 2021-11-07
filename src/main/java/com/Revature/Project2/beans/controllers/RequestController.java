@@ -16,7 +16,6 @@ public class RequestController {
         this.manageRequest = manageRequest;
     }
 
-    //Add get method
     @GetMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE)
     public Request get(@RequestParam Integer id){
         return manageRequest.getAddRequest(id);

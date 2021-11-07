@@ -30,6 +30,6 @@ public class Movie {
     private String genre;
 
     @OneToMany(mappedBy = "movie")
-    private List<Rating> ratings;
+    private List<Rating> ratingsByMovie;
 
 }

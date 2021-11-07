@@ -36,6 +36,6 @@ public class User {
     private boolean admin; //true = admin, false = user
 
     @OneToMany(mappedBy = "user")
-    private List<Rating> ratings;
+    private List<Rating> ratingsByUser;
 
 }
