@@ -60,6 +60,12 @@ public class ManageRequest {
     }
 
     public HttpStatus removeRequest(Request request){
+        boolean notEmpty = validation.validString(request.getRequestStatus());
+        if(!notEmpty){
+            status = HttpStatus.NOT_ACCEPTABLE;
+            return status;
+        }
+
         Integer id = request.getId();
         if(validation.requestExists(id)){
             requestRepo.deleteById(id);

@@ -2,6 +2,7 @@ package com.Revature.Project2;
 
 import com.Revature.Project2.beans.pojos.User;
 import com.Revature.Project2.services.GetMovies;
+import com.Revature.Project2.services.ManageRequest;
 import com.Revature.Project2.services.Validation;
 import com.Revature.Project2.services.DisplayMovies;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +16,9 @@ public class CineFile {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(CineFile.class, args);
+
+//		DisplayMovies display = new DisplayMovies();
+//		display.displayAllMovies();
 	}
 
 }
