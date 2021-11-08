@@ -1,4 +1,4 @@
-package com.Revature.Project2.beans;
+package com.Revature.Project2.services;
 
 import com.Revature.Project2.beans.pojos.TestEntity;
 import com.Revature.Project2.repos.TestRepo;
