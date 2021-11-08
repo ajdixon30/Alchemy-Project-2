@@ -52,7 +52,6 @@ public class ManageRequest {
 
         Integer id = request.getId();
         if(validation.requestExists(id)){
-
             //Gets the addRequest from the database and saves it to the Request object since it won't be in request
             //object from the front end
             if(request.getAddRequest() == null){
