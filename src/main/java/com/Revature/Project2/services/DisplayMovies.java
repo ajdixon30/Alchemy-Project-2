@@ -75,7 +75,7 @@ public class DisplayMovies {
         return titleGenre;
     }
 
-    public void filterMovies(String filter, String value) {
+    public List<String> filterMovies(String filter, String value) {
         String movie = null;
         OkHttpClient client = new OkHttpClient();
         switch (filter) {
@@ -96,7 +96,6 @@ public class DisplayMovies {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                //return movieID;
                 break;
             case "year":
 
@@ -111,16 +110,11 @@ public class DisplayMovies {
                         Response response = client.newCall(request).execute();
                         movie = response.body().string().substring(108);
                         JSONArray json = new JSONArray(movie);
-                        movieID.add(json.getJSONObject(i).getString("imdb_id"));
+                        movieID.add(json.getJSONObject(i).getString("title"));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-                for(int j = 0; j < movieID.size(); j++) {
-                    String id = movieID.get(j);
-                    titleGenre.add(getMovie.getMovieById(id));
-                }
-                //return titleGenre;
                 break;
             case "keyword":
                 request = new Request.Builder()
@@ -141,7 +135,6 @@ public class DisplayMovies {
                     e.printStackTrace();
                 }
                 System.out.println(movieID);
-                //return movieID;
                 break;
             case "rating":
                 request = new Request.Builder()
@@ -162,9 +155,9 @@ public class DisplayMovies {
                     e.printStackTrace();
                 }
                 System.out.println(movieID);
-                //return movieID;
                 break;
         }
+        return movieID;
     }
     //BONUS STORIES
     public void displaySynopsis(){
