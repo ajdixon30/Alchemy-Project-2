@@ -40,6 +40,10 @@ public class ManageRequest {
     }
 
     public HttpStatus changeRequestStatus(Request request){
+        if(request.getRequestStatus() == null){
+            request.setRequestStatus("Pending");
+        }
+
         boolean notEmpty = validation.validString(request.getRequestStatus());
         if(!notEmpty){
             status = HttpStatus.NOT_ACCEPTABLE;
@@ -48,10 +52,19 @@ public class ManageRequest {
 
         Integer id = request.getId();
         if(validation.requestExists(id)){
-            Request tempRequest = requestRepo.getById(id);
+
             //Gets the addRequest from the database and saves it to the Request object since it won't be in request
             //object from the front end
-            request.setAddRequest(tempRequest.getAddRequest());
+            if(request.getAddRequest() == null){
+                Request tempRequest = requestRepo.getById(id);
+                request.setAddRequest(tempRequest.getAddRequest());
+            }
+
+            notEmpty = validation.validString(request.getAddRequest());
+            if(!notEmpty) {
+                status = HttpStatus.NOT_ACCEPTABLE;
+                return status;
+            }
             requestRepo.save(request);
             return HttpStatus.ACCEPTED;
         } else{
