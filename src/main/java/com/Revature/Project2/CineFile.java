@@ -1,5 +1,6 @@
 package com.Revature.Project2;
 
+import com.Revature.Project2.services.DisplayMovies;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,6 +16,9 @@ public class CineFile {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(CineFile.class, args);
+
+		DisplayMovies display = new DisplayMovies();
+		display.filterMovies("rating", "PG");
 
 	}
 

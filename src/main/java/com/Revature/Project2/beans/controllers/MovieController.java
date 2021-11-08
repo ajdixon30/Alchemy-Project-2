@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 @RestController
@@ -47,10 +45,10 @@ public class MovieController {
         return movie;
     }
     @PostMapping(value = "/filter", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public List<String> filterMovie(@RequestParam String filter, String value) {
+    public void filterMovie(@RequestParam String filter, String value) {
         List<String> movieID;
-        movieID = display.filterMovies(filter, value);
-        return movieID;
+        //movieID = display.filterMovies(filter, value);
+        //return movieID;
     }
     @GetMapping(value = "/display", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<List> displayAll() {

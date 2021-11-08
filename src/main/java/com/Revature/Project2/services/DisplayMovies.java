@@ -75,8 +75,10 @@ public class DisplayMovies {
         return titleGenre;
     }
 
-    public List<String> filterMovies(String filter, String value) {
+    public void filterMovies(String filter, String value) {
         String movie = null;
+        movieID.clear();
+        int count = 0;
         OkHttpClient client = new OkHttpClient();
         switch (filter) {
             case "genre":
@@ -89,7 +91,10 @@ public class DisplayMovies {
                 try {
                     for (int i = 0; i < 10; i++) {
                         Response response = client.newCall(request).execute();
-                        movie = response.body().string().substring(109);
+                        for (int j = 0; j < value.length(); j++) {
+                            count++;
+                        }
+                        movie = response.body().string().substring(104 + count);
                         JSONArray json = new JSONArray(movie);
                         movieID.add(json.getJSONObject(i).getString("title"));
                     }
@@ -98,7 +103,6 @@ public class DisplayMovies {
                 }
                 break;
             case "year":
-
                 request = new Request.Builder()
                         .url("https://data-imdb1.p.rapidapi.com/movie/byYear/" + value + "/?page_size=10")
                         .get()
@@ -127,7 +131,10 @@ public class DisplayMovies {
                 try {
                     for(int i = 0; i < 10; i++) {
                         Response response = client.newCall(request).execute();
-                        movie = response.body().string().substring(114);
+                        for (int j = 0; j < value.length(); j++) {
+                            count++;
+                        }
+                        movie = response.body().string().substring(107 + count);
                         JSONArray json = new JSONArray(movie);
                         movieID.add(json.getJSONObject(i).getString("title"));
                     }
@@ -147,7 +154,11 @@ public class DisplayMovies {
                 try {
                     for(int i = 0; i < 10; i++) {
                         Response response = client.newCall(request).execute();
-                        movie = response.body().string().substring(115);
+                        for (int j = 0; j < value.length(); j++) {
+                            count++;
+                        }
+                        System.out.println(movie);
+                        movie = response.body().string().substring(114 + count);
                         JSONArray json = new JSONArray(movie);
                         movieID.add(json.getJSONObject(i).getString("title"));
                     }
@@ -157,7 +168,7 @@ public class DisplayMovies {
                 System.out.println(movieID);
                 break;
         }
-        return movieID;
+        //return movieID;
     }
     //BONUS STORIES
     public void displaySynopsis(){

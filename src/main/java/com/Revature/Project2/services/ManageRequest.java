@@ -82,16 +82,11 @@ public class ManageRequest {
     }
 
     public HttpStatus removeRequest(Request request){
-<<<<<<< HEAD
         boolean notEmpty = validation.validString(request.getRequestStatus());
         if(!notEmpty){
             status = HttpStatus.NOT_ACCEPTABLE;
             return status;
         }
-
-=======
-        //Get the request id
->>>>>>> 4cf9c8f68f258335aa27998a7f6cfb34f96dbb4f
         Integer id = request.getId();
         //If request exists in the database, then delete the request entry
         if(validation.requestExists(id)){
