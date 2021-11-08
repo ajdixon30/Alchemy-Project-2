@@ -1,5 +1,6 @@
 package com.Revature.Project2;
 
+import com.Revature.Project2.services.GetMovies;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +15,9 @@ public class CineFile {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(CineFile.class, args);
-		logger.info("Log statements for CineFile application.");
+		//logger.info("Log statements for CineFile application.");
+		GetMovies getMovie = new GetMovies();
+		System.out.println(getMovie.getMovieById("tt0086250"));
 	}
 
 }

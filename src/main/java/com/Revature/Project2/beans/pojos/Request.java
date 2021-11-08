@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -15,7 +16,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor(onConstructor = @__(@Autowired))
 @AllArgsConstructor(onConstructor = @__(@Autowired))
-public class Request {
+public class Request implements Serializable {
 
     @Id
     @Column(name = "request_id")
