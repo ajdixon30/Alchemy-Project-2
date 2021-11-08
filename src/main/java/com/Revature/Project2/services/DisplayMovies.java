@@ -38,7 +38,7 @@ public class DisplayMovies {
         }
     }
 
-    @Autowired
+
     //This method displays all available movies
     public void displayAllMovies(){
         OkHttpClient client = new OkHttpClient();
