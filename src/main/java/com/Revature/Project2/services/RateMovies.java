@@ -55,13 +55,14 @@ public class RateMovies {
         return HttpStatus.OK;
     }
 
-    public void removeRating(Rating rating){
+    public HttpStatus removeRating(Rating rating){
         //TODO: Write this method maybe
         if (rating.getId() != null){
             if(validation.ratingExists(rating.getId())) {
                 ratingRepo.delete(rating);
-            }
+                return HttpStatus.OK;
+            }else{return HttpStatus.NOT_FOUND;}
         }
-
+        return HttpStatus.NOT_ACCEPTABLE;
     }
 }

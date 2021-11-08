@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import static org.springframework.http.MediaType.*;
 
 @RestController
+@RequestMapping("rate-movies")
 public class RatingController {
     private final RateMovies movieRating;
 
@@ -19,13 +20,18 @@ public class RatingController {
         this.movieRating = movieRating;
     }
 
-    @GetMapping(value = "/rate-movies", produces = APPLICATION_JSON_VALUE)
+    @GetMapping(produces = APPLICATION_JSON_VALUE)
     public HttpStatus getMoviesRating(@RequestParam String id) {
         return HttpStatus.OK;
     }
 
-    @PostMapping(value = "/rate-movies", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public HttpStatus postRating(@RequestBody Rating userRating ){
         return  movieRating.rateMovie(userRating);
+    }
+
+    @DeleteMapping(consumes = APPLICATION_JSON_VALUE)
+    public HttpStatus deleteRating(@RequestBody Rating toBeDeleted){
+        return movieRating.removeRating(toBeDeleted);
     }
 }
