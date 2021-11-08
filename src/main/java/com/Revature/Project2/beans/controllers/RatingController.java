@@ -11,22 +11,21 @@ import static org.springframework.http.MediaType.*;
 
 @RestController
 public class RatingController {
-    private final RateMovies rateMovies;
+    private final RateMovies movieRating;
 
 
     @Autowired
-    public RatingController(RateMovies rateMovies) {
-        this.rateMovies = rateMovies;
+    public RatingController(RateMovies movieRating) {
+        this.movieRating = movieRating;
     }
-    @GetMapping(value = "/rate-movies", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public HttpStatus getRateMovies(String title) {
+
+    @GetMapping(value = "/rate-movies", produces = APPLICATION_JSON_VALUE)
+    public HttpStatus getMoviesRating(@RequestParam String id) {
         return HttpStatus.OK;
     }
+
     @PostMapping(value = "/rate-movies", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.CREATED)
     public HttpStatus postRating(@RequestBody Rating userRating ){
-        rateMovies.rateMovie(userRating);
-        return HttpStatus.CREATED;
+        return  movieRating.rateMovie(userRating);
     }
 }

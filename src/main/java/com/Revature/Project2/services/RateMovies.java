@@ -2,12 +2,15 @@ package com.Revature.Project2.services;
 
 import com.Revature.Project2.beans.pojos.Movie;
 import com.Revature.Project2.beans.pojos.Rating;
-import com.Revature.Project2.beans.pojos.User;
 import com.Revature.Project2.repos.MovieRepo;
 import com.Revature.Project2.repos.RatingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service
+@Transactional
 public class RateMovies {
     private HttpStatus status;
     private final Validation validation;
