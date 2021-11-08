@@ -5,10 +5,12 @@ import com.Revature.Project2.repos.MovieRepo;
 import com.Revature.Project2.repos.RatingRepo;
 import com.Revature.Project2.repos.RequestRepo;
 import com.Revature.Project2.repos.UserRepo;
-import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 @Component
+@Lazy
 public class Validation {
     private final UserRepo userRepo;
     private final MovieRepo movieRepo;
@@ -54,7 +56,7 @@ public class Validation {
 
     //Validates that the given string is not empty and fits within the set size range (1-30 characters long)
     public boolean validString(String string){
-        return string.matches("[a-zA-Z ]{1,30}$");
+        return string.matches("[a-zA-Z1-9 ]{1,30}$");
     }
 
 

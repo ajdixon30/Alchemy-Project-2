@@ -16,21 +16,25 @@ public class RequestController {
         this.manageRequest = manageRequest;
     }
 
+    //Gets the request from the database
     @GetMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE)
     public Request get(@RequestParam Integer id){
         return manageRequest.getAddRequest(id);
     }
 
+    //Saves a new request to the database
     @PostMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus post(@RequestBody Request request){
         return manageRequest.requestAddition(request);
     }
 
+    //Updates a request in the database
     @PutMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus put(@RequestBody Request request){
         return manageRequest.changeRequestStatus(request);//Needs the request id and the requestStatus
     }
 
+    //Deletes a request in the database
     @DeleteMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus delete(@RequestBody Request request){
         return manageRequest.removeRequest(request);

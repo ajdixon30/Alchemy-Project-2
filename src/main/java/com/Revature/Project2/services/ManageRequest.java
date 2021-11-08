@@ -20,19 +20,26 @@ public class ManageRequest {
         this.validation = validation;
     }
 
+    //Add requests to the database
     public HttpStatus requestAddition(Request request){
+        //Check if the string is not empty (ie does not equal "" or " ")
         boolean notEmpty = validation.validString(request.getAddRequest());
+        //If empty then send a 406 HTTP response status code
         if(!notEmpty){
             status = HttpStatus.NOT_ACCEPTABLE;
             return status;
         }
+        //Set the default request status
         request.setRequestStatus("Pending");
+        //Save the request to the database
         requestRepo.save(request);
+        //Send a 201 HTTP response status code
         status = HttpStatus.CREATED;
         return status;
     }
 
     public Request getAddRequest(Integer id){
+        //Checks if the request is in the database
         if(validation.requestExists(id)) {
             return requestRepo.getById(id);
         }
@@ -48,23 +55,43 @@ public class ManageRequest {
 
         Integer id = request.getId();
         if(validation.requestExists(id)){
-            Request tempRequest = requestRepo.getById(id);
-            //Gets the addRequest from the database and saves it to the Request object since it won't be in request
-            //object from the front end
-            request.setAddRequest(tempRequest.getAddRequest());
+            //If requestStatus is null, set requestStatus equal to requestStatus in the database
+            if(request.getRequestStatus() == null){
+                request.setRequestStatus(requestRepo.getById(request.getId()).getRequestStatus());
+            }
+            //If addRequest is null, set addRequest equal to addRequest in the database
+            if(request.getAddRequest() == null){
+                request.setAddRequest(requestRepo.getById(id).getAddRequest());
+            }
+
+            //Validate that the request exists in the database
+            notEmpty = validation.validString(request.getAddRequest());
+            if(!notEmpty) {
+                //If empty then send a 406 HTTP response status code
+                status = HttpStatus.NOT_ACCEPTABLE;
+                return status;
+            }
+            //Update the request
             requestRepo.save(request);
+            //Send a 202 HTTP response status code
             return HttpStatus.ACCEPTED;
         } else{
+            //If request does not exist in the database, send a 404 HTTP response status code
             return HttpStatus.NOT_FOUND;
         }
     }
 
     public HttpStatus removeRequest(Request request){
+        //Get the request id
         Integer id = request.getId();
+        //If request exists in the database, then delete the request entry
         if(validation.requestExists(id)){
+            //Delete request from database
             requestRepo.deleteById(id);
+            //Send a 202 HTTP response status code
             return HttpStatus.ACCEPTED;
         } else{
+            //If request does not exist in the database, send a 404 HTTP response status code
             return HttpStatus.NOT_FOUND;
         }
     }
