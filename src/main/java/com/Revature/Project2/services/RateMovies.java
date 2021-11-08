@@ -34,6 +34,7 @@ public class RateMovies {
         if(validation.movieExists(rating.getMovie().getId()) && validation.userExists(rating.getUser().getUsername())){
             /*TODO: Write if statement. Call validation method that checks if the user has already rated the movie.
             Do this by checking if user.getRatingsByUser and movie.getRatingsByMovie contain the same rating id
+            If the user has already rated this movie, call updateRating.
             */
             ratingRepo.save(rating);
             status = HttpStatus.ACCEPTED;

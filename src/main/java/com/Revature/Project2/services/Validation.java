@@ -5,13 +5,8 @@ import com.Revature.Project2.repos.MovieRepo;
 import com.Revature.Project2.repos.RatingRepo;
 import com.Revature.Project2.repos.RequestRepo;
 import com.Revature.Project2.repos.UserRepo;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.criteria.CriteriaBuilder;
-
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Component
 public class Validation {
@@ -20,6 +15,7 @@ public class Validation {
     private final RatingRepo ratingRepo;
     private final RequestRepo requestRepo;
 
+    @Autowired
     public Validation(UserRepo userRepo, MovieRepo movieRepo, RatingRepo ratingRepo, RequestRepo requestRepo) {
         this.userRepo = userRepo;
         this.movieRepo = movieRepo;

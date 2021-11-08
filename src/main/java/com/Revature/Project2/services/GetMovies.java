@@ -61,7 +61,6 @@ public class GetMovies {
             //TODO: Add File Logger
         }
         return id;
-        //TODO: Write this method
     }
 
     public List<String> getMovieById(String id){

@@ -59,9 +59,13 @@ public class ManageRequest {
         }
     }
 
-    public void removeRequest(Integer id){
+    public HttpStatus removeRequest(Request request){
+        Integer id = request.getId();
         if(validation.requestExists(id)){
             requestRepo.deleteById(id);
+            return HttpStatus.ACCEPTED;
+        } else{
+            return HttpStatus.NOT_FOUND;
         }
     }
 }
