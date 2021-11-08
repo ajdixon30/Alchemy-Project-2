@@ -1,5 +1,7 @@
 package com.Revature.Project2.services;
 
+import org.springframework.stereotype.Component;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -7,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 //TODO: May need to refactor/rewrite this class if we decide to make it a bean
+@Component
 public class FileLogger {
     private static FileLogger fileLogger;
     private static int threshold;
