@@ -1,6 +1,6 @@
 package com.Revature.Project2.beans.controllers;
 
-import com.Revature.Project2.beans.TestService;
+import com.Revature.Project2.services.TestService;
 import com.Revature.Project2.beans.pojos.TestEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -17,7 +18,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor(onConstructor = @__(@Autowired))
 @AllArgsConstructor(onConstructor = @__(@Autowired))
-public class User {
+public class User implements Serializable {
 
     @Id
     @Column(unique = true)
