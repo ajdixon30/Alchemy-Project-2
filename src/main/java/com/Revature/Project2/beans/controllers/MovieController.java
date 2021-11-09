@@ -45,10 +45,10 @@ public class MovieController {
         return movie;
     }
     @PostMapping(value = "/filter", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void filterMovie(@RequestParam String filter, String value) {
+    public List<String> filterMovie(@RequestParam String filter, String value) {
         List<String> movieID;
-        //movieID = display.filterMovies(filter, value);
-        //return movieID;
+        movieID = display.filterMovies(filter, value);
+        return movieID;
     }
     @GetMapping(value = "/display", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<List> displayAll() {

@@ -75,7 +75,7 @@ public class DisplayMovies {
         return titleGenre;
     }
 
-    public void filterMovies(String filter, String value) {
+    public List<String> filterMovies(String filter, String value) {
         String movie = null;
         movieID.clear();
         int count = 0;
@@ -90,6 +90,7 @@ public class DisplayMovies {
                         .build();
                 try {
                     for (int i = 0; i < 10; i++) {
+                        count = 0;
                         Response response = client.newCall(request).execute();
                         for (int j = 0; j < value.length(); j++) {
                             count++;
@@ -125,23 +126,20 @@ public class DisplayMovies {
                         .url("https://data-imdb1.p.rapidapi.com/movie/byKeywords/" + value + "/?page_size=10")
                         .get()
                         .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
-                        .addHeader("x-rapidapi-key", "77a26b5fc8mshb33e4fc6e9dd843p1c3631jsn82798791ed4a")
+                        .addHeader("x-rapidapi-key", APIKey)
                         .build();
 
                 try {
-                    for(int i = 0; i < 10; i++) {
-                        Response response = client.newCall(request).execute();
-                        for (int j = 0; j < value.length(); j++) {
-                            count++;
-                        }
-                        movie = response.body().string().substring(107 + count);
-                        JSONArray json = new JSONArray(movie);
-                        movieID.add(json.getJSONObject(i).getString("title"));
+                    Response response = client.newCall(request).execute();
+                    movie = response.body().string();
+                    JSONObject json = new JSONObject(movie);
+                    JSONArray innerJson = json.getJSONArray("results");
+                    for(int i = 0; i < innerJson.length()- 1; i++) {
+                        movieID.add(innerJson.getJSONObject(i).getString("title"));
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                System.out.println(movieID);
                 break;
             case "rating":
                 request = new Request.Builder()
@@ -153,11 +151,11 @@ public class DisplayMovies {
 
                 try {
                     for(int i = 0; i < 10; i++) {
+                        count = 0;
                         Response response = client.newCall(request).execute();
                         for (int j = 0; j < value.length(); j++) {
                             count++;
                         }
-                        System.out.println(movie);
                         movie = response.body().string().substring(114 + count);
                         JSONArray json = new JSONArray(movie);
                         movieID.add(json.getJSONObject(i).getString("title"));
@@ -165,10 +163,9 @@ public class DisplayMovies {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                System.out.println(movieID);
                 break;
         }
-        //return movieID;
+        return movieID;
     }
     //BONUS STORIES
     public void displaySynopsis(){
