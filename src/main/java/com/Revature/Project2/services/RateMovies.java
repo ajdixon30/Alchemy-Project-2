@@ -60,4 +60,8 @@ public class RateMovies {
         }
         return HttpStatus.NOT_ACCEPTABLE;
     }
+
+    public Rating getOneRating(int id){
+        return ratingRepo.getById(id);
+    }
 }

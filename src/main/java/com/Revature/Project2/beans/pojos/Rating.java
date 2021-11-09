@@ -27,6 +27,7 @@ public class Rating implements Serializable {
     private int rating;
 
     @ManyToOne
+    @JsonIgnoreProperties("ratingsByUser")
     @JoinColumn(name = "username", referencedColumnName = "username", nullable = false)
     private User user;
 
