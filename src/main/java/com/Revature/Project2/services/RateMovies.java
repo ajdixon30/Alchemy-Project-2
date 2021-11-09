@@ -25,24 +25,18 @@ public class RateMovies {
 
     //Adds a new rating to the Rating table
     public HttpStatus rateMovie(Rating rating){
-
-        if(rating == null){
-            return HttpStatus.NOT_ACCEPTABLE;
-        }
-
-        if(validation.movieExists(rating.getMovie().getId()) && validation.userExists(rating.getUser().getUsername())){
-            //TODO: Write if statement. Call validation method that checks if the user has already rated the movie.
-            //Do this by checking if user.getRatingsByUser and movie.getRatingsByMovie contain the same rating id
-            //If the user has already rated this movie, call updateRating.
-            if (rating.getId() != null){
-                if(validation.ratingExists(rating.getId())) {
+        if (validation.movieExists(rating.getMovie().getId()) && validation.userExists(rating.getUser().getUsername())){
+            if (rating.getId() != null) {
+                if (validation.ratingExists(rating.getId())) {
                     return updateRating(rating);
                 }
+                return HttpStatus.NOT_FOUND;
             } else {
                 ratingRepo.save(rating);
                 status = HttpStatus.CREATED;
             }
-        } else{
+        }
+        else {
             status = HttpStatus.NOT_FOUND;
         }
         return status;
@@ -56,12 +50,13 @@ public class RateMovies {
     }
 
     public HttpStatus removeRating(Rating rating){
-        //TODO: Write this method maybe
         if (rating.getId() != null){
             if(validation.ratingExists(rating.getId())) {
                 ratingRepo.delete(rating);
                 return HttpStatus.OK;
-            }else{return HttpStatus.NOT_FOUND;}
+            }else{
+                return HttpStatus.NOT_FOUND;
+            }
         }
         return HttpStatus.NOT_ACCEPTABLE;
     }

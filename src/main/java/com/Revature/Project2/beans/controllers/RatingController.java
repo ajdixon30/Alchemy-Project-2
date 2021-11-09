@@ -4,6 +4,7 @@ import com.Revature.Project2.beans.pojos.Rating;
 import com.Revature.Project2.services.RateMovies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -21,17 +22,22 @@ public class RatingController {
     }
 
     @GetMapping(produces = APPLICATION_JSON_VALUE)
-    public HttpStatus getMoviesRating(@RequestParam String id) {
-        return HttpStatus.OK;
+    public ResponseEntity getMoviesRating(@RequestParam String id) {
+        return new ResponseEntity(HttpStatus.OK);
     }
 
+    /**
+     * posts a new rating for the specified movie
+     * @param userRating
+     * @return HttpStatus depending on the result of rateMovie()
+     */
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    public HttpStatus postRating(@RequestBody Rating userRating ){
-        return  movieRating.rateMovie(userRating);
+    public ResponseEntity postRating(@RequestBody Rating userRating){
+        return new ResponseEntity(movieRating.rateMovie(userRating));
     }
 
     @DeleteMapping(consumes = APPLICATION_JSON_VALUE)
-    public HttpStatus deleteRating(@RequestBody Rating toBeDeleted){
-        return movieRating.removeRating(toBeDeleted);
+    public ResponseEntity deleteRating(@RequestBody Rating toBeDeleted){
+        return new ResponseEntity(movieRating.removeRating(toBeDeleted));
     }
 }
