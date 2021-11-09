@@ -21,10 +21,25 @@ public class RatingController {
         this.movieRating = movieRating;
     }
 
-    @GetMapping(produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity getMoviesRating(@RequestParam String id) {
+    /**
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/{id}",produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity getUserRating(@RequestParam String id) {
         return new ResponseEntity(HttpStatus.OK);
     }
+
+//    @GetMapping(value = "/{username}",produces = APPLICATION_JSON_VALUE)
+//    public ResponseEntity getAllUserRating(@PathVariable String username){
+//        return new ResponseEntity(HttpStatus.OK);
+//    }
+//
+//    @GetMapping(value =  "/{id}", produces = APPLICATION_JSON_VALUE)
+//    public ResponseEntity getAllRatings(@PathVariable String movieID){
+//        return new ResponseEntity(HttpStatus.OK);
+//    }
 
     /**
      * posts a new rating for the specified movie
