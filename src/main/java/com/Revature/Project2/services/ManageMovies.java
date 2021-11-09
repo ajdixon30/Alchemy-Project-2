@@ -19,7 +19,6 @@ public class ManageMovies {
     public static void saveMovie(Movie movie){
         repo.save(movie);
         //TODO: Write this method
-
     }
 
     public static void deleteMovie(Movie movie){
