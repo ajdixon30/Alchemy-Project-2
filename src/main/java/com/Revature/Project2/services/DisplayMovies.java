@@ -38,7 +38,6 @@ public class DisplayMovies {
         }
     }
 
-
     //This method displays all available movies
     public void displayAllMovies(){
         OkHttpClient client = new OkHttpClient();
