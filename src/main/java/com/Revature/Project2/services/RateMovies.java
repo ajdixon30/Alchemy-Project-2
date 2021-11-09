@@ -60,4 +60,9 @@ public class RateMovies {
         }
         return HttpStatus.NOT_ACCEPTABLE;
     }
+
+    public HttpStatus getOneRating(Rating rating){
+
+        return HttpStatus.OK;
+    }
 }
