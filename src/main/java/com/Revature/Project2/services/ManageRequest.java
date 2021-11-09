@@ -25,7 +25,7 @@ public class ManageRequest {
         //Check if the string is not empty (ie does not equal "" or " ")
         boolean notEmpty = validation.validString(request.getAddRequest());
         //If empty then send a 406 HTTP response status code
-        if(!notEmpty){
+        if(!notEmpty) {
             status = HttpStatus.NOT_ACCEPTABLE;
             return status;
         }
@@ -33,8 +33,13 @@ public class ManageRequest {
         request.setRequestStatus("Pending");
         //Save the request to the database
         requestRepo.save(request);
-        //Send a 201 HTTP response status code
-        status = HttpStatus.CREATED;
+        if(request.getId() != null){
+            //Send a 202 HTTP response status code
+            status = HttpStatus.ACCEPTED;
+        } else {
+            //Send a 201 HTTP response status code
+            status = HttpStatus.CREATED;
+        }
         return status;
     }
 
@@ -46,7 +51,7 @@ public class ManageRequest {
         return null;
     }
 
-    public HttpStatus changeRequestStatus(Request request){
+    public HttpStatus updateRequest(Request request){
         boolean notEmpty = validation.validString(request.getRequestStatus());
         if(!notEmpty){
             status = HttpStatus.NOT_ACCEPTABLE;
@@ -82,7 +87,11 @@ public class ManageRequest {
     }
 
     public HttpStatus removeRequest(Request request){
-        //Get the request id
+        boolean notEmpty = validation.validString(request.getRequestStatus());
+        if(!notEmpty){
+            status = HttpStatus.NOT_ACCEPTABLE;
+            return status;
+        }
         Integer id = request.getId();
         //If request exists in the database, then delete the request entry
         if(validation.requestExists(id)){
