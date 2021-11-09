@@ -26,12 +26,12 @@ public class MovieController {
     public ResponseEntity newMovie(@RequestParam String title){//TODO: Clean up controller
         return new ResponseEntity(get.addNewMovie(title));
     }
+
     @PostMapping(value = "/filter", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public List<String> filterMovie(@RequestParam String filter, String value) {
-        List<String> movieID;
-        movieID = display.filterMovies(filter, value);
-        return movieID;
+        return display.filterMovies(filter, value);
     }
+
     @GetMapping(value = "/display", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Movie> displayAll() {
         return display.displayAllMovies();
