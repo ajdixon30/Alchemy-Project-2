@@ -1,5 +1,6 @@
 package com.Revature.Project2.beans.pojos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,6 +31,7 @@ public class Movie implements Serializable {
     @Column
     private String genre;
 
+    @JsonIgnoreProperties({"movie","user"}) //to prevent infinite loop
     @OneToMany(mappedBy = "movie")
     private List<Rating> ratingsByMovie;
 
