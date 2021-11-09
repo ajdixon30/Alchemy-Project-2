@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 //Methods for displaying list of movies
@@ -19,6 +21,9 @@ import java.util.Properties;
 @Transactional
 public class DisplayMovies {
     private String APIKey;
+    List<String> movieID = new ArrayList<>();
+    GetMovies getMovie = new GetMovies();
+    List<List> titleGenre = new ArrayList<>();
     //public final MovieRepo movieRepo;
 
 //    public DisplayMovies(MovieRepo movieRepo) {
@@ -38,59 +43,130 @@ public class DisplayMovies {
         }
     }
 
-
     //This method displays all available movies
-    public void displayAllMovies(){
+    public List<List> displayAllMovies() {
         OkHttpClient client = new OkHttpClient();
 
+        final String byYearUrl = "https://data-imdb1.p.rapidapi.com/movie/byYear/2021/?page_size=10";
+        String movie = null;
+
         Request request = new Request.Builder()
-                .url("https://data-imdb1.p.rapidapi.com/movie/id/tt0086250/")
+                .url(byYearUrl)
                 .get()
                 .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
                 .addHeader("x-rapidapi-key", APIKey)
                 .build();
 
-        try {
-            Response response = client.newCall(request).execute();
-            String resp = response.body().string().substring(11);
-            JSONObject json = new JSONObject(resp);
-            String title = json.getString("title");
-            int year = json.getInt("year");
-            System.out.println(title);
-            System.out.println(year);
-        } catch (IOException e) {
-            e.printStackTrace();
+        for(int i = 0; i < 10; i++) {
+            try {
+                Response response = client.newCall(request).execute();
+                movie = response.body().string().substring(108);
+                JSONArray json = new JSONArray(movie);
+                movieID.add(json.getJSONObject(i).getString("imdb_id"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-//        final String byYearUrl = "https://data-imdb1.p.rapidapi.com/movie/byYear/2021/?page_size=50";
-//
-//        List<String> movies = null;
-//        String movie = null;
-//
-//        Request request = new Request.Builder()
-//                .url(byYearUrl)
-//                .get()
-//                .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
-//                .addHeader("x-rapidapi-key", key)
-//                .build();
-//
-//        try {
-//            Response response = client.newCall(request).execute();
-//            movie = response.body().string();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//        return movies;
+        for(int j = 0; j < movieID.size(); j++) {
+            String id = movieID.get(j);
+            titleGenre.add(getMovie.getMovieById(id));
+        }
+        return titleGenre;
     }
 
-    public void filterMovies(){
-        //TODO: Write this method; call methods from the FilterMovies class; may merge FilterMovies with this class
+    public List<String> filterMovies(String filter, String value) {
+        String movie = null;
+        movieID.clear();
+        int count = 0;
+        OkHttpClient client = new OkHttpClient();
+        switch (filter) {
+            case "genre":
+                Request request = new Request.Builder()
+                        .url("https://data-imdb1.p.rapidapi.com/movie/byGen/" + value + "/?page_size=10")
+                        .get()
+                        .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
+                        .addHeader("x-rapidapi-key", APIKey)
+                        .build();
+                try {
+                    for (int i = 0; i < 10; i++) {
+                        count = 0;
+                        Response response = client.newCall(request).execute();
+                        for (int j = 0; j < value.length(); j++) {
+                            count++;
+                        }
+                        movie = response.body().string().substring(104 + count);
+                        JSONArray json = new JSONArray(movie);
+                        movieID.add(json.getJSONObject(i).getString("title"));
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "year":
+                request = new Request.Builder()
+                        .url("https://data-imdb1.p.rapidapi.com/movie/byYear/" + value + "/?page_size=10")
+                        .get()
+                        .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
+                        .addHeader("x-rapidapi-key", APIKey)
+                        .build();
+                for(int i = 0; i < 10; i++) {
+                    try {
+                        Response response = client.newCall(request).execute();
+                        movie = response.body().string().substring(108);
+                        JSONArray json = new JSONArray(movie);
+                        movieID.add(json.getJSONObject(i).getString("title"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            case "keyword":
+                request = new Request.Builder()
+                        .url("https://data-imdb1.p.rapidapi.com/movie/byKeywords/" + value + "/?page_size=10")
+                        .get()
+                        .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
+                        .addHeader("x-rapidapi-key", APIKey)
+                        .build();
+
+                try {
+                    Response response = client.newCall(request).execute();
+                    movie = response.body().string();
+                    JSONObject json = new JSONObject(movie);
+                    JSONArray innerJson = json.getJSONArray("results");
+                    for(int i = 0; i < innerJson.length()- 1; i++) {
+                        movieID.add(innerJson.getJSONObject(i).getString("title"));
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "rating":
+                request = new Request.Builder()
+                        .url("https://data-imdb1.p.rapidapi.com/movie/byContentRating/" + value + "/?page_size=10")
+                        .get()
+                        .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
+                        .addHeader("x-rapidapi-key", "77a26b5fc8mshb33e4fc6e9dd843p1c3631jsn82798791ed4a")
+                        .build();
+
+                try {
+                    for(int i = 0; i < 10; i++) {
+                        count = 0;
+                        Response response = client.newCall(request).execute();
+                        for (int j = 0; j < value.length(); j++) {
+                            count++;
+                        }
+                        movie = response.body().string().substring(114 + count);
+                        JSONArray json = new JSONArray(movie);
+                        movieID.add(json.getJSONObject(i).getString("title"));
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
+        return movieID;
     }
-
-
     //BONUS STORIES
     public void displaySynopsis(){
         //TODO: Write this method if we have time to complete the bonus stories
