@@ -1,7 +1,9 @@
 package com.Revature.Project2;
 
 import com.Revature.Project2.beans.pojos.User;
+import com.Revature.Project2.repos.MovieRepo;
 import com.Revature.Project2.services.GetMovies;
+import com.Revature.Project2.services.ManageMovies;
 import com.Revature.Project2.services.Validation;
 import com.Revature.Project2.services.DisplayMovies;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +14,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication(scanBasePackages = {"com.Revature.Project2.beans", "com.Revature.Project2.services"})
 @EntityScan("com.Revature.Project2.beans.pojos")
 public class CineFile {
+
+	private static com.Revature.Project2.repos.MovieRepo MovieRepo;
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(CineFile.class, args);

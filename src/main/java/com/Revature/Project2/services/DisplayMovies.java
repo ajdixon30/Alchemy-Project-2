@@ -61,29 +61,6 @@ public class DisplayMovies {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-//        final String byYearUrl = "https://data-imdb1.p.rapidapi.com/movie/byYear/2021/?page_size=50";
-//
-//        List<String> movies = null;
-//        String movie = null;
-//
-//        Request request = new Request.Builder()
-//                .url(byYearUrl)
-//                .get()
-//                .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
-//                .addHeader("x-rapidapi-key", key)
-//                .build();
-//
-//        try {
-//            Response response = client.newCall(request).execute();
-//            movie = response.body().string();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//        return movies;
     }
 
     public void filterMovies(){
