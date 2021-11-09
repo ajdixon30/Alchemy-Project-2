@@ -1,5 +1,5 @@
 package com.Revature.Project2.services;
-
+import com.Revature.Project2.beans.pojos.Movie;
 import com.Revature.Project2.beans.pojos.User;
 import com.Revature.Project2.repos.MovieRepo;
 import com.Revature.Project2.repos.RatingRepo;
@@ -73,6 +73,16 @@ public class Validation {
     //Validates that the movie exists in the database
     public boolean movieExists(Integer id){
         return movieRepo.existsById(id);
+    }
+
+    public boolean movieExists(Movie movie){
+        boolean exists = false;
+        String movies = "";
+        movies = movieRepo.movieSearch(movie.getTitle());
+        if (movies != null){
+            exists = true;
+        }
+        return exists;
     }
 
     //Validates that the rating exists in the database
