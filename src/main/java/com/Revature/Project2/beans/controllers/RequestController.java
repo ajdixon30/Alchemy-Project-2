@@ -31,7 +31,7 @@ public class RequestController {
     //Updates a request in the database
     @PutMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus put(@RequestBody Request request){
-        return manageRequest.changeRequestStatus(request);//Needs the request id and the requestStatus
+        return manageRequest.updateRequest(request);//Needs the request id and the requestStatus
     }
 
     //Deletes a request in the database
