@@ -15,7 +15,6 @@ import static org.springframework.http.MediaType.*;
 public class RatingController {
     private final RateMovies movieRating;
 
-
     @Autowired
     public RatingController(RateMovies movieRating) {
         this.movieRating = movieRating;
@@ -24,20 +23,15 @@ public class RatingController {
     /**
      *
      * @param id
-     * @return
+     * @return rating tied to id
      */
     @GetMapping(value = "/{id}",produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity getUserRating(@RequestParam String id) {
-        return new ResponseEntity(HttpStatus.OK);
+    public Rating getUserRating(@PathVariable int id) {
+        return movieRating.getOneRating(id);
     }
 
 //    @GetMapping(value = "/{username}",produces = APPLICATION_JSON_VALUE)
 //    public ResponseEntity getAllUserRating(@PathVariable String username){
-//        return new ResponseEntity(HttpStatus.OK);
-//    }
-//
-//    @GetMapping(value =  "/{id}", produces = APPLICATION_JSON_VALUE)
-//    public ResponseEntity getAllRatings(@PathVariable String movieID){
 //        return new ResponseEntity(HttpStatus.OK);
 //    }
 

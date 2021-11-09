@@ -61,8 +61,7 @@ public class RateMovies {
         return HttpStatus.NOT_ACCEPTABLE;
     }
 
-    public HttpStatus getOneRating(Rating rating){
-
-        return HttpStatus.OK;
+    public Rating getOneRating(int id){
+        return ratingRepo.getById(id);
     }
 }
