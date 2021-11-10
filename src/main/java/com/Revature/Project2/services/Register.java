@@ -7,7 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+/**
+ * Service class for registering new users
+ */
 @Service
 @Transactional
 public class Register {
@@ -20,7 +22,11 @@ public class Register {
         this.validation = validation;
     }
 
-    //Registration for users
+    /**
+     * Registers a new user
+     * @param user user from RequestBody to be sent when 'Register' is pressed
+     * @return an HttpStatus depending on if the user is created or some error occurs
+     */
     public HttpStatus userRegister(User user){
         HttpStatus status;
 
