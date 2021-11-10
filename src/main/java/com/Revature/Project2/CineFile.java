@@ -15,6 +15,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class CineFile {
 	private static final Logger logger = LoggerFactory.getLogger(CineFile.class);
 
+	private static com.Revature.Project2.repos.MovieRepo MovieRepo;
+
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(CineFile.class, args);
 
