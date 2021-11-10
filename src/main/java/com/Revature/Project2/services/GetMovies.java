@@ -63,6 +63,11 @@ public class GetMovies {
     public HttpStatus addNewMovie(String title){
         OkHttpClient client = new OkHttpClient();
         Movie movie = new Movie();
+        movie.setTitle(title);
+
+        if (validation.movieExists(movie)){
+            return HttpStatus.BAD_REQUEST;
+        }
 
         String id = "";
 
@@ -100,7 +105,7 @@ public class GetMovies {
             e.printStackTrace();
             //TODO: Add File Logger
         }
-        if (id == null || validation.movieExists(movie)){//No results from the third party API or the movie already exists
+        if (id == null){//No results from the third party API or the movie already exists
             return HttpStatus.BAD_REQUEST;
         } else {
 
