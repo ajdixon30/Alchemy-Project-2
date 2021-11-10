@@ -14,8 +14,7 @@ public class CineFile {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(CineFile.class, args);
-		DatabaseLogger logger = context.getBean(DatabaseLogger.class);
-		logger.writeLog("Server started.",1);
+
 	}
 
 }
