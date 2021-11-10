@@ -1,4 +1,5 @@
 package com.Revature.Project2;
+import com.Revature.Project2.services.DatabaseLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,13 +11,11 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication(scanBasePackages = {"com.Revature.Project2.beans", "com.Revature.Project2.services"})
 @EntityScan("com.Revature.Project2.beans.pojos")
 public class CineFile {
-	private static final Logger logger = LoggerFactory.getLogger(CineFile.class);
-
-	private static com.Revature.Project2.repos.MovieRepo MovieRepo;
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(CineFile.class, args);
-
+		DatabaseLogger logger = context.getBean(DatabaseLogger.class);
+		logger.writeLog("Server started.",1);
 	}
 
 }
