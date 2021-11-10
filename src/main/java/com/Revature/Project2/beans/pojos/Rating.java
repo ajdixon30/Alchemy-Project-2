@@ -10,10 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * Model class for movie ratings
+ */
 @Entity
+@Getter @Setter
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Getter
-@Setter
 @NoArgsConstructor(onConstructor = @__(@Autowired))
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class Rating implements Serializable {
