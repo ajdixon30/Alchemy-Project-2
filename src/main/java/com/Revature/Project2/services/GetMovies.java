@@ -61,16 +61,19 @@ public class GetMovies {
      * @return HttpStatus
      */
     public HttpStatus addNewMovie(String title){
+
         OkHttpClient client = new OkHttpClient();
+
         Movie movie = new Movie();
         movie.setTitle(title);
 
-        if (validation.movieExists(movie)){
+        if (validation.movieExists(movie)){//Checks if an entry of this movie already exists within the database
             return HttpStatus.BAD_REQUEST;
         }
 
         String id = "";
 
+        //Request is sent to the API to search for the movie by title
         Request request = new Request.Builder()
                 .url("https://data-imdb1.p.rapidapi.com/movie/imdb_id/byTitle/" + title + "/")
                 .get()
@@ -93,14 +96,13 @@ public class GetMovies {
                     if ((results.getJSONObject(i).getString("title").equalsIgnoreCase(title))) {
                         //Grabs the appropriate result from the response
                         JSONObject json = results.getJSONObject(i);
+                        //Grabs the movie ID from the response body
                         id = json.getString("imdb_id");
-                        movie.setTitle(json.getString("title"));
                     }
                 }
             } else {
                 id = null;
             }
-
         } catch (IOException | JSONException | NullPointerException e) {
             e.printStackTrace();
             //TODO: Add File Logger
@@ -109,7 +111,7 @@ public class GetMovies {
             return HttpStatus.BAD_REQUEST;
         } else {
 
-            //Send another request using the movie id to grab movie properties
+            //Send another request to the API to find more details about the requested movie
             request = new Request.Builder()
                     .url("https://data-imdb1.p.rapidapi.com/movie/id/" + id + "/")
                     .get()
