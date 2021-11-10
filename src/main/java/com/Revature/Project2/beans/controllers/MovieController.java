@@ -21,7 +21,7 @@ public class MovieController {
         this.get = get;
         this.manage = manage;
     }
-
+    //Servlet used for processing POST Requests to add new movies to the database
     @PostMapping(value = "/newMovie", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity newMovie(@RequestParam String title){//TODO: Clean up controller
         return new ResponseEntity(get.addNewMovie(title));
