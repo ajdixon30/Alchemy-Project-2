@@ -7,10 +7,10 @@ import com.Revature.Project2.repos.RequestRepo;
 import com.Revature.Project2.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
 @Lazy
+@Service
 public class Validation {
     private final UserRepo userRepo;
     private final MovieRepo movieRepo;
@@ -26,7 +26,8 @@ public class Validation {
     }
 
     //Validates that the inputted username and password match a username and associated password in the database.
-    public boolean validateUser(String username, String password, User user){
+    public boolean validateUser(String username, String password){
+        User user = userRepo.getById(username);
         return username.equals(user.getUsername()) && password.equals(user.getPassword());
     }
 

@@ -32,12 +32,11 @@ public class Register {
         if(validation.validateName(user.getFirstName(), user.getLastName()) &&
                 validation.validateUserCreds(user.getUsername(), user.getPassword())){
             userRepo.save(user);
-            status = HttpStatus.ACCEPTED;
             System.out.println("User Registered");
+            return HttpStatus.CREATED;
         } else {
-            status = HttpStatus.NOT_ACCEPTABLE;
+            return HttpStatus.NOT_ACCEPTABLE;
         }
-        return status;
     }
 
 }
