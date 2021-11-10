@@ -1,34 +1,35 @@
 package com.Revature.Project2.beans.pojos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
-import java.io.Serializable;
 
-/**
- * Model class for new movie Requests
- */
 @Entity
-@Getter @Setter
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Getter
+@Setter
 @NoArgsConstructor(onConstructor = @__(@Autowired))
-@AllArgsConstructor(onConstructor = @__(@Autowired))
-public class Request implements Serializable {
+public class Logger {
 
     @Id
-    @Column(name = "request_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Integer id;
 
     @Column
-    private String addRequest;
+    private String dateTime;
+
+    @Column(columnDefinition = "VARCHAR(20000)")
+    private String message;
 
     @Column
-    private String requestStatus;
+    private Integer warningLevel;
 
+    public Logger(String dateTime, String message, Integer warningLevel) {
+        this.dateTime = dateTime;
+        this.message = message;
+        this.warningLevel = warningLevel;
+    }
 }

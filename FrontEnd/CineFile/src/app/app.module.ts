@@ -9,6 +9,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { MakeRequestComponent } from './User/make-request/make-request.component';
 import { ManageRequestComponent } from './Admin/view-requests/manage-request.component';
 import { ManageRequestButtonsComponent } from './Admin/manage-request-buttons/manage-request-buttons.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ManageRequestButtonsComponent } from './Admin/manage-request-buttons/ma
     LoginPageComponent,
     MakeRequestComponent,
     ManageRequestComponent,
-    ManageRequestButtonsComponent
+    ManageRequestButtonsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

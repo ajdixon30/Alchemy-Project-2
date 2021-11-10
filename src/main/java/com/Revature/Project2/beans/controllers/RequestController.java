@@ -5,8 +5,12 @@ import com.Revature.Project2.services.ManageRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controller for handling Request business logic
+ */
 @RestController
 public class RequestController {
     private final ManageRequest manageRequest;
@@ -16,25 +20,41 @@ public class RequestController {
         this.manageRequest = manageRequest;
     }
 
-    //Gets the request from the database
+    /**
+     * Gets a request from DB using id
+     * @param id unique identifier for a Request
+     * @return the specified request if it exists
+     */
     @GetMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE)
     public Request get(@RequestParam Integer id){
         return manageRequest.getAddRequest(id);
     }
 
-    //Saves a new request to the database
+    /**
+     * Saves a new request to the DB
+     * @param request new request provided in the request body
+     * @return a ResponseEntity initialized by requestAddition(request)
+     */
     @PostMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public HttpStatus post(@RequestBody Request request){
-        return manageRequest.requestAddition(request);
+    public ResponseEntity post(@RequestBody Request request){
+        return new ResponseEntity(manageRequest.requestAddition(request));
     }
 
-    //Updates a request in the database
+    /**
+     * Updates a request in DB
+     * @param request updated Request provided by request body
+     * @return ResponseEntity initialized by updateRequest(request)
+     */
     @PutMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public HttpStatus put(@RequestBody Request request){
-        return manageRequest.updateRequest(request);//Needs the request id and the requestStatus
+    public ResponseEntity put(@RequestBody Request request){
+        return new ResponseEntity(manageRequest.updateRequest(request));
     }
 
-    //Deletes a request in the database
+    /**
+     * Removes request from DB
+     * @param request Request to be removed. provided from request body
+     * @return
+     */
     @DeleteMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus delete(@RequestBody Request request){
         return manageRequest.removeRequest(request);
