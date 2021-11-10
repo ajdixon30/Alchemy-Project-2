@@ -23,7 +23,7 @@ public class UserController {
     }
 
     /**
-     *
+     * Login for user
      * @param username
      * @param password
      * @return
@@ -35,7 +35,7 @@ public class UserController {
     }
 
     /**
-     *
+     * Login for admin
      * @param username
      * @param password
      * @return
@@ -46,7 +46,7 @@ public class UserController {
     }
 
     /**
-     *
+     * Posts a new user
      * @param user
      * @return
      */
