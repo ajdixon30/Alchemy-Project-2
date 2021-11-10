@@ -19,22 +19,8 @@ public class ManageMovies {
         ManageMovies.repo = repo;
     }
 
-    public static Movie saveMovie(Movie movie){
-        boolean exists = validation.movieExists(movie);
-        String entry = "";
-        Movie passThis = new Movie();
-        if (!exists){
-            repo.save(movie);
-            passThis = movie;
-        } else {
-            entry = repo.movieSearch(movie.getTitle());
-            String[] entryArray = entry.split(",");
-            passThis.setId(Integer.parseInt(entryArray[0]));
-            passThis.setGenre(entryArray[1]);
-            passThis.setTitle(entryArray[2]);
-        }
-        //TODO: Write this method
-        return passThis;
+    public static void saveMovie(Movie movie){
+        repo.save(movie);
     }
 
     public static void deleteMovie(Movie movie){

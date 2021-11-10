@@ -1,4 +1,5 @@
 package com.Revature.Project2;
+import com.Revature.Project2.services.GetMovies;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +18,8 @@ public class CineFile {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(CineFile.class, args);
 
+		GetMovies get = context.getBean(GetMovies.class);
+		get.populateMovieTable();
 	}
 
 }

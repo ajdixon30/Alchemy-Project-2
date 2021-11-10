@@ -50,7 +50,6 @@ public class DisplayMovies {
     //This method displays all available movies
     public List<Movie> displayAllMovies() {
         return movieRepo.findAll();
-
     }
 
     public List<String> filterMovies(String filter, String value) {
