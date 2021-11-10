@@ -2,6 +2,7 @@ package com.Revature.Project2.services;
 
 
 import com.Revature.Project2.beans.pojos.Movie;
+import com.Revature.Project2.repos.LogRepo;
 import com.Revature.Project2.repos.MovieRepo;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -31,6 +32,14 @@ public class DisplayMovies {
     @Autowired
     public DisplayMovies(MovieRepo movieRepo) {
         this.movieRepo = movieRepo;
+    }
+
+    //This method displays all available movies
+    public List<Movie> displayAllMovies() {
+        return movieRepo.findAll();
+    }
+
+    public void acquireAPIKey(){
         try {
             Properties props = new Properties();
             ClassLoader cl = Thread.currentThread().getContextClassLoader();
@@ -41,13 +50,8 @@ public class DisplayMovies {
             e.printStackTrace();
         }
     }
-
-    //This method displays all available movies
-    public List<Movie> displayAllMovies() {
-        return movieRepo.findAll();
-    }
-
     public List<String> filterMovies(String filter, String value) {
+        acquireAPIKey();
         String movie = null;
         movieID.clear();
         int count = 0;
