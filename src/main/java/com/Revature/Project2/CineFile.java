@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ConfigurableApplicationContext;
 
+/**
+ * Scans for components and runs the SpringApplication
+ */
 @SpringBootApplication(scanBasePackages = {"com.Revature.Project2.beans", "com.Revature.Project2.services"})
 @EntityScan("com.Revature.Project2.beans.pojos")
 public class CineFile {
