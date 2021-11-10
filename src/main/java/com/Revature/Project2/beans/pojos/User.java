@@ -12,10 +12,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Model class for CineFile users and admin
+ */
 @Entity
+@Getter @Setter
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Getter
-@Setter
 @NoArgsConstructor(onConstructor = @__(@Autowired))
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class User implements Serializable {
