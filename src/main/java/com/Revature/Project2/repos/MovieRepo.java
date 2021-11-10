@@ -19,6 +19,6 @@ public interface MovieRepo extends JpaRepository<Movie, Integer> {
 
     List<Movie> findByGenre(String genre);
 
-    @Query(value = "SELECT name FROM movie WHERE genre = ?1", nativeQuery = true)
+    @Query(value = "SELECT title FROM movie WHERE genre = ?1", nativeQuery = true)
     public List<String> filterGenre(String value);
 }
