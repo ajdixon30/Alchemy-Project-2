@@ -1,5 +1,4 @@
 package com.Revature.Project2;
-import com.Revature.Project2.services.DatabaseLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

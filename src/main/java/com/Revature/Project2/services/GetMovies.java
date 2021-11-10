@@ -14,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Properties;
 
 //This class interacts with the 3rd party API to get the movies.
@@ -37,12 +39,41 @@ public class GetMovies {
         }
     }
 
+    /**
+     * This method is used add movies to our database from the third party API
+     * This method sends two GET requests to the API:
+     *      1. A GET Request with the title of the movie that we want
+     *      We receive a response containing the ID of our desired movie
+     *      2. A GET Request with the ID received in the first request
+     *      We receive a response containing details about the movie
+     *
+     * After receiving the movie details from the second GET Request, we
+     * grab the necessary movie details - title and genre - and use them to
+     * create a new Movie object
+     *
+     * Validation takes place to see if the response from the first GET Request
+     * is empty, or if the movie already exists in the database
+     * If either condition resolves to true, the method returns an HTTP Status of "Bad Request"
+     *
+     * If both conditions resolve to false, the newly created Movie object is saved in the
+     * database, and the method returns an HTTP Status of "Created"
+     * @param title
+     * @return HttpStatus
+     */
     public HttpStatus addNewMovie(String title){
+
         OkHttpClient client = new OkHttpClient();
+
         Movie movie = new Movie();
+        movie.setTitle(title);
+
+        if (validation.movieExists(movie)){//Checks if an entry of this movie already exists within the database
+            return HttpStatus.BAD_REQUEST;
+        }
 
         String id = "";
 
+        //Request is sent to the API to search for the movie by title
         Request request = new Request.Builder()
                 .url("https://data-imdb1.p.rapidapi.com/movie/imdb_id/byTitle/" + title + "/")
                 .get()
@@ -65,23 +96,22 @@ public class GetMovies {
                     if ((results.getJSONObject(i).getString("title").equalsIgnoreCase(title))) {
                         //Grabs the appropriate result from the response
                         JSONObject json = results.getJSONObject(i);
+                        //Grabs the movie ID from the response body
                         id = json.getString("imdb_id");
-                        movie.setTitle(json.getString("title"));
                     }
                 }
             } else {
                 id = null;
             }
-
         } catch (IOException | JSONException | NullPointerException e) {
             e.printStackTrace();
             //TODO: Add File Logger
         }
-        if (id == null || validation.movieExists(movie)){//No results from the third party API or the movie already exists
+        if (id == null){//No results from the third party API or the movie already exists
             return HttpStatus.BAD_REQUEST;
         } else {
 
-            //Send another request using the movie id to grab movie properties
+            //Send another request to the API to find more details about the requested movie
             request = new Request.Builder()
                     .url("https://data-imdb1.p.rapidapi.com/movie/id/" + id + "/")
                     .get()
@@ -115,20 +145,42 @@ public class GetMovies {
         }
     }
 
-//    public void populateMovieTable(){
-//        movies.add("The Godfather");
-//        movies.add("The Dark Knight");
-//        movies.add("Scarface");
-//        movies.add("The Last Airbender");
-//        movies.add("Shrek");
-//        for (String movie: movies) {
-//            Movie newMovie = new Movie();
-//            String id = getImdbId(movie);
-//            movieProps = getMovieById(id);
-//            newMovie.setTitle(movieProps.get(0));
-//            newMovie.setGenre(movieProps.get(1));
-//            ManageMovies.saveMovie(newMovie);
-//        }
-//    }
+    /**
+     * This method is used add twenty movies to our database from the third party API
+     *
+     * Each of the movie titles are added to a list, and the list is iterated through
+     * using a foreach loop
+     *
+     * Each element of the list is sent as a parameter to be used in the addNewMovie method
+     *
+     * After every movie title has been sent through the addNewMovie method, there will be
+     * twenty movie entries within out database
+     */
+    public void populateMovieTable(){
+        List<String> movies = new LinkedList<>();
+        movies.add("The Godfather");
+        movies.add("The Dark Knight");
+        movies.add("Scarface");
+        movies.add("The Last Airbender");
+        movies.add("Shrek");
+        movies.add("Pulp Fiction");
+        movies.add("Creed");
+        movies.add("Avengers: Endgame");
+        movies.add("Rocky");
+        movies.add("American Psycho");
+        movies.add("Jaws");
+        movies.add("1917");
+        movies.add("Get Out");
+        movies.add("Venom");
+        movies.add("The Matrix");
+        movies.add("Fight Club");
+        movies.add("John Wick");
+        movies.add("Fast & Furious");
+        movies.add("The Amazing Spider-Man 2");
+        movies.add("Knives Out");
+        for (String movie: movies) {
+            addNewMovie(movie);
+        }
+    }
 
 }
