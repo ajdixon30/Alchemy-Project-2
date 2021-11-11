@@ -72,7 +72,7 @@ public class GetMovies {
         movie.setTitle(title);
 
         if (validation.movieExists(movie)){//Checks if an entry of this movie already exists within the database
-            return HttpStatus.BAD_REQUEST;
+            return HttpStatus.NOT_ACCEPTABLE;
         }
 
         String id = "";
