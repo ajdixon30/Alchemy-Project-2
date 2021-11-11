@@ -8,6 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Controller for handling Request business logic
  */
@@ -28,6 +30,15 @@ public class RequestController {
     @GetMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE)
     public Request get(@RequestParam Integer id){
         return manageRequest.getAddRequest(id);
+    }
+
+    /**
+     * Gets all requests from the DB
+     * @return Returns a list of the Request objects
+     */
+    @GetMapping(value = "/request/list", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Request> get(){
+        return manageRequest.getAllRequests();
     }
 
     /**
