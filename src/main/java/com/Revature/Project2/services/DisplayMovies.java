@@ -2,6 +2,7 @@ package com.Revature.Project2.services;
 
 
 import com.Revature.Project2.beans.pojos.Movie;
+import com.Revature.Project2.repos.LogRepo;
 import com.Revature.Project2.repos.MovieRepo;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -25,17 +26,20 @@ public class DisplayMovies {
     private String APIKey;
     List<String> movieID = new ArrayList<>();
     List<Movie> movies = new ArrayList<>();
-//    GetMovies getMovie = new GetMovies();
     List<List> titleGenre = new ArrayList<>();
     public final MovieRepo movieRepo;
-
-//    public DisplayMovies(MovieRepo movieRepo) {
-//        this.movieRepo = movieRepo;
-    //}
 
     @Autowired
     public DisplayMovies(MovieRepo movieRepo) {
         this.movieRepo = movieRepo;
+    }
+
+    //This method displays all available movies
+    public List<Movie> displayAllMovies() {
+        return movieRepo.findAll();
+    }
+
+    public void acquireAPIKey(){
         try {
             Properties props = new Properties();
             ClassLoader cl = Thread.currentThread().getContextClassLoader();
@@ -46,43 +50,18 @@ public class DisplayMovies {
             e.printStackTrace();
         }
     }
-
-    //This method displays all available movies
-    public List<Movie> displayAllMovies() {
-        return movieRepo.findAll();
-
-    }
-
     public List<String> filterMovies(String filter, String value) {
+        acquireAPIKey();
         String movie = null;
         movieID.clear();
         int count = 0;
         OkHttpClient client = new OkHttpClient();
         switch (filter) {
             case "genre":
-                Request request = new Request.Builder()
-                        .url("https://data-imdb1.p.rapidapi.com/movie/byGen/" + value + "/?page_size=10")
-                        .get()
-                        .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
-                        .addHeader("x-rapidapi-key", APIKey)
-                        .build();
-                try {
-                    for (int i = 0; i < 10; i++) {
-                        count = 0;
-                        Response response = client.newCall(request).execute();
-                        for (int j = 0; j < value.length(); j++) {
-                            count++;
-                        }
-                        movie = response.body().string().substring(104 + count);
-                        JSONArray json = new JSONArray(movie);
-                        movieID.add(json.getJSONObject(i).getString("title"));
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                movieID = movieRepo.filterGenre(value);
                 break;
             case "year":
-                request = new Request.Builder()
+                Request request = new Request.Builder()
                         .url("https://data-imdb1.p.rapidapi.com/movie/byYear/" + value + "/?page_size=10")
                         .get()
                         .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
@@ -124,7 +103,7 @@ public class DisplayMovies {
                         .url("https://data-imdb1.p.rapidapi.com/movie/byContentRating/" + value + "/?page_size=10")
                         .get()
                         .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
-                        .addHeader("x-rapidapi-key", "77a26b5fc8mshb33e4fc6e9dd843p1c3631jsn82798791ed4a")
+                        .addHeader("x-rapidapi-key", APIKey)
                         .build();
 
                 try {

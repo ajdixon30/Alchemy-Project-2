@@ -8,6 +8,17 @@ import java.util.List;
 
 public interface MovieRepo extends JpaRepository<Movie, Integer> {
 
+    /**
+     * A Native SQL Query which queries the movie table for all entries which
+     * match the given title
+     * @param title
+     * @return
+     */
     @Query(value = "SELECT * FROM movie WHERE title = ?1", nativeQuery = true)
     public String movieSearch(String title);
+
+    List<Movie> findByGenre(String genre);
+
+    @Query(value = "SELECT title FROM movie WHERE genre = ?1", nativeQuery = true)
+    public List<String> filterGenre(String value);
 }

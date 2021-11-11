@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.http.MediaType.*;
 
+/**
+ * Controller for handling Rating business logic
+ */
 @RestController
 @RequestMapping("rate-movies")
 public class RatingController {
@@ -21,8 +24,8 @@ public class RatingController {
     }
 
     /**
-     *
-     * @param id
+     * Gets a single rating using the path variable
+     * @param id unique identifier for each Rating entry
      * @return rating tied to id
      */
     @GetMapping(value = "/{id}",produces = APPLICATION_JSON_VALUE)
@@ -45,6 +48,11 @@ public class RatingController {
         return new ResponseEntity(movieRating.rateMovie(userRating));
     }
 
+    /**
+     * Deletes a rating based on RequestBody
+     * @param toBeDeleted rating that is soon to be deleted
+     * @return ResponseEntity initialized by removeRating(
+     */
     @DeleteMapping(consumes = APPLICATION_JSON_VALUE)
     public ResponseEntity deleteRating(@RequestBody Rating toBeDeleted){
         return new ResponseEntity(movieRating.removeRating(toBeDeleted));
