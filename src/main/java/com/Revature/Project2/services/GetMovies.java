@@ -26,8 +26,9 @@ public class GetMovies {
     private Validation validation;
 
     @Autowired
-    public GetMovies(Validation validation) {
-        this.validation = validation;
+    public GetMovies(Validation validation) {this.validation = validation;}
+
+    public void acquireAPIKey(){
         try {
             Properties props = new Properties();
             ClassLoader cl = Thread.currentThread().getContextClassLoader();
@@ -61,6 +62,7 @@ public class GetMovies {
      * @return HttpStatus
      */
     public HttpStatus addNewMovie(String title){
+        acquireAPIKey();
 
         OkHttpClient client = new OkHttpClient();
 
@@ -128,8 +130,9 @@ public class GetMovies {
 
                 //Serializes the response body into a JSON object
                 JSONObject movieInfo = new JSONObject(resp);
-                title = movieInfo.getString("title");
-                movie.setTitle(title);
+                movie.setTitle(movieInfo.getString("title"));
+                movie.setPicture_id(movieInfo.getString("image_url"));
+                movie.setYear(movieInfo.getString("release"));
 
                 //Serializes the genre section of the JSON into an array, then a JSON object
                 JSONArray genreInfo = movieInfo.optJSONArray("gen");
