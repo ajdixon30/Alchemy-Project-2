@@ -23,6 +23,5 @@ public class ManageMovies {
 
     public static void deleteMovie(Movie movie){
         repo.delete(movie);
-        //TODO: Write this method
     }
 }
