@@ -11,11 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ManageMovies {
     private static MovieRepo repo;
-    private static Validation validation;
 
     @Autowired
-    public ManageMovies(MovieRepo repo, Validation validation) {
-        ManageMovies.validation = validation;
+    public ManageMovies(MovieRepo repo) {
         ManageMovies.repo = repo;
     }
 
@@ -26,9 +24,5 @@ public class ManageMovies {
     public static void deleteMovie(Movie movie){
         repo.delete(movie);
         //TODO: Write this method
-    }
-
-    public static void updateMovie(){
-        //TODO: Write this method maybe
     }
 }
