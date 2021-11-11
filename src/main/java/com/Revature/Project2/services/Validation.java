@@ -133,4 +133,12 @@ public class Validation {
         return ratingRepo.existsById(id);
     }
 
+    /**
+     * Checks if the Request table contains any row
+     * @return Return true if the table is not empty and false if it is empty.
+     */
+    public boolean requestNotEmpty(){
+        return requestRepo.count() > 0;
+    }
+
 }

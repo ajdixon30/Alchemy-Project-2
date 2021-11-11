@@ -42,7 +42,7 @@ public class MovieController {
      * @param value
      * @return a List of movies related to the provided filter
      */
-    @PostMapping(value = "/filter", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/filter", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<String> filterMovie(@RequestParam String filter, String value) {
         return display.filterMovies(filter, value);
     }
