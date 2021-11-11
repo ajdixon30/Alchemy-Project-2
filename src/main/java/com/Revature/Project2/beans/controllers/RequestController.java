@@ -43,12 +43,12 @@ public class RequestController {
 
     /**
      * Saves a new request to the DB
-     * @param request new request provided in the request body
+     * @param addRequest new addRequest string provided in the request parameters
      * @return a ResponseEntity initialized by requestAddition(request)
      */
     @PostMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity post(@RequestBody Request request){
-        return new ResponseEntity(manageRequest.requestAddition(request));
+    public ResponseEntity post(@RequestParam String addRequest){
+        return new ResponseEntity(manageRequest.requestAddition(addRequest));
     }
 
     /**
