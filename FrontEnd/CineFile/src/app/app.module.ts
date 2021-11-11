@@ -14,6 +14,7 @@ import { ViewMoviesComponent } from './User/view-movies/view-movies.component';
 import { ViewRequestsComponent } from './Admin/view-requests/view-requests.component'; 
 import { CustomerSignupComponent } from './customer-signup/customer-signup.component';
 import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
+import { RateMovieComponent } from './User/rate-movie/rate-movie.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +27,13 @@ import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
     ManageRequestsComponent,
     ManageMoviesComponent,
     ViewMoviesComponent,
-    ViewRequestsComponent
-    ManageRequestComponent,
-    ManageRequestButtonsComponent,
+    ViewRequestsComponent,
+    ManageRequestsComponent,
     NavbarComponent,
     HomePageComponent,
     CustomerSignupComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    RateMovieComponent
   ],
   imports: [
     BrowserModule,
