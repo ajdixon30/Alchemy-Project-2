@@ -1,7 +1,7 @@
 <header>
-    <!--if the user is not logged in, add a router link to the admin login and user login components-->
-    <!--if an admin is logged in, display the manage movie and manage request router links-->
-    <!--if a user is logged in, display the view movies, rate movies, add request router links -->
+  <!--if the user is not logged in, add a router link to the admin login and user login components-->
+  <!--if an admin is logged in, display the manage movie and manage request router links-->
+  <!--if a user is logged in, display the view movies, rate movies, add request router links -->
 
   <nav class="navbar" id="navbarHeader">
     <div class="top-div">
@@ -9,17 +9,24 @@
         <img class="icon" src="./favicon.ico" alt="cinema-scene-board">
         CineFile
       </a>
-    <div>
-      <a routerLink="/customer-login" routerLinkActive="active">
-        Login |
-      </a>
-      <a routerLink="/customer-signup" routerLinkActive="active">
-        Sign Up |
-      </a>
-      <a routerLink="/admin-login" routerLinkActive="active">
-        Admin Portal
-      </a>
-    </div>
+      <div>
+        <a routerLink="/customer-login" routerLinkActive="active">
+          Login
+        </a>
+        |
+        <a routerLink="/customer-signup" routerLinkActive="active">
+          Sign Up
+        </a>
+        |
+          Login |
+        </a>
+        <a routerLink="/customer-signup" routerLinkActive="active">
+          Sign Up |
+        </a>
+        <a routerLink="/admin-login" routerLinkActive="active">
+          Admin Portal
+        </a>
+      </div>
     </div>
   </nav>
   <nav class="navbarMenu" id="navbarDynamic">
