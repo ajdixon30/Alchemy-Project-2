@@ -1,11 +1,14 @@
 package com.Revature.Project2.services;
 
+import com.Revature.Project2.beans.pojos.Movie;
 import com.Revature.Project2.beans.pojos.Request;
 import com.Revature.Project2.repos.RequestRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -20,12 +23,18 @@ public class ManageRequest {
         this.validation = validation;
     }
 
-    //Add requests to the database
+    //Adds request to the database
     public HttpStatus requestAddition(Request request){
         //Check if the string is not empty (ie does not equal "" or " ")
         boolean notEmpty = validation.validString(request.getAddRequest());
         //If empty then send a 406 HTTP response status code
         if(!notEmpty) {
+            status = HttpStatus.NOT_ACCEPTABLE;
+            return status;
+        }
+        Movie movie = new Movie();
+        movie.setTitle(request.getAddRequest());
+        if(!validation.movieExists(movie)){
             status = HttpStatus.NOT_ACCEPTABLE;
             return status;
         }
@@ -43,12 +52,23 @@ public class ManageRequest {
         return status;
     }
 
+    //Gets a request using its id
     public Request getAddRequest(Integer id){
         //Checks if the request is in the database
         if(validation.requestExists(id)) {
             return requestRepo.getById(id);
         }
         return null;
+    }
+
+    //Gets all requests
+    public List<Request> getAllRequests(){
+        //Checks to make sure the request table is not empty
+        if(validation.requestNotEmpty()){
+            return requestRepo.findAll();
+        } else {
+            return null;
+        }
     }
 
     public HttpStatus updateRequest(Request request){
