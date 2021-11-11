@@ -2,7 +2,6 @@ package com.Revature.Project2.services;
 
 
 import com.Revature.Project2.beans.pojos.Movie;
-import com.Revature.Project2.repos.LogRepo;
 import com.Revature.Project2.repos.MovieRepo;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -27,11 +26,13 @@ public class DisplayMovies {
     List<String> movieID = new ArrayList<>();
     List<Movie> movies = new ArrayList<>();
     List<List> titleGenre = new ArrayList<>();
-    public final MovieRepo movieRepo;
+    private final MovieRepo movieRepo;
+    private final DatabaseLogger logger;
 
     @Autowired
-    public DisplayMovies(MovieRepo movieRepo) {
+    public DisplayMovies(MovieRepo movieRepo, DatabaseLogger logger) {
         this.movieRepo = movieRepo;
+        this.logger = logger;
     }
 
     //This method displays all available movies
@@ -47,7 +48,7 @@ public class DisplayMovies {
             props.load(fileIn);
             APIKey = props.getProperty("APIKey");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.writeLog("IOException found in acquireAPIKey.", 3);;
         }
     }
     public List<String> filterMovies(String filter, String value) {
@@ -61,25 +62,11 @@ public class DisplayMovies {
                 movieID = movieRepo.filterGenre(value);
                 break;
             case "year":
-                Request request = new Request.Builder()
-                        .url("https://data-imdb1.p.rapidapi.com/movie/byYear/" + value + "/?page_size=10")
-                        .get()
-                        .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
-                        .addHeader("x-rapidapi-key", APIKey)
-                        .build();
-                for(int i = 0; i < 10; i++) {
-                    try {
-                        Response response = client.newCall(request).execute();
-                        movie = response.body().string().substring(108);
-                        JSONArray json = new JSONArray(movie);
-                        movieID.add(json.getJSONObject(i).getString("title"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+                Integer ParsedValue = Integer.parseInt(value);
+                movieID = movieRepo.filterYear(ParsedValue);
                 break;
             case "keyword":
-                request = new Request.Builder()
+                Request request = new Request.Builder()
                         .url("https://data-imdb1.p.rapidapi.com/movie/byKeywords/" + value + "/?page_size=10")
                         .get()
                         .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
@@ -95,7 +82,7 @@ public class DisplayMovies {
                         movieID.add(innerJson.getJSONObject(i).getString("title"));
                     }
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    logger.writeLog("IOException found in keyword case.", 3);
                 }
                 break;
             case "rating":
@@ -118,7 +105,7 @@ public class DisplayMovies {
                         movieID.add(json.getJSONObject(i).getString("title"));
                     }
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    logger.writeLog("IOException found in rating case.", 3);
                 }
                 break;
         }
