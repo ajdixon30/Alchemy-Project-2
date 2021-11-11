@@ -128,8 +128,9 @@ public class GetMovies {
 
                 //Serializes the response body into a JSON object
                 JSONObject movieInfo = new JSONObject(resp);
-                title = movieInfo.getString("title");
-                movie.setTitle(title);
+                movie.setTitle(movieInfo.getString("title"));
+                movie.setPicture_id(movieInfo.getString("image_url"));
+                movie.setYear(movieInfo.getString("release"));
 
                 //Serializes the genre section of the JSON into an array, then a JSON object
                 JSONArray genreInfo = movieInfo.optJSONArray("gen");
