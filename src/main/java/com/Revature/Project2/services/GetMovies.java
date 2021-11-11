@@ -26,7 +26,9 @@ public class GetMovies {
     private Validation validation;
 
     @Autowired
-    public GetMovies(Validation validation) {this.validation = validation;}
+    public GetMovies(Validation validation) {
+        this.validation = validation;
+    }
 
     public void acquireAPIKey(){
         try {
@@ -70,7 +72,7 @@ public class GetMovies {
         movie.setTitle(title);
 
         if (validation.movieExists(movie)){//Checks if an entry of this movie already exists within the database
-            return HttpStatus.BAD_REQUEST;
+            return HttpStatus.NOT_ACCEPTABLE;
         }
 
         String id = "";
