@@ -1,11 +1,13 @@
+import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
+import { CustomerSignupComponent } from './customer-signup/customer-signup.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CustomerHomePageComponent } from './User/customer-home-page/customer-home-page.component';
-import { AdminHomePageComponent } from './Admin/admin-home-page/admin-home-page.component';
 
 const routes: Routes = [
-  { path: "admin", component: AdminHomePageComponent },
-  { path: "customer", component: CustomerHomePageComponent}
+  { path: "admin-login", component: AdminLoginComponent },
+  { path: "customer-signup", component: CustomerSignupComponent},
+  { path: "customer-login", component: LoginPageComponent }
 ];
 
 @NgModule({
