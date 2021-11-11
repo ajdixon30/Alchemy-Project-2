@@ -28,8 +28,6 @@ import { RateMovieComponent } from './User/rate-movie/rate-movie.component';
     ManageMoviesComponent,
     ViewMoviesComponent,
     ViewRequestsComponent,
-    ManageRequestsComponent,
-    NavbarComponent,
     HomePageComponent,
     CustomerSignupComponent,
     AdminLoginComponent,
