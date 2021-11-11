@@ -24,31 +24,31 @@ public class ManageRequest {
     }
 
     //Adds request to the database
-    public HttpStatus requestAddition(Request request){
+    public HttpStatus requestAddition(String addRequest){
+        Request request = new Request();
+        Movie movie = new Movie();
+
         //Check if the string is not empty (ie does not equal "" or " ")
-        boolean notEmpty = validation.validString(request.getAddRequest());
+        boolean notEmpty = validation.validString(addRequest);
         //If empty then send a 406 HTTP response status code
         if(!notEmpty) {
             status = HttpStatus.NOT_ACCEPTABLE;
             return status;
         }
-        Movie movie = new Movie();
-        movie.setTitle(request.getAddRequest());
+
+        movie.setTitle(addRequest);
         if(!validation.movieExists(movie)){
             status = HttpStatus.NOT_ACCEPTABLE;
             return status;
         }
+        //Set addRequest in the Request object
+        request.setAddRequest(addRequest);
         //Set the default request status
         request.setRequestStatus("Pending");
         //Save the request to the database
         requestRepo.save(request);
-        if(request.getId() != null){
-            //Send a 202 HTTP response status code
-            status = HttpStatus.ACCEPTED;
-        } else {
-            //Send a 201 HTTP response status code
-            status = HttpStatus.CREATED;
-        }
+        status = HttpStatus.CREATED;
+
         return status;
     }
 
