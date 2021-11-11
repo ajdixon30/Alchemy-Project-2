@@ -3,5 +3,7 @@ body{
     @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
     font-family: 'Dongle', sans-serif;
     background-color: rgb(34, 34, 35);
+    color:rgb(187, 187, 194)
     margin: 0 0 0;
 }
+

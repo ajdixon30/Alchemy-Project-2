@@ -7,9 +7,11 @@ import { CustomerHomePageComponent } from './User/customer-home-page/customer-ho
 import { AdminHomePageComponent } from './Admin/admin-home-page/admin-home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { MakeRequestComponent } from './User/make-request/make-request.component';
-import { ManageRequestComponent } from './Admin/view-requests/manage-request.component';
-import { ManageRequestButtonsComponent } from './Admin/manage-request-buttons/manage-request-buttons.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ManageRequestsComponent } from './Admin/manage-requests/manage-requests.component';
+import { ManageMoviesComponent } from './Admin/manage-movies/manage-movies.component';
+import { ViewMoviesComponent } from './User/view-movies/view-movies.component'; 
+import { ViewRequestsComponent } from './Admin/view-requests/view-requests.component'; 
 import { CustomerSignupComponent } from './customer-signup/customer-signup.component';
 import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 
@@ -20,6 +22,11 @@ import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
     AdminHomePageComponent,
     LoginPageComponent,
     MakeRequestComponent,
+    NavbarComponent,
+    ManageRequestsComponent,
+    ManageMoviesComponent,
+    ViewMoviesComponent,
+    ViewRequestsComponent
     ManageRequestComponent,
     ManageRequestButtonsComponent,
     NavbarComponent,
