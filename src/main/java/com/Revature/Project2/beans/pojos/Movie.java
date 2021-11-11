@@ -33,7 +33,13 @@ public class Movie implements Serializable {
     @Column
     private String genre;
 
-    @JsonIgnoreProperties({"movie","user"}) //to prevent infinite loop
+    @Column
+    private String picture_id;
+
+    @Column
+    private String year;
+
+    @JsonIgnoreProperties({"movie", "user"}) //to prevent infinite loop
     @OneToMany(mappedBy = "movie")
     private List<Rating> ratingsByMovie;
 
