@@ -26,7 +26,9 @@ public class GetMovies {
     private Validation validation;
 
     @Autowired
-    public GetMovies(Validation validation) {this.validation = validation;}
+    public GetMovies(Validation validation) {
+        this.validation = validation;
+    }
 
     public void acquireAPIKey(){
         try {
