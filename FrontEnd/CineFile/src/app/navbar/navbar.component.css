@@ -1,0 +1,12 @@
+/* HTML selectors (most general) */
+nav{
+  background-color: black;
+
+}
+
+/* class selectors (can have multiple applied to one element/tag) */
+.navbar{
+
+}
+
+/* id selectors (most specific) */
