@@ -13,8 +13,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 public class RegisterTest {
 
-    @Autowired
     private Register register;
+
+    @Autowired
+    public RegisterTest(Register register){this.register = register;}
 
     @Test
     public void testIfUserRegistered(){

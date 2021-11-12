@@ -34,8 +34,12 @@ public class Validation {
      * @return true if the pair of Strings matches and false otherwise
      */
     public boolean validateUser(String username, String password){
-        User user = userRepo.getById(username);
-        return username.equals(user.getUsername()) && password.equals(user.getPassword());
+        if (userExists(username)) {
+            User user = userRepo.getById(username);
+            return username.equals(user.getUsername()) && password.equals(user.getPassword());
+        } else {
+            return false;
+        }
     }
 
     /**
