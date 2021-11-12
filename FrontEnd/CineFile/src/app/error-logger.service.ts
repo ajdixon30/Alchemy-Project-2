@@ -18,6 +18,7 @@ export class ErrorLoggerService {
     })
   }
 
+  //Still working on this!!!!
   //Save error messages to the database
   // postErrorLog(): Observable<ErrorLog[]> {
   //   //This is not working. watch how Kyle sets up the post request before continuing this part 

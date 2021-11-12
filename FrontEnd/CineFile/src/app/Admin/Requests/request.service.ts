@@ -33,7 +33,7 @@ export class RequestService {
 
   errorHandler(error: any) {
     let message = '';
-    let warningLevel = 3;
+    // let warningLevel = 3;
     if(error.error instanceof ErrorEvent) {
         //Get client-side error
         message = error.error.message;

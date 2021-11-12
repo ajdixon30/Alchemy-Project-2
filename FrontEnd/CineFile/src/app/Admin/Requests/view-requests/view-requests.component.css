@@ -1,4 +1,4 @@
-/* table, th, td {
+table, th, td {
     
     font-size: x-large;
     border: 1px solid whitesmoke;
@@ -6,7 +6,7 @@
     vertical-align: middle;
     column-width: 15em;
     height: 2em;
-}
+    }
 
 .mangageRequest {
     border-color: whitesmoke;
@@ -19,4 +19,4 @@ button {
     margin-left: 1.5em;
     margin-right: 1.5em;
     background-color: rgb(219, 215, 215);
-} */
+}
