@@ -28,11 +28,9 @@ public class Register {
      * @return an HttpStatus depending on if the user is created or some error occurs
      */
     public HttpStatus userRegister(User user){
-        HttpStatus status;
 
         if(validation.userExists(user.getUsername())){
-           status = HttpStatus.NOT_ACCEPTABLE;
-            return status;
+            return HttpStatus.FORBIDDEN;
         }
 
         if(validation.validateName(user.getFirstName(), user.getLastName()) &&
