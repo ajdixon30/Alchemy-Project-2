@@ -8,34 +8,30 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 
 import static org.mockito.Mockito.*;
 
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class RegisterTest {
 
-    @InjectMocks
+    @Autowired
     private Register register;
-
-    @Mock
-    private Validation v;
-
-    @Mock
-    private UserRepo userRepo;
 
     @Test
     public void testIfUserRegistered(){
         User u = new User("user", "pass", "James",
                 "James", false, new ArrayList<>());
 
-        when(v.validateName("James", "James")).thenReturn(true);
-        when(v.validateUserCreds("user", "pass")).thenReturn(true);
+//        when(v.validateName("James", "James")).thenReturn(true);
+//        when(v.validateUserCreds("user", "pass")).thenReturn(true);
 
         Assert.assertEquals(HttpStatus.CREATED, register.userRegister(u));
     }
