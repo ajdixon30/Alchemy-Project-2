@@ -6,7 +6,7 @@ table, th, td {
     vertical-align: middle;
     column-width: 15em;
     height: 2em;
-}
+    }
 
 .mangageRequest {
     border-color: whitesmoke;

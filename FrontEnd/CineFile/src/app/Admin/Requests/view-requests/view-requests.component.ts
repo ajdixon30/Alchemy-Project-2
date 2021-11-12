@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Request } from '../../../DTOs/request';
+import { RequestService } from '../request.service';
  
 @Component({
   selector: 'app-view-requests',
@@ -7,11 +8,25 @@ import { Request } from '../../../DTOs/request';
   styleUrls: ['./view-requests.component.css']
 })
 
-export class ViewRequestsComponent {
+export class ViewRequestsComponent implements OnInit {
+  public requestService : RequestService;
+  public requests: Request[] = [];
 
-  requests : Request[] = [
-    {id : 1, addRequest : "Dragon Heart", requestStatus : "Pending"},
-    {id : 2, addRequest : "Raya and the Last Dragon", requestStatus : "Pending"},
-    {id : 3, addRequest : "Eragon", requestStatus : "Pending"}
-  ];
+  constructor(private _requestService : RequestService){
+    this.requestService = _requestService;
+  }
+
+  ngOnInit(): void {
+    this._requestService.getRequests().subscribe(data => {
+      console.log(data);
+      for(const item of data) {
+        let {id, addRequest, requestStatus} = item;
+        this.requests.push({id, addRequest, requestStatus})
+        console.log(item);
+      }
+
+    })
+  }
+
+  
 }
