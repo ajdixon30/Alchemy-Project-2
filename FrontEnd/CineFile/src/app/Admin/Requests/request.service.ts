@@ -8,6 +8,7 @@ import { catchError, retry } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+  
 export class RequestService {
 
   baseUrl = 'http://localhost:8080/request';
@@ -43,6 +44,7 @@ export class RequestService {
 
     //Save the error message here//
 
+    console.log(message);
     return throwError(() => new Error(message));
   }
   
