@@ -1,11 +1,11 @@
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CineFileTests {
+public class CineFileTests {
 
     @Test
-    void contextLoads() {
+    public void contextLoads() {
     }
 
 }
