@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ViewRequestsComponent } from './Admin/Requests/view-requests/view-requests.component'; 
 import { CustomerSignupComponent } from './customer-signup/customer-signup.component';
 import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,12 +19,14 @@ public class TestController {
         this.testService = testService;
     }
 
+    @CrossOrigin
     @GetMapping(value = "/test-list", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<TestEntity> get(){
         return testService.getAll();
     }
 
+    @CrossOrigin
     @PostMapping(value = "/test-list", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public TestEntity post(@RequestBody TestEntity testEntity){
