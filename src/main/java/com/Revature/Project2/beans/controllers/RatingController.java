@@ -27,6 +27,7 @@ public class RatingController {
      * @param id unique identifier for each Rating entry
      * @return rating tied to id
      */
+    @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
     @GetMapping(value = "/{id}",produces = APPLICATION_JSON_VALUE)
     public Rating getUserRating(@PathVariable int id) {
         return movieRating.getOneRating(id);
@@ -42,6 +43,7 @@ public class RatingController {
      * @param userRating
      * @return HttpStatus depending on the result of rateMovie()
      */
+    @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity postRating(@RequestBody Rating userRating){
         return new ResponseEntity(movieRating.rateMovie(userRating));
@@ -52,6 +54,7 @@ public class RatingController {
      * @param toBeDeleted rating that is soon to be deleted
      * @return ResponseEntity initialized by removeRating(
      */
+    @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
     @DeleteMapping(consumes = APPLICATION_JSON_VALUE)
     public ResponseEntity deleteRating(@RequestBody Rating toBeDeleted){
         return new ResponseEntity(movieRating.removeRating(toBeDeleted));

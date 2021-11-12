@@ -21,6 +21,7 @@ public class CineFile {
 
 		DatabaseLogger logger = context.getBean(DatabaseLogger.class);
 		logger.writeLog("Server started.", 1);
+
 		GetMovies getMovies = context.getBean(GetMovies.class);
 		getMovies.populateMovieTable();
 

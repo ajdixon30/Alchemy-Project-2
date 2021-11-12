@@ -28,6 +28,7 @@ public class UserController {
      * @param password
      * @return
      */
+    @CrossOrigin
     @GetMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getUser(@RequestParam String username, String password){
         //May need to send the user data to the front end in a response body
@@ -40,6 +41,7 @@ public class UserController {
      * @param password
      * @return
      */
+    @CrossOrigin
     @GetMapping(value="/admin", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAdmin(@RequestParam String username, String password){
         return new ResponseEntity(login.adminLogin(username, password));
@@ -50,6 +52,7 @@ public class UserController {
      * @param user
      * @return
      */
+    @CrossOrigin
     @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity post(@RequestBody User user){
         return new ResponseEntity(register.userRegister(user));
