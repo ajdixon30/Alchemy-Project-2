@@ -1,1 +1,9 @@
-To ensure that the resources' folder remains within the project
+spring.datasource.url=jdbc:mariadb://thood-sql1.comt4fuhvkld.us-east-2.rds.amazonaws.com/thood_sql1
+spring.datasource.username=admin
+spring.datasource.password=Jiraiya.sage723*
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.show-sql=false
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MariaDB103Dialect
+spring.jpa.properties.hibernate.format_sql=true
+APIKey=b32265184dmshbc0aee6f4ef9871p180788jsnf98488d3e93a
+[12:53 PM]
