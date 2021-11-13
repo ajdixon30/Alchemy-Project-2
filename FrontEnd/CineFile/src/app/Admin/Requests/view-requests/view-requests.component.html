@@ -1,14 +1,19 @@
-<div class="vl">
-<div>
-    <tr>
-        <th>Request Id</th>
-        <th>User Add Movie Request</th>
-        <th>Request Status</th>
-    </tr>
-    <tr *ngFor="let request of requests;">
-        <td>{{request.id}}</td>
-        <td>{{request.addRequest}}</td>
-        <td>{{request.requestStatus}}</td>
-    </tr>
+<main id="boxes">
+    <div id="c1">
+        <tr>
+            <th>Request Id</th>
+            <th>User Add Movie Request</th>
+            <th>Request Status</th>
+        </tr>
+        <tr *ngFor="let request of requests;">
+            <td>{{request.id}}</td>
+            <td>{{request.addRequest}}</td>
+            <td>{{request.requestStatus}}</td>
+        </tr>
+    </div>
+
+<div id="c2">
+    <h1>Manage requests goes here</h1>
 </div>
-</div>
+
+</main>

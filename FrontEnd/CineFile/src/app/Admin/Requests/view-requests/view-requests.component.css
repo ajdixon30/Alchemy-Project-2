@@ -1,16 +1,27 @@
-table, th, td {
-    
+#boxes {
+    clear: both;
+    display: table;
+}
+
+div {
+    float: left;
+    height: max-content;
+    padding: 0;
+  }
+  
+  #c1 {
     font-size: x-large;
-    border: 1px solid whitesmoke;
     text-align: center;
     vertical-align: middle;
-    column-width: 13em;
-    height: 2em;
-    }
+  }
 
-.vl {
-    margin-right: 35em;
-    border-right: 0.5em solid green;
-    height: auto;
+  table, tr, th, td {
+    border: 1px solid whitesmoke;
+    column-width: 14em;
+  }
 
-    }
+  #c2 {
+    border: 0.04em solid turquoise;
+    max-width: 28em;
+    overflow-wrap: normal;
+  }
