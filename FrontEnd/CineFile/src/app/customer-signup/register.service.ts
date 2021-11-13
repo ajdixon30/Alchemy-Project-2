@@ -21,7 +21,7 @@ export class RegisterService {
     })
   }
   //get
-  getUser(username: string, password: string, firstName: string, lastName: string): Observable<Register> {
+  post(username: string, password: string, firstName: string, lastName: string): Observable<Register> {
     return this.client.get<Register>(this.baseUrl + username + password + firstName + lastName)
     .pipe(
       retry(0),
