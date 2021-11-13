@@ -20,6 +20,14 @@ export class LoginService {
       'Content-Type': 'application/json'
     })
   }
+  //get
+  getUser(username: string, password: string): Observable<Login> {
+    return this.client.get<Login>(this.baseUrl + username + password)
+    .pipe(
+      retry(0),
+      catchError(this.errorHandler)
+    )
+  }
 
   errorHandler(error: any) {
     let message = '';
