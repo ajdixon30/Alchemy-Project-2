@@ -3,13 +3,10 @@
   <!--if an admin is logged in, display the manage movie and manage request router links-->
   <!--if a user is logged in, display the view movies, rate movies, add request router links -->
 
-  <nav class="navbar" id="navbarHeader">
-    <div class="top-div">
-      <a class="navbar-brand" href="/">
-        <img class="icon" src="./favicon.ico" alt="cinema-scene-board">
-        CineFile
-      </a>
-      <div>
+  <nav class="navbar">
+    <div class="img-div">
+
+      <div class="nav-links">
         <a routerLink="/customer-login" routerLinkActive="active">
           Login
         </a>
@@ -22,6 +19,10 @@
           Admin Portal
         </a>
       </div>
+      <a class="navbar-brand" href="/">
+        <img class="icon" src="./favicon.ico" alt="cinema-scene-board">
+        CineFile
+      </a>
     </div>
   </nav>
   <!-- <nav class="navbarMenu" id="navbarDynamic"> -->
