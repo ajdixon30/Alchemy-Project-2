@@ -1,9 +1,30 @@
+button{
+  border-radius: 25px;
+  background-color: #ffcc41; /* Green */
+  border: none;
+  color: black;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: inherit;
+}
+.submit-btn:hover{
+  background-color: #eba800;
+  color: black;
+  cursor: pointer;
+}
+
+input{
+  height: 25px;
+  margin-bottom: 5%;
+}
 .card {
   all: unset;
   border-radius: 4px;
-  border: 1px solid #eee;
+  border: 1px solid #ffcc41;
   background-color: #fafafa;
-  height: 200px;
+  height: 250px;
   width: 200px;
   margin: 0 8px 16px;
   padding: 16px;
@@ -11,9 +32,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  transition: all 0.2s ease-in-out;
   line-height: 24px;
+  color: black;
 }
+
+
 .content {
   display: flex;
   margin: 82px auto 32px;
