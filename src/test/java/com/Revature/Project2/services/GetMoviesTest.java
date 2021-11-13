@@ -1,49 +1,37 @@
 package com.Revature.Project2.services;
 
-import com.Revature.Project2.CineFile;
-import org.junit.*;
-import org.springframework.boot.SpringApplication;
-import org.springframework.context.ConfigurableApplicationContext;
+import com.Revature.Project2.beans.pojos.Movie;
+import com.Revature.Project2.repos.MovieRepo;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 
+//@ExtendWith(MockitoExtension.class)
+@SpringBootTest
 public class GetMoviesTest {
-    /*
-        Test: We want to test the addNewMovie method to see if the given movie
-        title will return the expected HTTP Status code
+    private GetMovies sut;
+    private MovieRepo repo;
 
-        SUT: (our unit) the addNewMovie method in the GetMovies Class
-        addNewMovie(String title)
-     */
-    private String APIKey;
-    private GetMovies get;
-    ConfigurableApplicationContext context = SpringApplication.run(CineFile.class);
-
-//    @BeforeClass
-//    public static void beforeClass(){
-//
-//    }
-//
-//    @AfterClass
-//    public static void afterClass(){
-//
-//    }
-//
-    @Before
-    public void before(){
-        get = context.getBean(GetMovies.class);
+    @Autowired
+    public GetMoviesTest(GetMovies sut, MovieRepo repo) {
+        this.sut = sut;
+        this.repo = repo;
     }
-//
-//    @After
-//    public static void after(){
-//
-//    }
+
+    @AfterEach
+    public void after(){
+        repo.deleteMovie("Scarface");
+    }
 
     @Test
     public void Test_goodMovieSearchReturnsCreatedHttpStatus(){
         //Arrange - Taken care of above
         //Act
         //Assert
-        Assert.assertEquals(get.addNewMovie("Scarface"), HttpStatus.CREATED);
+        Assertions.assertEquals(HttpStatus.CREATED, sut.addNewMovie("Scarface"));
     }
 
     @Test
@@ -51,15 +39,23 @@ public class GetMoviesTest {
         //Arrange - Taken care of above
         //Act
         //Assert
-        Assert.assertEquals(get.addNewMovie("Scurface"), HttpStatus.BAD_REQUEST);
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, sut.addNewMovie("Scurface"));
     }
 
     @Test
     public void Test_ifMovieExistsReturnsBadRequestHttpStatus(){
-        //Arrange - Taken care of above
+        //Arrange
+        //Movie - Integer id, String, title, String genre, String picture_id, String year
+        Movie movie = new Movie();
+        movie.setTitle("Scarface");
+        movie.setYear("1984-04-05");
+        movie.setGenre("Crime");
+        movie.setPicture_id("https://m.media-amazon.com/images/M/MV5BNjdjNGQ4NDEtNTEwYS00MTgxLTliYzQtYzE2ZDRiZjFhZmNlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg");
         // Act
-        get.addNewMovie("Scarface");
+        repo.save(movie);
         //Assert
-        Assert.assertEquals(get.addNewMovie("Scarface"), HttpStatus.NOT_ACCEPTABLE);
+        Assertions.assertEquals(HttpStatus.NOT_ACCEPTABLE, sut.addNewMovie("Scarface"));
     }
+
+    //TODO: Tests for exceptions (NullPointer, IO, JSONException)
 }
