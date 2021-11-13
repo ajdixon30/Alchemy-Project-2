@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Request } from '../../../DTOs/request';
 import { RequestService } from '../request.service';
- 
+
 @Component({
   selector: 'app-view-requests',
   templateUrl: './view-requests.component.html',
@@ -28,5 +28,5 @@ export class ViewRequestsComponent implements OnInit {
     })
   }
 
-  
+
 }
