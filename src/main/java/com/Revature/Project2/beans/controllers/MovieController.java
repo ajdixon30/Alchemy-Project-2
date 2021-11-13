@@ -4,6 +4,7 @@ import com.Revature.Project2.services.DisplayMovies;
 import com.Revature.Project2.services.GetMovies;
 import com.Revature.Project2.services.ManageMovies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +34,7 @@ public class MovieController {
      */
     @CrossOrigin
     @PostMapping(value = "/newMovie", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity newMovie(@RequestParam String title){//TODO: Clean up controller
+    public ResponseEntity<HttpStatus> newMovie(@RequestParam String title){//TODO: Clean up controller
         return new ResponseEntity(get.addNewMovie(title));
     }
 

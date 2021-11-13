@@ -24,7 +24,6 @@ public class CineFile {
 
 		GetMovies getMovies = context.getBean(GetMovies.class);
 		getMovies.populateMovieTable();
-
 	}
 
 }
