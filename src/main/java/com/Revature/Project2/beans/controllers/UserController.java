@@ -4,6 +4,7 @@ import com.Revature.Project2.beans.pojos.User;
 import com.Revature.Project2.services.Login;
 import com.Revature.Project2.services.Register;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class UserController {
      */
     @CrossOrigin
     @GetMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getUser(@RequestParam String username, String password){
+    public ResponseEntity<HttpStatus> getUser(@RequestParam String username, String password){
         //May need to send the user data to the front end in a response body
         return new ResponseEntity(login.userLogin(username, password));
     }
@@ -43,7 +44,7 @@ public class UserController {
      */
     @CrossOrigin
     @GetMapping(value="/admin", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getAdmin(@RequestParam String username, String password){
+    public ResponseEntity<HttpStatus>getAdmin(@RequestParam String username, String password){
         return new ResponseEntity(login.adminLogin(username, password));
     }
 
@@ -54,7 +55,7 @@ public class UserController {
      */
     @CrossOrigin
     @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity post(@RequestBody User user){
+    public ResponseEntity<HttpStatus> post(@RequestBody User user){
         return new ResponseEntity(register.userRegister(user));
     }
 

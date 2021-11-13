@@ -40,16 +40,4 @@ public class ValidationTest {
 
         assertFalse(validation.validateUser("ooga", "booga"));
     }
-
-//    private Validation validation;
-//
-//    @Autowired
-//    public ValidationTest(Validation validation){
-//        this.validation = validation;
-//    }
-//
-//    @Test
-//    public void testForBadLogin(){
-//        assertEquals(false, validation.validateUser("oooga", "booga"));
-//    }
 }
