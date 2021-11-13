@@ -18,19 +18,26 @@ public class DatabaseLogger {
         this.logRepo = logRepo;
     }
 
-    //Adds the exception data to the log file
+    //Adds the exception data to the database
     public void writeLog(String message, int level) {
         Logger logger = new Logger(getCurrentDateTime(), formatLogEntry(message), level);
         logRepo.save(logger);
     }
 
-    //Gets the log file name
+    //Adds the exception data from the UI to the database
+    public Logger writeUILog(String message, int level) {
+        Logger logger = new Logger(getCurrentDateTime(), message, level);
+        logger.setId(logRepo.save(logger).getId());
+        return logger;
+    }
+
+    //Gets the current date and time
     private String getCurrentDateTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return formatter.format(System.currentTimeMillis());
     }
 
-    //Formats the entries that are saved to the log file
+    //Formats the entries that are saved to the database
     private  String formatLogEntry(String message){
         StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
         StringBuilder stackTrace = new StringBuilder();

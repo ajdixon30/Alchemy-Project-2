@@ -1,0 +1,1 @@
+To ensure that the 'test/resources' folder remains within the project
