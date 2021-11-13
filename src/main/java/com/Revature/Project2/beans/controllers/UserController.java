@@ -3,7 +3,7 @@ package com.Revature.Project2.beans.controllers;
 import com.Revature.Project2.beans.pojos.User;
 import com.Revature.Project2.services.Login;
 import com.Revature.Project2.services.Register;
-import org.springframework.beans.factory.annotation.Autowired;;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

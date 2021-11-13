@@ -11,7 +11,7 @@ import { catchError, retry } from 'rxjs';
 
 export class LoginService {
 
-  baseUrl = 'http://localhost:8080/login';
+  baseUrl = 'http://localhost:8080/login';//not sure if this is the right thing to have here for the service
 
   constructor(private client: HttpClient) { }
 
