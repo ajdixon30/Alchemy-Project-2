@@ -10,8 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 public class LoginTest {
 
-    @Autowired
     Login login;
+
+    @Autowired
+    public LoginTest(Login login){this.login = login;}
 
     @Test
     public void testUserLogin(){
