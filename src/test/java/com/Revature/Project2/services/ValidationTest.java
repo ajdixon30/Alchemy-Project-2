@@ -1,5 +1,6 @@
 package com.Revature.Project2.services;
 
+import com.Revature.Project2.beans.pojos.User;
 import com.Revature.Project2.repos.MovieRepo;
 import com.Revature.Project2.repos.RatingRepo;
 import com.Revature.Project2.repos.RequestRepo;
@@ -9,6 +10,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -34,10 +37,15 @@ public class ValidationTest {
     private RatingRepo ratingRepo;
 
     @Test
-    public void testForBadLogin(){
-        when(validation.userExists("ooga")).thenReturn(false);
-        when(validation.validateUser("ooga", "booga")).thenReturn(false);
-
+    public void testForBadValidation(){
         assertFalse(validation.validateUser("ooga", "booga"));
+    }
+
+    @Test
+    public void testForGoodValidation(){
+        when(validation.userExists("user")).thenReturn(true);
+        when(userRepo.getById("user")).thenReturn(new User("user", "pass", "J", "B", false, new ArrayList<>()));
+
+        assertTrue(validation.validateUser("user", "pass"));
     }
 }
