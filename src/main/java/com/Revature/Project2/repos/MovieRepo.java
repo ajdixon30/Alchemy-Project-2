@@ -24,4 +24,9 @@ public interface MovieRepo extends JpaRepository<Movie, Integer> {
 
     @Query(value = "SELECT title FROM movie WHERE year = ?1", nativeQuery = true)
     public List<String> filterYear(Integer value);
+
+    @Query(value = "DELETE FROM movie WHERE title = ?1", nativeQuery = true)
+    void deleteMovie(String title);
+
+
 }
