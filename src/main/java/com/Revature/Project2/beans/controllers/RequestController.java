@@ -27,6 +27,7 @@ public class RequestController {
      * @param id unique identifier for a Request
      * @return the specified request if it exists
      */
+    @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
     @GetMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE)
     public Request get(@RequestParam Integer id){
         return manageRequest.getAddRequest(id);
@@ -36,6 +37,7 @@ public class RequestController {
      * Gets all requests from the DB
      * @return Returns a list of the Request objects
      */
+    @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
     @GetMapping(value = "/request/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Request> get(){
         return manageRequest.getAllRequests();
@@ -46,6 +48,7 @@ public class RequestController {
      * @param addRequest new addRequest string provided in the request parameters
      * @return a ResponseEntity initialized by requestAddition(request)
      */
+    @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
     @PostMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity post(@RequestParam String addRequest){
         return new ResponseEntity(manageRequest.requestAddition(addRequest));
@@ -56,6 +59,7 @@ public class RequestController {
      * @param request updated Request provided by request body
      * @return ResponseEntity initialized by updateRequest(request)
      */
+    @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
     @PutMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity put(@RequestBody Request request){
         return new ResponseEntity(manageRequest.updateRequest(request));
@@ -66,6 +70,7 @@ public class RequestController {
      * @param request Request to be removed. provided from request body
      * @return
      */
+    @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
     @DeleteMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus delete(@RequestBody Request request){
         return manageRequest.removeRequest(request);

@@ -37,7 +37,7 @@ public class ManageRequest {
         }
 
         movie.setTitle(addRequest);
-        if(!validation.movieExists(movie)){
+        if(validation.movieExists(movie)){
             status = HttpStatus.NOT_ACCEPTABLE;
             return status;
         }
@@ -69,6 +69,7 @@ public class ManageRequest {
         } else {
             return null;
         }
+
     }
 
     public HttpStatus updateRequest(Request request){
