@@ -5,7 +5,7 @@ import { RequestService } from '../request.service';
 @Component({
   selector: 'app-view-requests',
   templateUrl: './view-requests.component.html',
-  styleUrls: ['./view-requests.component.css']
+  styleUrls: ['./view-requests.component.scss']
 })
 
 export class ViewRequestsComponent implements OnInit {

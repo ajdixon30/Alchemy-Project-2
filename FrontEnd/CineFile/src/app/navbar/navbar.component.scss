@@ -1,0 +1,36 @@
+/* HTML selectors (most general) */
+
+a{
+  color: #ffffff;
+  text-decoration: none;
+}
+a:active, a:hover{
+  color: #ffcc41;
+}
+a.navbar-brand{
+ font-size: 2rem;
+}
+nav{
+  background-color: rgba(0, 0, 0, 0.76);
+  @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
+    font-family: 'Dongle', sans-serif;
+    color:rgb(187, 187, 194);
+    margin: 0 0 0;
+}
+/* class selectors (can have multiple applied to one element/tag) */
+.navbar{
+  text-align: center;
+}
+.img-div{
+  text-align: left;
+}
+.nav-links{
+  text-align: right;
+}
+.icon{
+  height: 25px;
+  width: 25px;
+}
+/* add some padding to inside card container */
+
+/* id selectors (most specific) */
