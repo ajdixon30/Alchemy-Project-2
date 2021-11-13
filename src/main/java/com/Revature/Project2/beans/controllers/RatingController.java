@@ -3,6 +3,7 @@ package com.Revature.Project2.beans.controllers;
 import com.Revature.Project2.beans.pojos.Rating;
 import com.Revature.Project2.services.RateMovies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +46,7 @@ public class RatingController {
      */
     @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity postRating(@RequestBody Rating userRating){
+    public ResponseEntity<HttpStatus> postRating(@RequestBody Rating userRating){
         return new ResponseEntity(movieRating.rateMovie(userRating));
     }
 
@@ -56,7 +57,7 @@ public class RatingController {
      */
     @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
     @DeleteMapping(consumes = APPLICATION_JSON_VALUE)
-    public ResponseEntity deleteRating(@RequestBody Rating toBeDeleted){
+    public ResponseEntity<HttpStatus> deleteRating(@RequestBody Rating toBeDeleted){
         return new ResponseEntity(movieRating.removeRating(toBeDeleted));
     }
 }
