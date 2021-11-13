@@ -1,10 +1,15 @@
 package com.Revature.Project2.services;
 
 import com.Revature.Project2.CineFile;
-import org.junit.*;
+import com.Revature.Project2.repos.MovieRepo;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.http.HttpStatus;
+
 
 public class GetMoviesTest {
     /*
@@ -14,36 +19,28 @@ public class GetMoviesTest {
         SUT: (our unit) the addNewMovie method in the GetMovies Class
         addNewMovie(String title)
      */
-    private String APIKey;
-    private GetMovies get;
+    private GetMovies sut;
+    private MovieRepo repo;
+
     ConfigurableApplicationContext context = SpringApplication.run(CineFile.class);
 
-//    @BeforeClass
-//    public static void beforeClass(){
-//
-//    }
-//
-//    @AfterClass
-//    public static void afterClass(){
-//
-//    }
-//
     @Before
     public void before(){
-        get = context.getBean(GetMovies.class);
+        repo = context.getBean(MovieRepo.class);
+        sut = context.getBean(GetMovies.class);
     }
-//
-//    @After
-//    public static void after(){
-//
-//    }
+
+    @After
+    public void after(){
+        repo.deleteMovie("Scarface");
+    }
 
     @Test
     public void Test_goodMovieSearchReturnsCreatedHttpStatus(){
         //Arrange - Taken care of above
         //Act
         //Assert
-        Assert.assertEquals(get.addNewMovie("Scarface"), HttpStatus.CREATED);
+        Assert.assertEquals(HttpStatus.CREATED, sut.addNewMovie("Scarface"));
     }
 
     @Test
@@ -51,15 +48,15 @@ public class GetMoviesTest {
         //Arrange - Taken care of above
         //Act
         //Assert
-        Assert.assertEquals(get.addNewMovie("Scurface"), HttpStatus.BAD_REQUEST);
+        Assert.assertEquals(HttpStatus.BAD_REQUEST, sut.addNewMovie("Scurface"));
     }
 
     @Test
     public void Test_ifMovieExistsReturnsBadRequestHttpStatus(){
         //Arrange - Taken care of above
+        sut.addNewMovie("Scarface");
         // Act
-        get.addNewMovie("Scarface");
         //Assert
-        Assert.assertEquals(get.addNewMovie("Scarface"), HttpStatus.NOT_ACCEPTABLE);
+        Assert.assertEquals(HttpStatus.NOT_ACCEPTABLE, sut.addNewMovie("Scarface"));
     }
 }
