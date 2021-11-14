@@ -107,8 +107,7 @@ public class GetMovies {
                 id = null;
             }
         } catch (IOException e) {
-            e.printStackTrace();
-            //TODO: Add File Logger
+            logger.writeLog("IOException found after first API request in addNewMovie.", 3);
         }
         if (id == null){//No results from the third party API or the movie already exists
             return HttpStatus.BAD_REQUEST;
@@ -141,8 +140,7 @@ public class GetMovies {
                 String genre = genrePortion.getString("genre");
                 movie.setGenre(genre);
             } catch (IOException e) {
-                e.printStackTrace();
-                //TODO: Add File Logger
+                logger.writeLog("IOException found after second API request in addNewMovie.", 3);
             }
             ManageMovies.saveMovie(movie);
             return HttpStatus.CREATED;
