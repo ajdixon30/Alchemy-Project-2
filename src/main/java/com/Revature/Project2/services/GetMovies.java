@@ -5,7 +5,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,10 +23,12 @@ import java.util.Properties;
 public class GetMovies {
     private String APIKey;
     private Validation validation;
+    private DatabaseLogger logger;
 
     @Autowired
-    public GetMovies(Validation validation) {
+    public GetMovies(Validation validation, DatabaseLogger logger) {
         this.validation = validation;
+        this.logger = logger;
     }
 
     public void acquireAPIKey(){
@@ -38,7 +39,7 @@ public class GetMovies {
             props.load(fileIn);
             APIKey = props.getProperty("APIKey");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.writeLog("IOException found in acquireAPIKey.", 3);
         }
     }
 
@@ -49,7 +50,6 @@ public class GetMovies {
      *      We receive a response containing the ID of our desired movie
      *      2. A GET Request with the ID received in the first request
      *      We receive a response containing details about the movie
-     *
      * After receiving the movie details from the second GET Request, we
      * grab the necessary movie details - title and genre - and use them to
      * create a new Movie object
@@ -60,7 +60,6 @@ public class GetMovies {
      *
      * If both conditions resolve to false, the newly created Movie object is saved in the
      * database, and the method returns an HTTP Status of "Created"
-     * @param title
      * @return HttpStatus
      */
     public HttpStatus addNewMovie(String title){
@@ -107,7 +106,7 @@ public class GetMovies {
             } else {
                 id = null;
             }
-        } catch (IOException | JSONException | NullPointerException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             //TODO: Add File Logger
         }

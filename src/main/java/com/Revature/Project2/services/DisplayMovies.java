@@ -48,7 +48,7 @@ public class DisplayMovies {
             props.load(fileIn);
             APIKey = props.getProperty("APIKey");
         } catch (IOException e) {
-            logger.writeLog("IOException found in acquireAPIKey.", 3);;
+            logger.writeLog("IOException found in acquireAPIKey.", 3);
         }
     }
     public List<String> filterMovies(String filter, String value) {
