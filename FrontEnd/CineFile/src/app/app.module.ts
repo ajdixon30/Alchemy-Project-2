@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { CustomerHomePageComponent } from './User/customer-home-page/customer-home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ViewRequestsComponent } from './Admin/Requests/view-requests/view-requests.component'; 
+import { ViewRequestsComponent } from './Admin/Requests/view-requests/view-requests.component';
 import { CustomerSignupComponent } from './customer-signup/customer-signup.component';
 import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

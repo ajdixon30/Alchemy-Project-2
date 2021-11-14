@@ -1,14 +1,13 @@
 <div class="content" role="main">
 
   <div class="card">
-
-    <form action="submit" method="post">
+    <form>
       <p> Enter your information to signup:</p>
-      <input type="text" placeholder="First Name">
+      <input [(ngModel)]="firstName" />
       <input type="text" placeholder="Last Name">
       <input type="text" placeholder="Username" required>
       <input type="password" placeholder="Password" required>
-      <button class="submit-btn">Submit</button>
+      <button (click)="onSubmit()">Submit</button>
     </form>
   </div>
 </div>

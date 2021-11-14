@@ -1,8 +1,7 @@
-import { Register } from './../DTOs/register';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { RegisterService } from './register.service';
-import { firstValueFrom } from 'rxjs';
+
 @Component({
   selector: 'app-customer-signup',
   templateUrl: './customer-signup.component.html',
@@ -10,20 +9,21 @@ import { firstValueFrom } from 'rxjs';
 })
 export class CustomerSignupComponent implements OnInit {
 
-  registerForm = this.formBuilder.group({
-    firstName: '',
-    lastName: '',
-    username: '',
-    password: ''
-  });
+
 
   constructor(
     private registerService: RegisterService,
     private formBuilder: FormBuilder
   ) { }
+   registerService = this.formBuilder.group({
+    firstName: '',
+    lastName: '',
+    username: '',
+    password: ''
+  });
   onSubmit(): void {
     //docs simply state to process data here
-    this.registerForm.get()
+    console.log("made it to component.ts");
   }
 
   ngOnInit(): void {

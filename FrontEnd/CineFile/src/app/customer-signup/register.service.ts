@@ -1,8 +1,7 @@
-import { Register } from './../DTOs/register';
+import { RegisterUser } from './../DTOs/register';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs';
+import { Observable, throwError, retry, catchError } from 'rxjs';
 
 
 @Injectable({
@@ -13,7 +12,7 @@ export class RegisterService {
 
   baseUrl = 'http://localhost:8080/register';//not sure if this is the right thing to have here for the service
 
-  constructor(private client: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -21,12 +20,14 @@ export class RegisterService {
     })
   }
   //get
-  post(username: string, password: string, firstName: string, lastName: string): Observable<Register> {
-    return this.client.get<Register>(this.baseUrl + username + password + firstName + lastName)
-    .pipe(
-      retry(0),
-      catchError(this.errorHandler)
-    )
+  saveNewUser(registerUser: RegisterUser): Observable<RegisterService> {
+   const body = JSON.stringify(registerUser);
+   console.log(body);
+   return this.http.post<RegisterService>(this.baseUrl + 'users', body, {'headers': this.httpOptions.headers})
+   .pipe(
+     retry(1),
+     catchError(this.errorHandler)
+   );
   }
 
   errorHandler(error: any) {
