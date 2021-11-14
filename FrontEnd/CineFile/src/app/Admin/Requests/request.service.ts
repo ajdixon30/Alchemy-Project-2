@@ -9,8 +9,10 @@ import { catchError, retry } from 'rxjs';
 })
   
 export class RequestService {
+  requestLength!: number;
 
   baseUrl = 'http://localhost:8080/request';
+  
 
   constructor(private client: HttpClient){}
 
@@ -28,14 +30,6 @@ export class RequestService {
     )
   }
 
-    //Get all of the requests
-    getOneRequest(id:number): Observable<Request[]> {
-      return this.client.get<Request[]>(this.baseUrl + "?id=" + id).pipe(
-        retry(3),
-        catchError(this.errorHandler)
-      )
-    }
-
   //Update request status
   updateRequest(body:string):Observable<Request[]> {
     return this.client.put<Request[]>(this.baseUrl, body, this.httpOptions).pipe(
@@ -43,7 +37,6 @@ export class RequestService {
       catchError(this.errorHandler)
     )
   }
-
 
   errorHandler(error: any) {
     let message = "";

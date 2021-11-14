@@ -12,6 +12,7 @@ export class MangageRequestsComponent implements OnInit {
   public requestService : RequestService;
   public request: Request[] = [];
   public id!:number;
+  public max!:number;
   
 
   constructor(_requestService : RequestService){
@@ -32,10 +33,15 @@ accept() {
 }
 
 reject(){
-  
+  this.id = (document.getElementById("request") as HTMLInputElement).valueAsNumber;
+  let body = JSON.stringify({id:this.id,requestStatus:"Rejected"});
+  this.requestService.updateRequest(body).subscribe(data => {
+    console.log(data)
+  })
 }
 
   ngOnInit(): void {
+    
   }
 
 }
