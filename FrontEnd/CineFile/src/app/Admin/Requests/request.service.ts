@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Request } from 'src/app/DTOs/request';
@@ -28,10 +28,17 @@ export class RequestService {
     )
   }
 
+    //Get all of the requests
+    getOneRequest(id:number): Observable<Request[]> {
+      return this.client.get<Request[]>(this.baseUrl + "?id=" + id).pipe(
+        retry(3),
+        catchError(this.errorHandler)
+      )
+    }
+
   //Update request status
-  updateRequestStatus(request:Request[]):Observable<Request[]> {
-    const body = JSON.stringify(request);
-    return this.client.post<Request[]>(this.baseUrl, body, this.httpOptions).pipe(
+  updateRequest(body:string):Observable<Request[]> {
+    return this.client.put<Request[]>(this.baseUrl, body, this.httpOptions).pipe(
       retry(3), 
       catchError(this.errorHandler)
     )
@@ -40,15 +47,12 @@ export class RequestService {
 
   errorHandler(error: any) {
     let message = "";
-    let warningLevel;
     if(error.error instanceof ErrorEvent) {
         //Get client-side error
         message = error.error.message;
-        warningLevel = 3;
     } else {
         //Get server-side error
         message = `Error Code: ${error.status}\nMessage: ${error.message}`;
-        warningLevel = 3;
     } 
     console.log(message);
     return throwError(() => new Error(message));
