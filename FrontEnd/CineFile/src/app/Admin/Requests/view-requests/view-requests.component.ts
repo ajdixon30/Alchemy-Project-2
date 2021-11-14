@@ -24,7 +24,6 @@ export class ViewRequestsComponent implements OnInit {
         this.requests.push({id, addRequest, requestStatus})
         console.log(item);
       }
-
     })
   }
 

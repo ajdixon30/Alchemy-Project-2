@@ -11,7 +11,7 @@ import { CustomerSignupComponent } from './customer-signup/customer-signup.compo
 import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminHomePageComponent } from './Admin/admin-home-page/admin-home-page.component';
-import { MangageRequestsComponent } from './mangage-requests/mangage-requests.component';
+import { MangageRequestsComponent } from './Admin/Requests/mangage-requests/mangage-requests.component';
 
 @NgModule({
   declarations: [

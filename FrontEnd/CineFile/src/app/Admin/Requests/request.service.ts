@@ -28,6 +28,16 @@ export class RequestService {
     )
   }
 
+  //Update request status
+  updateRequestStatus(request:Request[]):Observable<Request[]> {
+    const body = JSON.stringify(request);
+    return this.client.post<Request[]>(this.baseUrl, body, this.httpOptions).pipe(
+      retry(3), 
+      catchError(this.errorHandler)
+    )
+  }
+
+
   errorHandler(error: any) {
     let message = "";
     let warningLevel;
@@ -40,6 +50,7 @@ export class RequestService {
         message = `Error Code: ${error.status}\nMessage: ${error.message}`;
         warningLevel = 3;
     } 
+    console.log(message);
     return throwError(() => new Error(message));
   }
 }
