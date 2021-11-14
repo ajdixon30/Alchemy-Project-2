@@ -49,14 +49,13 @@ public class Validation {
      * @return true if the pair of Strings follows the rules and false otherwise
      */
     public boolean validateName(String firstName, String lastName){
-        boolean isRegularName = false;
 
         if(firstName.matches("[a-zA-Z]{2,25}$")&& lastName.matches("[a-zA-Z]{2,25}$")){
-            isRegularName = true;
+            return true;
         } else {
+            return false;
             //TODO: write to FileLogger and return to registration page ("/register")
         }
-        return isRegularName;
     }
 
     /**
@@ -66,14 +65,13 @@ public class Validation {
      * @return true if new credentials follow the rules and false otherwise
      */
     public boolean validateUserCreds(String username, String password){
-        boolean isRegularCreds = false;
 
         if(password.matches("[a-zA-Z0-9]{2,25}$")&& username.matches("[a-zA-Z0-9]{2,25}$")){
-            isRegularCreds = true;
+            return true;
         } else {
             //TODO: write to FileLogger and return to registration page ("/register")
+            return false;
         }
-        return isRegularCreds;
     }
 
     /**
@@ -119,13 +117,12 @@ public class Validation {
      * @return true if movie exists and false otherwise
      */
     public boolean movieExists(Movie movie){
-        boolean exists = false;
-        String movies = "";
-        movies = movieRepo.movieSearch(movie.getTitle());
+        String movies = movieRepo.movieSearch(movie.getTitle());
         if (movies != null){
-            exists = true;
+            return true;
+        } else {
+            return false;
         }
-        return exists;
     }
 
     /**

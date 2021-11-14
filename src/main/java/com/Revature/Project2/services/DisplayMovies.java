@@ -18,14 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-//Methods for displaying list of movies
+/**
+ * Class for displaying filtered movies
+ */
 @Service
 @Transactional
 public class DisplayMovies {
     private String APIKey;
     List<String> movieID = new ArrayList<>();
-    List<Movie> movies = new ArrayList<>();
-    List<List> titleGenre = new ArrayList<>();
     private final MovieRepo movieRepo;
     private final DatabaseLogger logger;
 

@@ -35,7 +35,7 @@ public class RatingController {
     }
 
 //    @GetMapping(value = "/{username}",produces = APPLICATION_JSON_VALUE)
-//    public ResponseEntity getAllUserRating(@PathVariable String username){
+//    public ResponseEntity<HttpStatus> getAllUserRating(@PathVariable String username){
 //        return new ResponseEntity(HttpStatus.OK);
 //    }
 
