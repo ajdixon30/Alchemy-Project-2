@@ -24,13 +24,6 @@ public class DatabaseLogger {
         logRepo.save(logger);
     }
 
-    //Adds the exception data from the UI to the database
-    public Logger writeUILog(String message, int level) {
-        Logger logger = new Logger(getCurrentDateTime(), message, level);
-        logger.setId(logRepo.save(logger).getId());
-        return logger;
-    }
-
     //Gets the current date and time
     private String getCurrentDateTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
