@@ -50,7 +50,7 @@ public class RequestController {
      */
     @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
     @PostMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity post(@RequestParam String addRequest){
+    public ResponseEntity<HttpStatus> post(@RequestParam String addRequest){
         return new ResponseEntity(manageRequest.requestAddition(addRequest));
     }
 
