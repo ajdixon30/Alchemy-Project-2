@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ErrorLog } from 'src/app/error-log';
-import { ErrorLoggerService } from 'src/app/error-logger.service';
 import { Request } from '../../../DTOs/request';
 import { RequestService } from '../request.service';
 
@@ -15,8 +12,7 @@ export class ViewRequestsComponent implements OnInit {
   public requestService : RequestService;
   public requests: Request[] = [];
 
-
-  constructor(private _requestService : RequestService){
+  constructor(_requestService : RequestService){
     this.requestService = _requestService;
   }
 
@@ -27,7 +23,8 @@ export class ViewRequestsComponent implements OnInit {
         let {id, addRequest, requestStatus} = item;
         this.requests.push({id, addRequest, requestStatus})
         console.log(item);
-      }      
+      }
+
     })
   }
 

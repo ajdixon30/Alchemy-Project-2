@@ -3,23 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Request } from 'src/app/DTOs/request';
 import { catchError, retry } from 'rxjs';
-import { ErrorLoggerService } from 'src/app/error-logger.service';
-import { ErrorLog } from 'src/app/error-log';
-
 
 @Injectable({
   providedIn: 'root'
 })
   
 export class RequestService {
-  public errorLogger : ErrorLoggerService;
-  public errorLog : ErrorLog[] = [];
 
   baseUrl = 'http://localhost:8080/request';
 
-  constructor(private client: HttpClient, private _errorLogger : ErrorLoggerService) {
-    this.errorLogger = _errorLogger;
-   }
+  constructor(private client: HttpClient){}
 
   httpOptions = {
     headers: new HttpHeaders({

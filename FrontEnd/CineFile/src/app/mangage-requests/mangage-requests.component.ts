@@ -9,6 +9,8 @@ export class MangageRequestsComponent implements OnInit {
 
   constructor() { }
 
+  
+
   ngOnInit(): void {
   }
 
