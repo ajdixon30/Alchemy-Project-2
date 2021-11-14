@@ -12,8 +12,8 @@ import org.springframework.http.HttpStatus;
 //@ExtendWith(MockitoExtension.class)
 @SpringBootTest
 public class GetMoviesTest {
-    private GetMovies sut;
-    private MovieRepo repo;
+    private final GetMovies sut;
+    private final MovieRepo repo;
 
     @Autowired
     public GetMoviesTest(GetMovies sut, MovieRepo repo) {

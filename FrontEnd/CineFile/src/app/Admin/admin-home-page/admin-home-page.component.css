@@ -1,0 +1,21 @@
+#boxes {
+    clear: both;
+    display: table;
+}
+
+div {
+    float: left;
+    height: max-content;
+    padding: 0;
+  }
+  
+  #c1 {
+    font-size: x-large;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  #c2 {
+    border: 0.5em solid rgb(68, 56, 136);
+    max-width: 27em;
+  }
