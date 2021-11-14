@@ -29,12 +29,10 @@ public class LogController {
 
     /**
      * Saves a new exception log to the DB
-     *
-     * @return a ResponseEntity initialized by logger.writeLog(message,level)
      */
     @CrossOrigin
     @PostMapping(value = "/logging", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Logger post(@RequestBody Logger logger){
-        return databaseLogger.writeUILog(logger.getMessage(), logger.getWarningLevel());
+    public void post(@RequestBody Logger logger){
+        databaseLogger.writeUILog(logger.getMessage(), logger.getWarningLevel());
     }
 }

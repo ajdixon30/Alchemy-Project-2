@@ -25,10 +25,10 @@ public class DatabaseLogger {
     }
 
     //Adds the exception data from the UI to the database
-    public Logger writeUILog(String message, int level) {
+    public void writeUILog(String message, int level) {
         Logger logger = new Logger(getCurrentDateTime(), message, level);
-        logger.setId(logRepo.save(logger).getId());
-        return logger;
+        logRepo.save(logger);
+        System.out.println(logger.getMessage());
     }
 
     //Gets the current date and time
