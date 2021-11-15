@@ -1,12 +1,42 @@
-<main id="boxes">
-    <div id="c1">
-        <app-view-requests></app-view-requests>
+<main id="view">
+    <div id = "tables">
+        <div *ngIf="request==true">
+            <app-view-requests></app-view-requests>
+        </div>
+        <div *ngIf="request==false">
+            <h1>Hi</h1>
+        </div>
     </div>
-    <div id="c2">
-        <app-mangage-requests></app-mangage-requests>
+    <div id = "manage">
+        <button (click)="manageRequests()">
+            Manage Requests
+        </button>
+        <button (click)="manageMovies()">
+            Manage Movies
+        </button>
+        <div *ngIf="movie==false">
+            <app-mangage-requests></app-mangage-requests>
+        </div>
+        <div *ngIf="movie==true">
+            <app-mangage-movies></app-mangage-movies>
+        </div>
     </div>
-    <div id="c3">
-        <app-mangage-movies></app-mangage-movies>
-    </div>
-
 </main>
+
+<!-- Set up two components that take up the entire page (together). 
+- the right half contains either a table with the requests or a table with the movies depending on which option is selected 
+in the navbar
+- the left half contains either the manage requests block or the manage movies block
+
+use router links-->
+
+
+<!-- <main id="view")>
+    <div id = "tables">
+        
+    </div>
+    <div id = "manage">
+        
+        
+    </div>
+</main> -->

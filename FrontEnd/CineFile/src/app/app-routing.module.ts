@@ -3,13 +3,15 @@ import { CustomerSignupComponent } from './customer-signup/customer-signup.compo
 import { LoginPageComponent } from './login-page/login-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ViewRequestsComponent } from './Admin/Requests/view-requests/view-requests.component';
+import { MangageRequestsComponent } from './Admin/Requests/mangage-requests/mangage-requests.component';
+import { MangageMoviesComponent } from './Admin/Movies/mangage-movies/mangage-movies.component';
 
 const routes: Routes = [
   { path: "admin-login", component: AdminLoginComponent },
   { path: "customer-signup", component: CustomerSignupComponent},
   { path: "customer-login", component: LoginPageComponent },
-  { path: "view-request", component: ViewRequestsComponent}
+  { path: "manage-requests", component: MangageRequestsComponent},
+  { path: "manage-movies", component: MangageMoviesComponent}
 ];
 
 @NgModule({

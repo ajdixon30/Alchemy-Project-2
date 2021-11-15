@@ -1,37 +1,20 @@
-#boxes {
+#view {
     clear: both;
-    display: table;
-    width:calc(100%);
+    width: calc(100%);
 }
 
 div {
-    float: left;
-    height: max-content;
-    padding: 0;
-  }
+  float: left;
+  padding: 0;
+  height: max-content;
+  width: 100%;
+}
 
-  
-  #c1 {
-    position:relative;
-    font-size: large;
-    text-align: center;
-    vertical-align: middle;
-    width: calc(100%-25%);
-  }
+#tables {
+  width: calc(70%);
+}
 
-  #c2 {
-    position: sticky;
-    width: calc(100% - 63.7%);
-    height: 250px;
-    background-color: rgb(29, 29, 54);
-    border: 1px solid rgb(46, 41, 56);
-  }
-
-  #c3 {
-    position: sticky;
-    background-color: rgb(33, 33, 61);
-    border: 1px solid rgb(46, 41, 56);
-    width: calc(100% - 63.7%);
-    margin-left: 813px;
-    height: 234px;
-  } 
+#manage {
+  width: calc(30%);
+  background-color: rgb(29, 29, 63);
+}
