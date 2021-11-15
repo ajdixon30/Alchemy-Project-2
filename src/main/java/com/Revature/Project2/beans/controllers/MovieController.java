@@ -59,4 +59,10 @@ public class MovieController {
     public List<Movie> displayAll() {
         return display.displayAllMovies();
     }
+
+    @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE})
+    @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void delete(@RequestParam Integer id) {
+        ManageMovies.deleteMovie(id);
+    }
 }

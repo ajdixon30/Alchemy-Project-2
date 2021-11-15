@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Request } from '../../../DTOs/request';
-import { RequestService } from '../request.service';
+import { RequestService } from '../../../Services/request.service';
 
 @Component({
   selector: 'app-view-requests',

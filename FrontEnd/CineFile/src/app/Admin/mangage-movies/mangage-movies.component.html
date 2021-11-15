@@ -1,0 +1,16 @@
+<div>
+    <h2>Manage Movies Menu</h2>
+    <form>
+        <div>
+            <label for="title">Movie title:</label><br>
+            <input type="text" id="title"/><br>
+        </div>
+        <button mat-raised-button (submit)="submitMovie()">Submit</button>
+        <br>
+        <div>
+            <label for="id">Select a movie id:</label><br>
+            <input type="number" id="id"/><br>
+        </div>
+        <button mat-raised-button (submit)="deleteMovie()">Delete</button>
+    </form>
+</div>
