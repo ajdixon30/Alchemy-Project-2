@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, ObservableInput, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs';
@@ -8,6 +8,7 @@ import { Movie } from '../DTOs/movie';
   providedIn: 'root'
 })
 export class MovieService {
+  
   baseUrl = 'http://localhost:8080';
   
 
@@ -28,23 +29,38 @@ export class MovieService {
   }
 
   //Get filtered movies
-  filterMovies(filter:string, value:string): Observable<Movie[]> {
-    console.log(this.baseUrl + "/filter?filter=" + filter + "&value=" + value);
-    return this.client.get<Movie[]>(this.baseUrl + "/filter?filter=" + filter + "&value=" + value)
+  filterMovies(filter:string,value:string): Observable<Movie[]> {
+    //Set the parameters for the Http request
+    const params = new HttpParams()
+    .set("filter", filter)
+    .set("value", value);
+
+    return this.client.get<Movie[]>(this.baseUrl + "/filter", {params})
   }
 
   //Add new movie to the database
-  newMovie(title:string):Observable<Movie> {
-    console.log(this.baseUrl + "/newMovie?title=" + title);
-    return this.client.post<Movie>(this.baseUrl + "/newMovie?title=" + title, this.httpOptions).pipe(
+  newMovie(_title:string):Observable<Movie> {
+    let body = JSON.stringify({
+      title:_title
+    })
+
+    return this.client.post<Movie>(this.baseUrl + "/newMovie", body, this.httpOptions).pipe(
       retry(3), 
       catchError(this.errorHandler)
     )
   }
 
   //Delete a movie from the database
-  deleteMovie(id:number):Observable<Movie> {
-    return this.client.delete<Movie>(this.baseUrl + "/delete?id=" + id, this.httpOptions).pipe(
+  deleteMovie(id:number):Observable<any> {
+    //Set the parameters for the Http request
+    let deleteHttpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      params: new HttpParams().set("id",id)
+    }
+
+    return this.client.delete<any>(this.baseUrl + "/delete", deleteHttpOptions).pipe(
       retry(3),
       catchError(this.errorHandler)
       )

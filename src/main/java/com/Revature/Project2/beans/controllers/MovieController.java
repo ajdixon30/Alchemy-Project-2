@@ -29,13 +29,13 @@ public class MovieController {
 
     /**
      * Creates new movie in DB
-     * @param title
+     * @param
      * @return ResponseEntity initialized with addNewMovie provided HttpStatus
      */
     @CrossOrigin
     @PostMapping(value = "/newMovie", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<HttpStatus> newMovie(@RequestParam String title){//TODO: Clean up controller
-        return new ResponseEntity(get.addNewMovie(title));
+    public ResponseEntity<HttpStatus> newMovie(@RequestBody Movie movie){//TODO: Clean up controller
+        return new ResponseEntity(get.addNewMovie(movie.getTitle()));
     }
 
     /**
@@ -62,7 +62,7 @@ public class MovieController {
 
     @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE})
     @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void delete(@RequestParam Integer id) {
+    public void delete(@RequestBody Integer id) {
         ManageMovies.deleteMovie(id);
     }
 }
