@@ -16,6 +16,11 @@ div {
   }
 
   #c2 {
-    border: 0.5em solid rgb(68, 56, 136);
-    max-width: 27em;
+    max-width: 28em;
+    position: sticky;
+  }
+
+  #c3 {
+    max-width: 28em;
+    position: sticky;
   }
