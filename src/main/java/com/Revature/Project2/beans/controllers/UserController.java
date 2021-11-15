@@ -56,6 +56,7 @@ public class UserController {
     @CrossOrigin
     @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<HttpStatus> post(@RequestBody User user){
+        System.out.println("hit servlet / controller");
         return new ResponseEntity(register.userRegister(user));
     }
 

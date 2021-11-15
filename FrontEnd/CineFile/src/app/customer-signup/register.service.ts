@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError, retry, catchError } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,19 +15,18 @@ export class RegisterService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json;charset=utf-8'
     })
   }
-  //get
-  saveNewUser(registerUser: RegisterUser): Observable<RegisterService> {
-   const body = JSON.stringify(registerUser);
-   console.log(body);
-   return this.http.post<RegisterService>(this.baseUrl + 'users', body, {'headers': this.httpOptions.headers})
-   .pipe(
-     retry(1),
-     catchError(this.errorHandler)
-   );
-  }
+  //post
+  saveNewUser(body: Object): Observable<RegisterUser[]> {
+    console.log(JSON.stringify(body));
+    return this.http.post<RegisterUser[]>(this.baseUrl, JSON.stringify(body), this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandler)
+    );
+   }
 
   errorHandler(error: any) {
     let message = '';

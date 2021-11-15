@@ -7,7 +7,7 @@ a{
   text-decoration: none;
 }
 a:active, a:hover{
-  color: #FF1E56;
+  /* color: #FF1E56; */
   transition:all 0.2s ease-in-out;
   text-shadow: #000;
 }
