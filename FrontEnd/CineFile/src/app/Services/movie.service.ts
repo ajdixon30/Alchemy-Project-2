@@ -9,7 +9,7 @@ import { Movie } from '../DTOs/movie';
 })
 export class MovieService {
   
-  baseUrl = 'http://localhost:8080';
+  baseUrl = 'http://localhost:8080/movie';
   
 
   constructor(private client: HttpClient){}
@@ -39,10 +39,7 @@ export class MovieService {
   }
 
   //Add new movie to the database
-  newMovie(_title:string):Observable<Movie> {
-    let body = JSON.stringify({
-      title:_title
-    })
+  newMovie(body:string):Observable<Movie> {
 
     return this.client.post<Movie>(this.baseUrl + "/newMovie", body, this.httpOptions).pipe(
       retry(3), 
@@ -51,16 +48,13 @@ export class MovieService {
   }
 
   //Delete a movie from the database
-  deleteMovie(id:number):Observable<any> {
+  deleteMovie(id:number):Observable<Movie> {
     //Set the parameters for the Http request
-    let deleteHttpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      }),
-      params: new HttpParams().set("id",id)
-    }
+    const params = new HttpParams()
+    .set("id",id);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    return this.client.delete<any>(this.baseUrl + "/delete", deleteHttpOptions).pipe(
+    return this.client.delete<Movie>(this.baseUrl + "/delete", {headers, params}).pipe(
       retry(3),
       catchError(this.errorHandler)
       )

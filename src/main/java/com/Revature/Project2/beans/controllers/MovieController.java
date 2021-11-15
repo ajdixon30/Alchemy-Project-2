@@ -29,7 +29,7 @@ public class MovieController {
 
     /**
      * Creates new movie in DB
-     * @param
+     * @param movie Requires a movie object from the UI
      * @return ResponseEntity initialized with addNewMovie provided HttpStatus
      */
     @CrossOrigin
@@ -60,9 +60,9 @@ public class MovieController {
         return display.displayAllMovies();
     }
 
-    @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE})
+    @CrossOrigin
     @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void delete(@RequestBody Integer id) {
+    public void deleteMovie(@RequestParam Integer id) {
         ManageMovies.deleteMovie(id);
     }
 }

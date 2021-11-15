@@ -17,15 +17,16 @@ export class MangageMoviesComponent implements OnInit {
     this.movieService = _movieService;
    }
 
-  submitMovie(){
+  newMovie(){
     this.title = (document.getElementById("title") as HTMLInputElement).value;
-    this.movieService.newMovie(this.title).subscribe(data => {
+    let body = JSON.stringify({title:this.title});
+    this.movieService.newMovie(body).subscribe(data => {
       console.log(data)
     })
   }
 
   deleteMovie(){
-    this.id = (document.getElementById("request") as HTMLInputElement).valueAsNumber;
+    this.id = (document.getElementById("movieId") as HTMLInputElement).valueAsNumber;
     this.movieService.deleteMovie(this.id).subscribe(data => {
       console.log(data)
     })
