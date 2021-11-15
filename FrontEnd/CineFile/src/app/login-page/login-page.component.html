@@ -2,13 +2,17 @@
 
   <div class="card">
 
-    <form action="/src/main/java/com/Revature/Project2/beans/controllers/UserController.java" method="get">
-      <p> Enter your credentials to login:</p>
-      <input type="text" placeholder="Username" required>
-      <input type="password" placeholder="Password" required>
-      <button class="submit-btn">Submit</button>
+    <form>
+      <p> Enter your information to Login:</p>
+      <div class="form-control">
+        <input type="text" name="userName" [(ngModel)]="username" id="username" placeholder="Username" required/>
+        <label for="password">Password:</label>
+        <input type="text" name="password" [(ngModel)]="password" id="password" placeholder="Password" required/>
+
+      </div>
+      <button class="submit-btn" (click)="onLogin()">Submit</button>
       <p class="register-para">Need an account?</p>
-      <a routerLink="/customer-signup" routerLinkActive="active">Click Here</a>
-    </form>
+        <a routerLink="/customer-signup" routerLinkActive="active">Click Here</a>
+      </form>
   </div>
 </div>

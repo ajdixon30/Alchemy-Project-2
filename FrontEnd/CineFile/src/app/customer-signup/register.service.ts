@@ -23,7 +23,7 @@ export class RegisterService {
     console.log(JSON.stringify(body));
     return this.http.post<RegisterUser[]>(this.baseUrl, JSON.stringify(body), this.httpOptions)
     .pipe(
-      retry(1),
+      retry(0),
       catchError(this.errorHandler)
     );
    }
