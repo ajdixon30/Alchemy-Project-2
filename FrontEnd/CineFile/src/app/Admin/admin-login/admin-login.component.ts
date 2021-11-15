@@ -22,7 +22,7 @@ export class AdminLoginComponent implements OnInit {
     this.adminService.getUser(this.username, this.password).subscribe(data=> {
       let status = (data.status);
       if(status >= 200 && status < 205){
-        this.router.navigate(['/']);
+        this.router.navigate(['/admin-home']);
       }else{
 
       }

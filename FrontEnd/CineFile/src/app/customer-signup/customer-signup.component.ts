@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { RegisterUser } from '../DTOs/register';
 import { RegisterService } from './register.service';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-customer-signup',
@@ -18,7 +20,7 @@ export class CustomerSignupComponent implements OnInit {
   admin: boolean = false;
 
 
-  constructor(_registerService: RegisterService){
+  constructor(_registerService: RegisterService, private router: Router){
     this.registerService = _registerService;
   }
 

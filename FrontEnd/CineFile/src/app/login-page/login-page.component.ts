@@ -1,4 +1,4 @@
-import { Router, RouterModule, Routes } from '@angular/router';
+import { Router} from '@angular/router';
 import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -22,9 +22,10 @@ export class LoginPageComponent implements OnInit {
     this.loginService.getUser(this.username, this.password).subscribe(data=> {
       let status = (data.status);
       if(status >= 200 && status < 205){
-        this.router.navigate(['/']);
+        this.router.navigate(['/home-page']);
       }else{
-
+        this.username="";
+        this.password="";
       }
 
     });
