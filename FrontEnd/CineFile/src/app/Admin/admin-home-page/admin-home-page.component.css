@@ -11,10 +11,19 @@ div {
 }
 
 #tables {
-  width: calc(70%);
+  width: calc(65%);
 }
 
 #manage {
-  width: calc(30%);
+  width: calc(35%);
   background-color: rgb(29, 29, 63);
+}
+
+#buttons {
+  text-align: center;
+}
+
+button {
+  margin-right: 20px;
+  margin-left: 20px;
 }

@@ -8,12 +8,14 @@
         </div>
     </div>
     <div id = "manage">
-        <button (click)="manageRequests()">
-            Manage Requests
-        </button>
-        <button (click)="manageMovies()">
-            Manage Movies
-        </button>
+        <div id = "buttons">
+            <button (click)="manageRequests()">
+                Manage Requests
+            </button>
+            <button (click)="manageMovies()">
+                Manage Movies
+            </button>
+        </div>
         <div *ngIf="movie==false">
             <app-mangage-requests></app-mangage-requests>
         </div>
