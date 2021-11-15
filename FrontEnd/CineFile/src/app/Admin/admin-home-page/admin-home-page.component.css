@@ -1,0 +1,26 @@
+#boxes {
+    clear: both;
+    display: table;
+}
+
+div {
+    float: left;
+    height: max-content;
+    padding: 0;
+  }
+  
+  #c1 {
+    font-size: x-large;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  #c2 {
+    max-width: 28em;
+    position: sticky;
+  }
+
+  #c3 {
+    max-width: 28em;
+    position: sticky;
+  }

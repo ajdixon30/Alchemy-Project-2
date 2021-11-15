@@ -1,0 +1,16 @@
+#block {
+    width: 28em;
+    height: 15em;
+    background-color: rgb(29, 29, 54);
+    border: 1px solid rgb(46, 41, 56);
+}
+
+div {
+    text-align: center;
+    padding: 1em 0;
+}
+
+button {
+    margin-right: 1em;
+    margin-left: 1em;
+}

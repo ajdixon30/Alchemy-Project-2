@@ -1,19 +1,20 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Request } from 'src/app/DTOs/request';
 import { catchError, retry } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root'
 })
   
 export class RequestService {
+  requestLength!: number;
 
   baseUrl = 'http://localhost:8080/request';
+  
 
-  constructor(private client: HttpClient) { }
+  constructor(private client: HttpClient){}
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -23,17 +24,22 @@ export class RequestService {
 
   //Get all of the requests
   getRequests(): Observable<Request[]> {
-    return this.client.get<Request[]>(this.baseUrl + "/list")
-    .pipe(
+    return this.client.get<Request[]>(this.baseUrl + "/list").pipe(
       retry(3),
       catchError(this.errorHandler)
     )
   }
 
+  //Update request status
+  updateRequest(body:string):Observable<Request[]> {
+    return this.client.put<Request[]>(this.baseUrl, body, this.httpOptions).pipe(
+      retry(3), 
+      catchError(this.errorHandler)
+    )
+  }
 
   errorHandler(error: any) {
-    let message = '';
-    // let warningLevel = 3;
+    let message = "";
     if(error.error instanceof ErrorEvent) {
         //Get client-side error
         message = error.error.message;
@@ -41,11 +47,7 @@ export class RequestService {
         //Get server-side error
         message = `Error Code: ${error.status}\nMessage: ${error.message}`;
     } 
-
-    //Save the error message here//
-
     console.log(message);
     return throwError(() => new Error(message));
   }
-  
 }

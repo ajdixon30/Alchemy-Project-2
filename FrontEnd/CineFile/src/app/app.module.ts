@@ -10,6 +10,8 @@ import { ViewRequestsComponent } from './Admin/Requests/view-requests/view-reque
 import { CustomerSignupComponent } from './customer-signup/customer-signup.component';
 import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminHomePageComponent } from './Admin/admin-home-page/admin-home-page.component';
+import { MangageRequestsComponent } from './Admin/Requests/mangage-requests/mangage-requests.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomePageComponent,
     CustomerSignupComponent,
     AdminLoginComponent,
+    AdminHomePageComponent,
+    MangageRequestsComponent,
   ],
   imports: [
     BrowserModule,

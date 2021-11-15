@@ -1,22 +1,5 @@
-table, th, td {
-    
-    font-size: x-large;
-    border: 1px solid whitesmoke;
-    text-align: center;
-    vertical-align: middle;
-    column-width: 15em;
-    height: 2em;
-    }
-
-.mangageRequest {
-    border-color: whitesmoke;
-    border-width: 0.25em;
-    border-style: solid;
-    justify-items: flex-end;
-}
-
-button {
-    margin-left: 1.5em;
-    margin-right: 1.5em;
-    background-color: rgb(219, 215, 215);
+table, tr, th, td {
+  border: 1px solid rgb(101, 101, 107);
+  background-color: rgb(32, 41, 46);
+  column-width: 14em;
 }
