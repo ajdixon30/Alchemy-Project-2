@@ -6,19 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-home-page.component.css']
 })
 export class AdminHomePageComponent implements OnInit {
-  public request:boolean=true;
-  public movie:boolean=false;
+  public manage:boolean = true;
 
   constructor() { }
 
-  manageRequests(){
-    this.request = true;
-    this.movie = false;
+  manageTrue(){
+    this.manage = true;
   }
 
-  manageMovies(){
-    this.request = false;
-    this.movie = true;
+  manageFalse(){
+    this.manage = false;
   }
 
   ngOnInit(): void {

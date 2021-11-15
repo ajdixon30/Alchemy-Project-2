@@ -1,26 +1,20 @@
 <main id="view">
     <div id = "tables">
-        <div *ngIf="request==true">
+        <div *ngIf="manage==true">
             <app-view-requests></app-view-requests>
         </div>
-        <div *ngIf="request==false">
+        <div *ngIf="manage==false">
             <h1>Hi</h1>
         </div>
     </div>
     <div id = "manage">
-        <div id = "buttons">
-            <button (click)="manageRequests()">
+        <div id = "links">
+            <router-outlet id=nav1 routerLink="/manage-requests" routerLinkActive="active" (click)="manageTrue()"> 
                 Manage Requests
-            </button>
-            <button (click)="manageMovies()">
+            </router-outlet>
+            <router-outlet id=nav2 routerLink="/manage-movies" routerLinkActive="active" (click)="manageFalse()"> 
                 Manage Movies
-            </button>
-        </div>
-        <div *ngIf="movie==false">
-            <app-mangage-requests></app-mangage-requests>
-        </div>
-        <div *ngIf="movie==true">
-            <app-mangage-movies></app-mangage-movies>
+            </router-outlet>
         </div>
     </div>
 </main>

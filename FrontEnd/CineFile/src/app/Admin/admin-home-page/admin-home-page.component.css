@@ -17,13 +17,16 @@ div {
 #manage {
   width: calc(35%);
   background-color: rgb(29, 29, 63);
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
-#buttons {
+#links {
   text-align: center;
+  font-size: large;
 }
 
-button {
-  margin-right: 20px;
-  margin-left: 20px;
+#nav1, #nav2 {
+  margin-right: 15px;
+  margin-left: 15px;
 }
