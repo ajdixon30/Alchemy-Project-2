@@ -12,6 +12,7 @@ import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminHomePageComponent } from './Admin/admin-home-page/admin-home-page.component';
 import { MangageRequestsComponent } from './Admin/Requests/mangage-requests/mangage-requests.component';
+import { MangageMoviesComponent } from './Admin/mangage-movies/mangage-movies.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MangageRequestsComponent } from './Admin/Requests/mangage-requests/mang
     AdminLoginComponent,
     AdminHomePageComponent,
     MangageRequestsComponent,
+    MangageMoviesComponent,
   ],
   imports: [
     BrowserModule,

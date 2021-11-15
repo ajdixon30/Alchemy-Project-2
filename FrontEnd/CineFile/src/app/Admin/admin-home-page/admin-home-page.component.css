@@ -1,6 +1,7 @@
 #boxes {
     clear: both;
     display: table;
+    width:calc(100%);
 }
 
 div {
@@ -8,19 +9,29 @@ div {
     height: max-content;
     padding: 0;
   }
+
   
   #c1 {
-    font-size: x-large;
+    position:relative;
+    font-size: large;
     text-align: center;
     vertical-align: middle;
+    width: calc(100%-25%);
   }
 
   #c2 {
-    max-width: 28em;
     position: sticky;
+    width: calc(100% - 63.7%);
+    height: 250px;
+    background-color: rgb(29, 29, 54);
+    border: 1px solid rgb(46, 41, 56);
   }
 
   #c3 {
-    max-width: 28em;
     position: sticky;
-  }
+    background-color: rgb(33, 33, 61);
+    border: 1px solid rgb(46, 41, 56);
+    width: calc(100% - 63.7%);
+    margin-left: 813px;
+    height: 234px;
+  } 

@@ -9,7 +9,6 @@ import { catchError, retry } from 'rxjs';
 })
   
 export class RequestService {
-  requestLength!: number;
 
   baseUrl = 'http://localhost:8080/request';
   
@@ -31,8 +30,8 @@ export class RequestService {
   }
 
   //Update request status
-  updateRequest(body:string):Observable<Request[]> {
-    return this.client.put<Request[]>(this.baseUrl, body, this.httpOptions).pipe(
+  updateRequest(body:string):Observable<Request> {
+    return this.client.put<Request>(this.baseUrl, body, this.httpOptions).pipe(
       retry(3), 
       catchError(this.errorHandler)
     )
