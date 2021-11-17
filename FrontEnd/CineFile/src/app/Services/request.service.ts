@@ -9,6 +9,7 @@ import { catchError, retry } from 'rxjs';
 })
   
 export class RequestService {
+  public requestLength!: number;
 
   baseUrl = 'http://localhost:8080/request';
   

@@ -1,1 +1,16 @@
-<p>admin-login works!</p>
+<div class="content" role="main">
+
+  <div class="card">
+
+    <form>
+      <p> Enter your admin credentials to login:</p>
+      <div class="form-control">
+        <input type="text" name="userName" [(ngModel)]="username" id="username" placeholder="Username" required/>
+        <label for="password">Password:</label>
+        <input type="text" name="password" [(ngModel)]="password" id="password" placeholder="Password" required/>
+
+      </div>
+      <button class="submit-btn" (click)="onLogin()">Submit</button>
+      </form>
+  </div>
+</div>
