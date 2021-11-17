@@ -20,9 +20,9 @@ export class RegisterService {
     })
   }
   //post
-  saveNewUser(body: Object): Observable<HttpResponse<RegisterUser[]>> {
+  saveNewUser(body: Object): Observable<RegisterUser[]> {
     console.log(JSON.stringify(body));
-    return this.http.post<RegisterUser[]>(this.baseUrl, JSON.stringify(body), this.httpOptions, {observe:'response'})
+    return this.http.post<RegisterUser[]>(this.baseUrl, JSON.stringify(body), this.httpOptions)
     .pipe(
       retry(0),
       catchError(this.errorHandler)
