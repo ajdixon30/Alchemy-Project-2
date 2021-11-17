@@ -1,0 +1,39 @@
+/* HTML selectors (most general) */
+
+a{
+  color: #ffffff;
+  text-decoration: none;
+}
+a:active, a:hover{
+  color: #ffcc41;
+}
+.icon{
+  height: 50px;
+  width: 50px;
+}
+.navbar-brand{
+  font-size: 4rem;
+}
+.img-div{
+  text-align: center;
+
+}
+.nav-links{
+  text-align: right;
+  margin-right: 10px;
+}
+nav{
+  background-color: rgba(0, 0, 0, 0.637);
+
+}
+/* class selectors (can have multiple applied to one element/tag) */
+.navbar{
+  text-align: center;
+}
+
+.top-div{
+  /* this will become a card styling component */
+}
+
+
+/* id selectors (most specific) */

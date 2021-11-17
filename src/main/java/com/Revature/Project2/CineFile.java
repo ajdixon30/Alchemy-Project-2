@@ -1,6 +1,7 @@
 package com.Revature.Project2;
 import com.Revature.Project2.services.DatabaseLogger;
 import com.Revature.Project2.services.GetMovies;
+import com.Revature.Project2.services.ManageRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,13 +19,8 @@ public class CineFile {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(CineFile.class, args);
-
-		DatabaseLogger logger = context.getBean(DatabaseLogger.class);
-		logger.writeLog("Server started.", 1);
-
 		GetMovies getMovies = context.getBean(GetMovies.class);
 		getMovies.populateMovieTable();
-
 	}
 
 }

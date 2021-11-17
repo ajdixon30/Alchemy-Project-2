@@ -45,13 +45,14 @@ public class RequestController {
 
     /**
      * Saves a new request to the DB
-     * @param addRequest new addRequest string provided in the request parameters
+     * @param request new request object provided in the request body
      * @return a ResponseEntity initialized by requestAddition(request)
      */
     @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
     @PostMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity post(@RequestParam String addRequest){
-        return new ResponseEntity(manageRequest.requestAddition(addRequest));
+    public ResponseEntity<HttpStatus> post(@RequestBody Request request){
+        System.out.println("this is the request: " + request.getAddRequest());
+        return new ResponseEntity(manageRequest.requestAddition(request.getAddRequest()));
     }
 
     /**

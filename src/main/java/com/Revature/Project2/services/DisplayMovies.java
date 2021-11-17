@@ -18,14 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-//Methods for displaying list of movies
+/**
+ * Class for displaying filtered movies
+ */
 @Service
 @Transactional
 public class DisplayMovies {
     private String APIKey;
     List<String> movieID = new ArrayList<>();
-    List<Movie> movies = new ArrayList<>();
-    List<List> titleGenre = new ArrayList<>();
     private final MovieRepo movieRepo;
     private final DatabaseLogger logger;
 
@@ -48,7 +48,7 @@ public class DisplayMovies {
             props.load(fileIn);
             APIKey = props.getProperty("APIKey");
         } catch (IOException e) {
-            logger.writeLog("IOException found in acquireAPIKey.", 3);;
+            logger.writeLog("IOException found in acquireAPIKey.", 3);
         }
     }
     public List<String> filterMovies(String filter, String value) {

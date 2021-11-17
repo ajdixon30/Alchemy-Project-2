@@ -1,0 +1,9 @@
+div {
+    text-align: center;
+    padding: 30px 0;
+    width: 100%;
+}
+
+input, button {
+    margin-left: 15px;
+}

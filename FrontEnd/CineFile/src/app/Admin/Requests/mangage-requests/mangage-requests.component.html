@@ -1,0 +1,13 @@
+<div>
+    <h2>Manage Requests Menu</h2>
+    <form>
+        <div>
+            <label for="request">Select a request id: </label>
+            <input id="request" type="number" value="1" min="1" max=24 /><br> <!-- Manually set the max value equal to the current number of requests -->
+            <br>
+            <button mat-raised-button (click)="accept()">Accept Request</button>
+            <button mat-raised-button (click)="reject()">Request Request</button>
+        </div>
+    </form>
+</div>
+
