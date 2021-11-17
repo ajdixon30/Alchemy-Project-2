@@ -10,24 +10,24 @@ import { MovieService } from 'src/app/Services/movie.service';
 export class MangageMoviesComponent implements OnInit {
   public movieService: MovieService;
   public movie: Movie[] = [];
-  public title!:string;
-  public id!:number;
+  public _title!:string;
+  public _id!:number;
 
   constructor(_movieService: MovieService) {
     this.movieService = _movieService;
    }
 
   newMovie(){
-    this.title = (document.getElementById("title") as HTMLInputElement).value;
-    let body = JSON.stringify({title:this.title});
+    this._title = (document.getElementById("title") as HTMLInputElement).value;
+    let body = JSON.stringify({title:this._title});
     this.movieService.newMovie(body).subscribe(data => {
       console.log(data)
     })
   }
 
   deleteMovie(){
-    this.id = (document.getElementById("movieId") as HTMLInputElement).valueAsNumber;
-    this.movieService.deleteMovie(this.id).subscribe(data => {
+    this._id = (document.getElementById("movieId") as HTMLInputElement).valueAsNumber;
+    this.movieService.deleteMovie(this._id).subscribe(data => {
       console.log(data)
     })
   }
