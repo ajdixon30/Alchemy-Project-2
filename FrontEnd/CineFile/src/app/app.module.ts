@@ -1,5 +1,4 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomePageComponent } from './home-page/home-page.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +14,10 @@ import { AdminHomePageComponent } from './Admin/admin-home-page/admin-home-page.
 import { MangageRequestsComponent } from './Admin/Requests/mangage-requests/mangage-requests.component';
 import { MangageMoviesComponent } from './Admin/Movies/mangage-movies/mangage-movies.component';
 import { AdminMovieTableComponent } from './Admin/Movies/admin-movie-table/admin-movie-table.component';
+import { RequestMovieComponent } from './User/request-movie/request-movie.component';
+import { FilterMovieComponent } from './User/filter-movie/filter-movie.component';
+import { DisplayMoviesComponent } from './User/display-movies/display-movies.component';
+import { MainPageMoviesComponent } from './main-page-movies/main-page-movies.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +26,16 @@ import { AdminMovieTableComponent } from './Admin/Movies/admin-movie-table/admin
     LoginPageComponent,
     NavbarComponent,
     ViewRequestsComponent,
-    HomePageComponent,
     CustomerSignupComponent,
     AdminLoginComponent,
     AdminHomePageComponent,
     MangageRequestsComponent,
     MangageMoviesComponent,
-    AdminMovieTableComponent
+    AdminMovieTableComponent,
+    RequestMovieComponent,
+    FilterMovieComponent,
+    DisplayMoviesComponent,
+    MainPageMoviesComponent
   ],
   imports: [
     BrowserModule,
