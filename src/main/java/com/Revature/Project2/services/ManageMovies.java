@@ -21,7 +21,7 @@ public class ManageMovies {
         repo.save(movie);
     }
 
-    public static void deleteMovie(Movie movie){
-        repo.delete(movie);
+    public static void deleteMovie(Integer id){
+        repo.deleteById(id);
     }
 }

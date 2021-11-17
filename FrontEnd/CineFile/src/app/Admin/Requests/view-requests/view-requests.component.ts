@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Request } from '../../../DTOs/request';
-import { RequestService } from '../request.service';
+import { RequestService } from '../../../Services/request.service';
 
 @Component({
   selector: 'app-view-requests',
@@ -11,7 +11,6 @@ import { RequestService } from '../request.service';
 export class ViewRequestsComponent implements OnInit {
   public requestService : RequestService;
   public requests: Request[] = [];
-  public requestLength!:number;
 
   constructor(_requestService : RequestService){
     this.requestService = _requestService;
@@ -26,6 +25,7 @@ export class ViewRequestsComponent implements OnInit {
         console.log(item);
       }
     })
+
   }
 
   

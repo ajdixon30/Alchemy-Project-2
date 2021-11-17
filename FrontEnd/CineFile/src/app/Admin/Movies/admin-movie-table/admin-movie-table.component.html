@@ -1,0 +1,19 @@
+<main id="view">
+    <div id="table">
+        <tr>
+            <th>Movie Id</th>
+            <th>Movie Title</th>
+            <th>Genre</th>
+            <th>Year</th> 
+        </tr>
+        <tr *ngFor="let movie of movies;">
+            <td>{{movie.id}}</td>
+            <td>{{movie.title}}</td>
+            <td>{{movie.genre}}</td>
+            <td>{{movie.year}}</td>
+        </tr>
+    </div>
+    <div id="manage">
+        <app-mangage-movies></app-mangage-movies>
+    </div>
+</main>

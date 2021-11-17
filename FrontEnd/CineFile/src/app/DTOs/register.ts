@@ -3,5 +3,5 @@ export interface RegisterUser{
   lastName: string;
   username: string;
   password: string;
-  admin: 0;
+  admin: boolean;
 }
