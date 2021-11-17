@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: "customer-signup", component: CustomerSignupComponent},
   { path: "customer-login", component: LoginPageComponent },
   { path: "view-request", component: ViewRequestsComponent},
-  { path: "user-home", component: CustomerHomePageComponent},
+  { path: "user-home", component: CustomerHomePageComponent },
   { path: "admin-home", component: AdminHomePageComponent},
   { path: "admin-movie-table", component: AdminMovieTableComponent}
 ];

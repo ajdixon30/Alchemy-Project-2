@@ -24,14 +24,9 @@ export class CustomerSignupComponent implements OnInit {
   onSubmit(): void {
     // //docs simply state to process data here
     let body = {firstName: this.firstName, lastName: this.lastName, username: this.username, password: this.password, admin: this.admin};
-    // this.id = (document.getElementById("request") as HTMLInputElement).valueAsNumber;\
     this.registerService.saveNewUser(body).subscribe();
 
     console.log(body);
-    // this.firstName="";
-    // this.lastName="";
-    // this.username="";
-    // this.password="";
   }
 
   ngOnInit(): void {
