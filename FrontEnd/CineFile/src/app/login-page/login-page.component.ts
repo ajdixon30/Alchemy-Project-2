@@ -22,6 +22,7 @@ export class LoginPageComponent implements OnInit {
     this.loginService.getUser(this.username, this.password).subscribe(data=> {
       let status = (data.status);
       if(status >= 200 && status < 205){
+        localStorage.setItem('user', this.username);
         this.router.navigate(['/user-home']);
       }else{
         this.username="";
