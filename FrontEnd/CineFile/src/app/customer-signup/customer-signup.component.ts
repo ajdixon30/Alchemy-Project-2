@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RegisterService } from 'src/app/Services/register.service';
+import { RegisterService } from '../Services/register.service';
 
 @Component({
   selector: 'app-customer-signup',
