@@ -1,8 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { observeNotification } from 'rxjs/internal/Notification';
-import { RegisterUser } from '../DTOs/register';
-import { RegisterService } from './register.service';
+import { Component, OnInit } from '@angular/core';
+import { RegisterService } from '../Services/register.service';
 
 @Component({
   selector: 'app-customer-signup',

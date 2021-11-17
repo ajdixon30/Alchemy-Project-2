@@ -1,17 +1,14 @@
-import { Login } from './../DTOs/login';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Observable, catchError, retry, throwError } from 'rxjs';
+import { HttpResponse, HttpClient, HttpHeaders } from '@angular/common/http';
+import { Login } from '../DTOs/login';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root'
 })
+export class AdminService {
 
-export class LoginService {
-
-  baseUrl = 'http://localhost:8080/login';//not sure if this is the right thing to have here for the service
+  baseUrl = "http://localhost:8080/admin";
 
   constructor(private client: HttpClient) { }
 
@@ -45,5 +42,4 @@ export class LoginService {
     console.log(message);
     return throwError(() => new Error(message));
   }
-
 }
