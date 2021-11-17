@@ -1,6 +1,6 @@
 import { Observable, catchError, retry, throwError } from 'rxjs';
 import { HttpResponse, HttpClient, HttpHeaders } from '@angular/common/http';
-import { Login } from './../../DTOs/login';
+import { Login } from '../DTOs/login';
 import { Injectable } from '@angular/core';
 
 @Injectable({

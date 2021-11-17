@@ -1,4 +1,4 @@
-import { AdminService } from './admin.service';
+import { AdminService } from 'src/app/Services/admin.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
