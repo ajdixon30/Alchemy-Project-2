@@ -4,16 +4,20 @@
             <app-view-requests></app-view-requests>
         </div>
         <div *ngIf="manage==false">
-            <h1>Hi</h1>
+            <app-admin-movie-table></app-admin-movie-table>
         </div>
     </div>
     <div id = "manage">
         <div id = "links">
-            <router-outlet id=nav1 routerLink="/manage-requests" routerLinkActive="active" (click)="manageTrue()"> 
-                Manage Requests
+            <router-outlet>
+                <a id=nav1 routerLink="/manage-requests" routerLinkActive="active" (click)="manageTrue()"> 
+                    Manage Requests
+                </a>
             </router-outlet>
-            <router-outlet id=nav2 routerLink="/manage-movies" routerLinkActive="active" (click)="manageFalse()"> 
-                Manage Movies
+            <router-outlet> 
+                <a id=nav2 routerLink="/manage-movies" routerLinkActive="active" (click)="manageFalse()">
+                    Manage Movies
+                </a>
             </router-outlet>
         </div>
     </div>

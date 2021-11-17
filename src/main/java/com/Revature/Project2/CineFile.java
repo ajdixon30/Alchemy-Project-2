@@ -19,9 +19,9 @@ public class CineFile {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(CineFile.class, args);
-//
-//		GetMovies getMovies = context.getBean(GetMovies.class);
-//		getMovies.populateMovieTable();
+
+		GetMovies getMovies = context.getBean(GetMovies.class);
+		getMovies.populateMovieTable();
 	}
 
 }
