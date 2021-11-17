@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
   constructor(private route:Router) {}
 
   ngOnInit(): void {
-    // this.route.navigate(['/movie-bar']);
+    this.route.navigate(['/movie-bar']);
   }
 
 }
