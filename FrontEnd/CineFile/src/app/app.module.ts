@@ -16,6 +16,7 @@ import { MangageRequestsComponent } from './Admin/Requests/mangage-requests/mang
 import { MangageMoviesComponent } from './Admin/Movies/mangage-movies/mangage-movies.component';
 import { AdminMovieTableComponent } from './Admin/Movies/admin-movie-table/admin-movie-table.component';
 import { RequestMovieComponent } from './User/customer-home-page/request-movie/request-movie.component';
+import { MainPageMoviesComponent } from './main-page-movies/main-page-movies.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RequestMovieComponent } from './User/customer-home-page/request-movie/r
     MangageRequestsComponent,
     MangageMoviesComponent,
     AdminMovieTableComponent,
-    RequestMovieComponent
+    RequestMovieComponent,
+    MainPageMoviesComponent
   ],
   imports: [
     BrowserModule,
