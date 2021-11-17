@@ -17,6 +17,7 @@ import { AdminMovieTableComponent } from './Admin/Movies/admin-movie-table/admin
 import { RequestMovieComponent } from './User/request-movie/request-movie.component';
 import { FilterMovieComponent } from './User/filter-movie/filter-movie.component';
 import { DisplayMoviesComponent } from './User/display-movies/display-movies.component';
+import { MainPageMoviesComponent } from './main-page-movies/main-page-movies.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DisplayMoviesComponent } from './User/display-movies/display-movies.com
     AdminMovieTableComponent,
     RequestMovieComponent,
     FilterMovieComponent,
-    DisplayMoviesComponent
+    DisplayMoviesComponent,
+    MainPageMoviesComponent
   ],
   imports: [
     BrowserModule,
