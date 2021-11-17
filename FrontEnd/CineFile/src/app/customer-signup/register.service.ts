@@ -1,6 +1,5 @@
 import { RegisterUser } from './../DTOs/register';
-
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError, retry, catchError } from 'rxjs';
 
@@ -16,19 +15,19 @@ export class RegisterService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json;charset=utf-8'
+      'Content-Type': 'application/json'
     })
   }
   //post
-  saveNewUser(body: Object): Observable<HttpResponse<RegisterUser[]>> {
+  saveNewUser(body: Object): Observable<RegisterUser[]> {
     console.log(JSON.stringify(body));
-    return this.http.post<RegisterUser[]>(this.baseUrl, JSON.stringify(body), this.httpOptions, {observe:'response'})
+    body = JSON.stringify(body);
+    return this.http.post<RegisterUser[]>(this.baseUrl, body, this.httpOptions)
     .pipe(
-      retry(0),
+      retry(1),
       catchError(this.errorHandler)
     );
-   }//Trying to redirect user to customer home pahe after registration is success. Might just need to pull the plug on this idea
-
+   }
 
   errorHandler(error: any) {
     let message = '';
@@ -43,7 +42,7 @@ export class RegisterService {
 
     //Save the error message here//
 
-    // console.log(message);
+    console.log(message);
     return throwError(() => new Error(message));
   }
 

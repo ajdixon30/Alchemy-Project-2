@@ -10,10 +10,10 @@ import { ViewRequestsComponent } from './Admin/Requests/view-requests/view-reque
 import { CustomerSignupComponent } from './customer-signup/customer-signup.component';
 import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgModule } from '@angular/core';
 import { AdminHomePageComponent } from './Admin/admin-home-page/admin-home-page.component';
 import { MangageRequestsComponent } from './Admin/Requests/mangage-requests/mangage-requests.component';
-import { NgModule } from '@angular/core';
+import { MangageMoviesComponent } from './Admin/mangage-movies/mangage-movies.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { NgModule } from '@angular/core';
     CustomerSignupComponent,
     AdminLoginComponent,
     AdminHomePageComponent,
-    MangageRequestsComponent
+    MangageRequestsComponent,
+    MangageMoviesComponent,
   ],
   imports: [
     BrowserModule,
