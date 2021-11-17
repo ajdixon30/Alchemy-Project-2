@@ -1,5 +1,5 @@
 import { Router} from '@angular/router';
-import { LoginService } from './login.service';
+import { LoginService } from 'src/app/Services/login.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -19,7 +19,7 @@ export class LoginPageComponent implements OnInit {
 
   onLogin(){
 
-    this.loginService.getUser(this.username, this.password).subscribe(data=> {
+    this.loginService.getUser(this.username, this.password).subscribe(data => {
       let status = (data.status);
       if(status >= 200 && status < 205){
         this.router.navigate(['/user-home']);

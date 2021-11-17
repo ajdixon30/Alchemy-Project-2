@@ -23,8 +23,14 @@ import { RequestMovieComponent } from './User/customer-home-page/request-movie/r
     CustomerHomePageComponent,
     LoginPageComponent,
     NavbarComponent,
+    ViewRequestsComponent,
     HomePageComponent,
     CustomerSignupComponent,
+    AdminLoginComponent,
+    AdminHomePageComponent,
+    MangageRequestsComponent,
+    MangageMoviesComponent,
+    AdminMovieTableComponent,
     RequestMovieComponent
   ],
   imports: [

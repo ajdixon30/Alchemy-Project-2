@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { observeNotification } from 'rxjs/internal/Notification';
 import { RegisterUser } from '../DTOs/register';
-import { RegisterService } from './register.service';
+import { RegisterService } from 'src/app/Services/register.service';
 
 @Component({
   selector: 'app-customer-signup',
