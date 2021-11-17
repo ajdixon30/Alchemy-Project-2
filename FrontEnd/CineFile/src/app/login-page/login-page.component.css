@@ -1,3 +1,16 @@
+form+p{
+  margin: 0 0 0;
+}
+
+a{
+  color: #000;
+  text-decoration: none;
+}
+a:active, a:hover{
+  color: #FF1E56;
+  transition:all 0.2s ease-in-out;
+  text-shadow: #000;
+}
 button{
   border-radius: 25px;
   background-color: #ffcc41; /* Green */
@@ -9,16 +22,19 @@ button{
   display: inline-block;
   font-size: inherit;
 }
-.submit-btn:hover{
-  background-color: #eba800;
-  color: black;
-  cursor: pointer;
-}
-
 input{
   height: 25px;
   margin-bottom: 5%;
 }
+
+.submit-btn:hover{
+  background-color: #eba800;
+  color: black;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+
+
 .card {
   all: unset;
   border-radius: 4px;
@@ -35,7 +51,9 @@ input{
   line-height: 24px;
   color: black;
 }
-
+.register-para{
+  margin: 10px 0px 0px 0px;
+}
 
 .content {
   display: flex;

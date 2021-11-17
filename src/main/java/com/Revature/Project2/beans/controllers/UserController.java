@@ -3,7 +3,7 @@ package com.Revature.Project2.beans.controllers;
 import com.Revature.Project2.beans.pojos.User;
 import com.Revature.Project2.services.Login;
 import com.Revature.Project2.services.Register;
-import org.springframework.beans.factory.annotation.Autowired;;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -56,6 +56,7 @@ public class UserController {
     @CrossOrigin
     @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<HttpStatus> post(@RequestBody User user){
+        System.out.println("hit servlet / controller");
         return new ResponseEntity(register.userRegister(user));
     }
 
