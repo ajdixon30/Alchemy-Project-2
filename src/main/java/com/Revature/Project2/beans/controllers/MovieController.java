@@ -42,7 +42,7 @@ public class MovieController {
      * @param filter keyword provided by the request parameter
      * @param value keyword provided by the request parameter
      * @return a List of movies related to the provided filter
-     */git
+     */
     @CrossOrigin
     @GetMapping(value = "/filter", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<String> filterMovie(@RequestParam String filter, String value) {
