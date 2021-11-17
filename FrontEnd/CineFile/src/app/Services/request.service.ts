@@ -38,6 +38,13 @@ export class RequestService {
     )
   }
 
+  newRequest(body:string):Observable<Request> {
+    return this.client.post<Request>(this.baseUrl, body, this.httpOptions).pipe(
+      retry(3), 
+      catchError(this.errorHandler)
+    )
+  }
+
   errorHandler(error: any) {
     let message = "";
     if(error.error instanceof ErrorEvent) {

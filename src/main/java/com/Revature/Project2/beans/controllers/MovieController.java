@@ -35,13 +35,14 @@ public class MovieController {
     @CrossOrigin
     @PostMapping(value = "/newMovie", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<HttpStatus> newMovie(@RequestBody Movie movie){//TODO: Clean up controller
+        System.out.println("I can get here!!!");
         return new ResponseEntity(get.addNewMovie(movie.getTitle()));
     }
 
     /**
      * Filters all of current movies depending on the filter keyword
-     * @param filter keyword provided by request paramater
-     * @param value
+     * @param filter keyword provided by the request parameter
+     * @param value keyword provided by the request parameter
      * @return a List of movies related to the provided filter
      */
     @CrossOrigin
@@ -60,6 +61,10 @@ public class MovieController {
         return display.displayAllMovies();
     }
 
+    /**
+     * Removes a movie from the database
+     * @param id requires the movie id.
+     */
     @CrossOrigin
     @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void deleteMovie(@RequestParam Integer id) {
