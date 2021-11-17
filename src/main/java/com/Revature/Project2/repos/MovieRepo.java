@@ -28,12 +28,5 @@ public interface MovieRepo extends JpaRepository<Movie, Integer> {
     @Query(value = "DELETE FROM movie WHERE title = ?1", nativeQuery = true)
     void deleteMovie(String title);
 
-    /**
-     * native
-     * @return average of selected movie
-     */
-    @Query("SELECT AVG(m.) FROM Movie m WHERE m.id == id")
-    double average(int id);
-
 
 }
