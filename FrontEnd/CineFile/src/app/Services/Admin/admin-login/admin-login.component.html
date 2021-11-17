@@ -3,7 +3,7 @@
   <div class="card">
 
     <form>
-      <p> Enter your information to Login:</p>
+      <p> Enter your admin credentials to login:</p>
       <div class="form-control">
         <input type="text" name="userName" [(ngModel)]="username" id="username" placeholder="Username" required/>
         <label for="password">Password:</label>
@@ -11,8 +11,6 @@
 
       </div>
       <button class="submit-btn" (click)="onLogin()">Submit</button>
-      <p class="register-para">Need an account?</p>
-        <a routerLink="/customer-signup" routerLinkActive="active">Click Here</a>
       </form>
   </div>
 </div>

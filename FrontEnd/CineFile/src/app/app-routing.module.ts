@@ -1,3 +1,5 @@
+import { AdminHomePageComponent } from './Admin/admin-home-page/admin-home-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
 import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 import { CustomerSignupComponent } from './customer-signup/customer-signup.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -11,6 +13,8 @@ const routes: Routes = [
   { path: "customer-signup", component: CustomerSignupComponent},
   { path: "customer-login", component: LoginPageComponent },
   { path: "view-request", component: ViewRequestsComponent},
+  { path: "user-home", component: HomePageComponent },
+  { path: "admin-home", component: AdminHomePageComponent}
   { path: "admin-movie-table", component: AdminMovieTableComponent}
 ];
 

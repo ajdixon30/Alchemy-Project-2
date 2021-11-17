@@ -1,1 +1,23 @@
-<p>customer-signup works!</p>
+<div class="content" role="main">
+
+  <div class="card">
+
+    <form>
+      <p> Enter your information to signup:</p>
+      <div class="form-control">
+        <label for="firstName">First Name:</label>
+        <input type="text" name="firstName" [(ngModel)]="firstName" id="firstName" placeholder="First Name" required/><br>
+        <label for="lastName">Last Name:</label>
+        <input type="text" name="lastName" [(ngModel)]="lastName" id="lastName" placeholder="Last Name" required/>
+        <label for="username">Username:</label>
+        <input type="text" name="userName" [(ngModel)]="username" id="username" placeholder="Username" required/>
+        <label for="password">Password:</label>
+        <input type="text" name="password" [(ngModel)]="password" id="password" placeholder="Password" required/>
+      </div>
+
+      <button class="submit-btn" (click)="onSubmit()">Submit</button>
+    </form>
+  </div>
+</div>
+
+
