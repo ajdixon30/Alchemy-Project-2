@@ -13,7 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AdminHomePageComponent } from './Admin/admin-home-page/admin-home-page.component';
 import { MangageRequestsComponent } from './Admin/Requests/mangage-requests/mangage-requests.component';
-import { MangageMoviesComponent } from './Admin/mangage-movies/mangage-movies.component';
+import { MangageMoviesComponent } from './Admin/Movies/mangage-movies/mangage-movies.component';
+import { AdminMovieTableComponent } from './Admin/Movies/admin-movie-table/admin-movie-table.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MangageMoviesComponent } from './Admin/mangage-movies/mangage-movies.co
     AdminHomePageComponent,
     MangageRequestsComponent,
     MangageMoviesComponent,
+    AdminMovieTableComponent
   ],
   imports: [
     BrowserModule,

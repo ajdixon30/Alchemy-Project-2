@@ -1,12 +1,12 @@
-<main id="boxes">
-    <div id="c1">
-        <app-view-requests></app-view-requests>
-    </div>
-    <div id="c2">
-        <app-mangage-requests></app-mangage-requests>
-    </div>
-    <div id="c3">
-        <app-mangage-movies></app-mangage-movies>
-    </div>
-
-</main>
+<header>
+    <router-outlet>
+        <a routerLink="/view-request" routerLinkActive="active"> 
+            Manage Requests
+        </a>
+    </router-outlet>      
+    <router-outlet> 
+        <a id=nav2 routerLink="/admin-movie-table" routerLinkActive="active">
+            Manage Movies
+        </a>
+    </router-outlet>  
+</header>

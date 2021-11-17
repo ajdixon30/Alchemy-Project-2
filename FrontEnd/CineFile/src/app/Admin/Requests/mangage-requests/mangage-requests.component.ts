@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Request } from '../../../DTOs/request';
 import { RequestService } from '../../../Services/request.service';
-import { ViewRequestsComponent } from '../view-requests/view-requests.component';
 
 @Component({
   selector: 'app-mangage-requests',
@@ -10,7 +8,6 @@ import { ViewRequestsComponent } from '../view-requests/view-requests.component'
 })
 export class MangageRequestsComponent implements OnInit {
   public requestService : RequestService;
-  public request: Request[] = [];
   public id!:number;
 
   constructor(_requestService : RequestService){
@@ -35,7 +32,6 @@ reject(){
 }
 
   ngOnInit(): void {
-    
   }
 
 }
