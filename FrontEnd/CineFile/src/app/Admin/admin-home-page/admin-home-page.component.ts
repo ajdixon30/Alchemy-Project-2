@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-home-page',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AdminHomePageComponent implements OnInit {
   public manage:boolean = true;
 
-  constructor() { }
+  constructor(private router:Router) {   }
 
   manageTrue(){
     this.manage = true;
@@ -16,6 +17,7 @@ export class AdminHomePageComponent implements OnInit {
 
   manageFalse(){
     this.manage = false;
+    this.router.navigate(['/manage-movies']);
   }
 
   ngOnInit(): void {
