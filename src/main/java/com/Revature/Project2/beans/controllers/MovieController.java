@@ -35,7 +35,6 @@ public class MovieController {
     @CrossOrigin
     @PostMapping(value = "/newMovie", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<HttpStatus> newMovie(@RequestBody Movie movie){//TODO: Clean up controller
-        System.out.println("I can get here!!!");
         return new ResponseEntity(get.addNewMovie(movie.getTitle()));
     }
 

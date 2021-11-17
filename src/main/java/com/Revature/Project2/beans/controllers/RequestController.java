@@ -51,7 +51,6 @@ public class RequestController {
     @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
     @PostMapping(value = "/request", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<HttpStatus> post(@RequestBody Request request){
-        System.out.println("this is the request: " + request.getAddRequest());
         return new ResponseEntity(manageRequest.requestAddition(request.getAddRequest()));
     }
 
