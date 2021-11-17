@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: "customer-login", component: LoginPageComponent },
   { path: "view-request", component: ViewRequestsComponent},
   { path: "user-home", component: HomePageComponent },
-  { path: "admin-home", component: AdminHomePageComponent}
+  { path: "admin-home", component: AdminHomePageComponent},
   { path: "admin-movie-table", component: AdminMovieTableComponent}
 ];
 
