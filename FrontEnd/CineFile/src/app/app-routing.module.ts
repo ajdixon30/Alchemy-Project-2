@@ -1,5 +1,4 @@
 import { AdminHomePageComponent } from './Admin/admin-home-page/admin-home-page.component';
-import { HomePageComponent } from './home-page/home-page.component';
 import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 import { CustomerSignupComponent } from './customer-signup/customer-signup.component';
 import { LoginPageComponent } from './login-page/login-page.component';
