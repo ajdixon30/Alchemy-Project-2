@@ -3,7 +3,7 @@
     <form>
         <div>
             <label for="request">Select a request id: </label>
-            <input id="request" type="number" value="1" min="1" [max]="max" /><br> <!-- Manually set the max value equal to the current number of requests -->
+            <input id="request" type="number" value="1" min="1" [max]="max" /><br>
             <br>
             <button mat-raised-button (click)="accept()">Accept Request</button>
             <button mat-raised-button (click)="reject()">Reject Request</button>

@@ -17,6 +17,7 @@ export class MangageMoviesComponent implements OnInit {
     this.movieService = _movieService;
    }
 
+  //Saves movies to the database 
   newMovie(){
     this._title = (document.getElementById("title") as HTMLInputElement).value;
     // let body = JSON.stringify({title:this._title});
@@ -26,6 +27,7 @@ export class MangageMoviesComponent implements OnInit {
     })
   }
 
+  //Deletes movies from the database
   deleteMovie(){
     this._id = (document.getElementById("movieId") as HTMLInputElement).valueAsNumber;
     this.movieService.deleteMovie(this._id).subscribe(data => {

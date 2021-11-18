@@ -15,14 +15,14 @@ export class MangageRequestsComponent implements OnInit {
     this.requestService = _requestService;
   }
 
+  //Gets the largest request Id from the database
   checkMax(){
     this.requestService.getMax().subscribe(data =>{
       this.max = data;
-      console.log("count: " + data);
-      console.log("max: " + this.max);
     })
   }
 
+  //Updates the request status for the selected request
   accept() {
     this._id = (document.getElementById("request") as HTMLInputElement).valueAsNumber;
     let body = JSON.stringify({id:this._id,requestStatus:"Accepted"});
@@ -31,6 +31,7 @@ export class MangageRequestsComponent implements OnInit {
     })
   }
 
+  //Updates the request status for the selected request
   reject(){
     this._id = (document.getElementById("request") as HTMLInputElement).valueAsNumber;
     let body = JSON.stringify({id:this._id,requestStatus:"Rejected"});
@@ -39,6 +40,7 @@ export class MangageRequestsComponent implements OnInit {
     })
   }
 
+  //Gets the max request id everytime this component is initiallized
   ngOnInit(): void {
     this.checkMax();
   }
