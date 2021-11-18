@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { LoginService } from './../Services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../Services/login.service';
@@ -11,7 +13,9 @@ import { RegisterService } from '../Services/register.service';
 export class CustomerSignupComponent implements OnInit {
   public registerService:RegisterService;
   public loginService:LoginService;
+
   private route:Router;
+
 
   firstName: string = "";
   lastName: string = "";
@@ -24,6 +28,7 @@ export class CustomerSignupComponent implements OnInit {
     this.registerService=_registerService;
     this.loginService=loginService;
     this.route=route;
+
   }
 
 
@@ -31,6 +36,7 @@ export class CustomerSignupComponent implements OnInit {
     // //docs simply state to process data here
     let body = {firstName: this.firstName, lastName: this.lastName, username: this.username, password: this.password, admin: this.admin};
     this.part1(body);
+
     console.log(body);
   }
 
