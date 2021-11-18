@@ -21,6 +21,12 @@ export class FilterMovieComponent implements OnInit {
     this.movieService = _movieService;
    }
 
+  /*  
+  Function to get all movies in the database
+  Stores the movie objects in an array
+  Stores the genres and years in sets for use 
+  in movie filtering
+  */
   ngOnInit(): void {
     this.movieService.getMovies().subscribe(data => {
       for(const item of data) {
@@ -32,7 +38,11 @@ export class FilterMovieComponent implements OnInit {
     })
     this.movies = [];
   }
-
+/*
+Function to search for gathering the list of filtered movies
+This function returns all movies which match th criteria of 
+the search filter
+*/
   onSearch(): void {
     this.movieService.filterMovies(this.filter, this.value).subscribe(data => {
       for(const item of data) {

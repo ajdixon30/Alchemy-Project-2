@@ -1,25 +1,29 @@
+<!--This template describes how our Filter Movies Page is organized-->
 <div class="Filter">
+    <!-- This is the dropdown list which designates how the user is filtering -->
     <label for="filter">Filter: </label>
     <select name="filter" [(ngModel)]="filter" id="filter">
         <option value="genre">Genre</option>
         <option value="year">Year</option>
     </select>
-
+    <!-- If the User is filtering by Genre -->
     <select *ngIf="filter == 'genre'" name="value" [(ngModel)]="value" id="value">
+        <!-- Genreates options based on genres stored in our database -->
         <option *ngFor="let genre of genres" [value]="genre">
             {{genre}}
         </option>
     </select>
-
+    <!-- If the User is filtering by Year -->
     <select *ngIf="filter == 'year'" name="value" [(ngModel)]="value" id="value">
+        <!-- Generates options based on years stored in our database -->
         <option *ngFor="let year of years" [value]="year">
             {{year}}
         </option>
     </select>
-
+    <!-- Makes a function call to generate a list of filtered movies -->
     <button class="submit-btn" (click)="onSearch()">Search</button>
 </div>
-
+<!-- Presents the filtered list of movies on a table -->
 <div class="table">
 
     <tr>
