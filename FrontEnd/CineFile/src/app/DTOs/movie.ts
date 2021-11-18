@@ -2,6 +2,6 @@ export interface Movie {
     id: number;
     title: string;
     genre: string;
-    pictureId: string;
+    picture_id: string;
     year: string;
 }

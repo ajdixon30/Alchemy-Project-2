@@ -25,7 +25,7 @@ import java.util.Properties;
 @Transactional
 public class DisplayMovies {
     private String APIKey;
-    List<String> movieID = new ArrayList<>();
+    List<Movie> movieID = new ArrayList<>();
     private final MovieRepo movieRepo;
     private final DatabaseLogger logger;
 
@@ -51,7 +51,7 @@ public class DisplayMovies {
             logger.writeLog("IOException found in acquireAPIKey.", 3);
         }
     }
-    public List<String> filterMovies(String filter, String value) {
+    public List<Movie> filterMovies(String filter, String value) {
         acquireAPIKey();
         String movie = null;
         movieID.clear();
@@ -65,49 +65,49 @@ public class DisplayMovies {
                 Integer ParsedValue = Integer.parseInt(value);
                 movieID = movieRepo.filterYear(ParsedValue);
                 break;
-            case "keyword":
-                Request request = new Request.Builder()
-                        .url("https://data-imdb1.p.rapidapi.com/movie/byKeywords/" + value + "/?page_size=10")
-                        .get()
-                        .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
-                        .addHeader("x-rapidapi-key", APIKey)
-                        .build();
-
-                try {
-                    Response response = client.newCall(request).execute();
-                    movie = response.body().string();
-                    JSONObject json = new JSONObject(movie);
-                    JSONArray innerJson = json.getJSONArray("results");
-                    for(int i = 0; i < innerJson.length()- 1; i++) {
-                        movieID.add(innerJson.getJSONObject(i).getString("title"));
-                    }
-                } catch (IOException e) {
-                    logger.writeLog("IOException found in keyword case.", 3);
-                }
-                break;
-            case "rating":
-                request = new Request.Builder()
-                        .url("https://data-imdb1.p.rapidapi.com/movie/byContentRating/" + value + "/?page_size=10")
-                        .get()
-                        .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
-                        .addHeader("x-rapidapi-key", APIKey)
-                        .build();
-
-                try {
-                    for(int i = 0; i < 10; i++) {
-                        count = 0;
-                        Response response = client.newCall(request).execute();
-                        for (int j = 0; j < value.length(); j++) {
-                            count++;
-                        }
-                        movie = response.body().string().substring(114 + count);
-                        JSONArray json = new JSONArray(movie);
-                        movieID.add(json.getJSONObject(i).getString("title"));
-                    }
-                } catch (IOException e) {
-                    logger.writeLog("IOException found in rating case.", 3);
-                }
-                break;
+//            case "keyword":
+//                Request request = new Request.Builder()
+//                        .url("https://data-imdb1.p.rapidapi.com/movie/byKeywords/" + value + "/?page_size=10")
+//                        .get()
+//                        .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
+//                        .addHeader("x-rapidapi-key", APIKey)
+//                        .build();
+//
+//                try {
+//                    Response response = client.newCall(request).execute();
+//                    movie = response.body().string();
+//                    JSONObject json = new JSONObject(movie);
+//                    JSONArray innerJson = json.getJSONArray("results");
+//                    for(int i = 0; i < innerJson.length()- 1; i++) {
+//                        movieID.add(innerJson.getJSONObject(i).getString("title"));
+//                    }
+//                } catch (IOException e) {
+//                    logger.writeLog("IOException found in keyword case.", 3);
+//                }
+//                break;
+//            case "rating":
+//                request = new Request.Builder()
+//                        .url("https://data-imdb1.p.rapidapi.com/movie/byContentRating/" + value + "/?page_size=10")
+//                        .get()
+//                        .addHeader("x-rapidapi-host", "data-imdb1.p.rapidapi.com")
+//                        .addHeader("x-rapidapi-key", APIKey)
+//                        .build();
+//
+//                try {
+//                    for(int i = 0; i < 10; i++) {
+//                        count = 0;
+//                        Response response = client.newCall(request).execute();
+//                        for (int j = 0; j < value.length(); j++) {
+//                            count++;
+//                        }
+//                        movie = response.body().string().substring(114 + count);
+//                        JSONArray json = new JSONArray(movie);
+//                        movieID.add(json.getJSONObject(i).getString("title"));
+//                    }
+//                } catch (IOException e) {
+//                    logger.writeLog("IOException found in rating case.", 3);
+//                }
+//                break;
         }
         return movieID;
     }
