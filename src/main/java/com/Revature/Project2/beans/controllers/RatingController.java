@@ -34,6 +34,11 @@ public class RatingController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    /**
+     * Gets the average rating for a movie
+     * @param id Requires the movie id
+     * @return Returns a string containing the average formatted to two decimal points
+     */
     @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
     @GetMapping(value = "/average",produces = APPLICATION_JSON_VALUE)
     public String getAverageRating(@RequestParam Integer id){
