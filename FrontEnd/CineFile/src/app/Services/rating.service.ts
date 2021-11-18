@@ -31,6 +31,11 @@ export class RatingService {
     );
   }
 
+  getAverage(id:number):Observable<String>{
+    return this.http.get<String>(this.baseurl + "/average?id="+id).pipe(
+      catchError(this.errorHandler)
+    )
+  }
 
   errorHandler(error: any) {
     let message = "";

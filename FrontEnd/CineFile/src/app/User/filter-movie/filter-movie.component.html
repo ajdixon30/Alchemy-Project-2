@@ -26,14 +26,16 @@
         <th>Poster</th>
         <th>Movie Title</th>
         <th>Genre</th>
-        <th>Year</th>
+        <th>Release Date</th>
         <th>Ratings</th>
     </tr>
-    <tr *ngFor="let movie of movies;">
+    <tr *ngFor="let movie of movieList;">
         <td><img src="{{ movie.picture_id }}" width="100" height="100"></td>
-        <td>{{movie.title}}</td>
-        <td>{{movie.genre}}</td>
-        <td>{{movie.year}}</td>
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.genre }}</td>
+        <td>{{ movie.year }}</td>
+        <td *ngFor="let ratingList of movie.ratingsByMovie;">
+            {{ratingList.rating}} </td>
     </tr>
 
 

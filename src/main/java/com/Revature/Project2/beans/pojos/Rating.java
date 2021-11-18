@@ -19,7 +19,6 @@ import java.io.Serializable;
 @NoArgsConstructor(onConstructor = @__(@Autowired))
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class Rating implements Serializable {
-
     @Id
     @Column(name = "rating_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

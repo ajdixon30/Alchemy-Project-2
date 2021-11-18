@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs';
+import { display } from '../DTOs/displayMovie';
 import { Movie } from '../DTOs/movie';
 
 @Injectable({
@@ -23,9 +24,23 @@ export class MovieService {
   //Get all of the movies
   getMovies(): Observable<Movie[]> {
     return this.client.get<Movie[]>(this.baseUrl + "/display").pipe(
-      retry(3),
       catchError(this.errorHandler)
     )
+  }
+
+  getMoviesWithRating(): Observable<display[]>{
+    return this.client.get<display[]>(this.baseUrl+'/display').pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  filterRatedMovies(filter:string,value:string): Observable<display[]> {
+    //Set the parameters for the Http request
+    const params = new HttpParams()
+    .set("filter", filter)
+    .set("value", value);
+
+    return this.client.get<display[]>(this.baseUrl + "/filter", {params})
   }
 
   //Get filtered movies
@@ -42,7 +57,6 @@ export class MovieService {
   newMovie(body:string):Observable<Movie> {
 
     return this.client.post<Movie>(this.baseUrl + "/newMovie?movie=" + body, this.httpOptions).pipe(
-      retry(3), 
       catchError(this.errorHandler)
     )
   }
@@ -55,7 +69,6 @@ export class MovieService {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return this.client.delete<Movie>(this.baseUrl + "/delete", {headers, params}).pipe(
-      retry(3),
       catchError(this.errorHandler)
       )
   }
