@@ -1,16 +1,30 @@
 .request-form{
   background-color: rgba(0, 0, 0, 0.788);
   width: 75%;
-  text-decoration: none;
   position: relative;
-  left: 4%;
 }
 div {
     text-align: center;
 }
 
-button {
-    margin-left: 10px;
+.btn {
+    border-radius: 12px;
+    background-color: #ffcc41; /* Green */
+    border: none;
+    color: black;
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: inherit;
+    margin-left: 1%;
+}
+
+.btn:hover{
+    background-color: #eba800;
+    color: black;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
 }
 
 p, form {

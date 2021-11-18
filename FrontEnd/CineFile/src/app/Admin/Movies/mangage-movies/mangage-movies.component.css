@@ -4,6 +4,26 @@ div {
     width: 100%;
 }
 
-input, button {
+input {
     margin-left: 15px;
+}
+
+button{
+    margin-left: 15px;
+    border-radius: 12px;
+    background-color: #ffcc41; /* Green */
+    border: none;
+    color: black;
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: inherit;
+}
+
+button:hover{
+    background-color: #eba800;
+    color: black;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
 }
