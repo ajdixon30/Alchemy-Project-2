@@ -1,7 +1,9 @@
 package com.Revature.Project2;
+import com.Revature.Project2.beans.pojos.Movie;
 import com.Revature.Project2.services.DatabaseLogger;
 import com.Revature.Project2.services.GetMovies;
 import com.Revature.Project2.services.ManageRequest;
+import com.Revature.Project2.services.RateMovies;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,8 +21,10 @@ public class CineFile {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(CineFile.class, args);
-		GetMovies getMovies = context.getBean(GetMovies.class);
-		getMovies.populateMovieTable();
+//		GetMovies getMovies = context.getBean(GetMovies.class);
+//		getMovies.populateMovieTable();
+		RateMovies rateMovies = context.getBean(RateMovies.class);
+		rateMovies.getAvgRating(62);
 	}
 
 }
