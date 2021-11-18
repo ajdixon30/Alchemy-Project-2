@@ -21,7 +21,6 @@
   }
 
   .table {
-    position:relative;
     float: right;
     width: 100%;
     overflow:auto;
@@ -34,7 +33,9 @@
       padding: 5px 50px;
       position:relative;
       width: 75%;
+
   }
+  
 
   .manage {
     position: fixed;

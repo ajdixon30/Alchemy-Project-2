@@ -24,7 +24,7 @@ export class LoginService {
   getUser(username: string, password: string): Observable<HttpResponse<Login[]>> {
     return this.client.get<Login[]>(this.baseUrl + "?username="+username + "&password="+password, {observe:'response'})
     .pipe(
-      retry(1),
+      retry(0),
       catchError(this.errorHandler)
     )
   }

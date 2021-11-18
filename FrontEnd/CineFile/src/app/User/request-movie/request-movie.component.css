@@ -5,3 +5,15 @@
   position: relative;
   left: 4%;
 }
+div {
+    text-align: center;
+}
+
+button {
+    margin-left: 10px;
+}
+
+p, form {
+    padding: 10px 0;
+}
+
