@@ -16,6 +16,7 @@ export class ViewRequestsComponent implements OnInit {
     this.requestService = _requestService;
   }
 
+  //Gets all of the requests
   ngOnInit(): void {
     this.requestService.getRequests().subscribe(data => {
       console.log(data);

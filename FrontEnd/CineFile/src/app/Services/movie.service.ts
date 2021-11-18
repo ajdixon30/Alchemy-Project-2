@@ -38,7 +38,7 @@ export class MovieService {
     return this.client.get<Movie[]>(this.baseUrl + "/filter", {params})
   }
 
-  //Add new movie to the database
+  //Add new movie
   newMovie(body:string):Observable<Movie> {
 
     return this.client.post<Movie>(this.baseUrl + "/newMovie?movie=" + body, this.httpOptions).pipe(
@@ -47,7 +47,7 @@ export class MovieService {
     )
   }
 
-  //Delete a movie from the database
+  //Delete a movie
   deleteMovie(id:number):Observable<Movie> {
     //Set the parameters for the Http request
     const params = new HttpParams()
@@ -59,7 +59,8 @@ export class MovieService {
       catchError(this.errorHandler)
       )
   }
-
+  
+  //Method for handling errors/exceptions
   errorHandler(error: any) {
     let message = "";
     if(error.error instanceof ErrorEvent) {
