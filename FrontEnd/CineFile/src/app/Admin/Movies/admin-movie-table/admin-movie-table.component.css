@@ -19,14 +19,14 @@ table, tr, th, td {
 }
 
 .table {
-  float: right;
+  float: right; /* This floats the table to the right so that the table and the manage movies components are next to each other. */
   width: calc(65%);
   overflow:auto;
   
 }
 
 .manage {
-  position: fixed;
+  position: fixed;  /* This fixes the manage movies components so that it stays in the same place as the user scrolls down. */
   width: calc(35%);
   text-align: center;
   font-size: large;
