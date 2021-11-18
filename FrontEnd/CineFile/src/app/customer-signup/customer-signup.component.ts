@@ -52,7 +52,7 @@ export class CustomerSignupComponent implements OnInit {
         localStorage.setItem('user', this.username);
         this.route.navigate(['/user-home']);
       } else{
-        this.username += " is taken";        
+        this.username += " is taken";
       }
     });
   }
