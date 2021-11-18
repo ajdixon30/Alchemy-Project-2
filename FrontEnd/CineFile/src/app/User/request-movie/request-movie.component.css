@@ -1,11 +1,4 @@
-div {
-    text-align: center;
-}
-
-button {
-    margin-left: 10px;
-}
-
-p, form {
-    padding: 10px 0;
+.request-form{
+  background-color: rgba(0, 0, 0, 0.788);
+  width: 75%;
 }
