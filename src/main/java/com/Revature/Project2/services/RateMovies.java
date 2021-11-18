@@ -46,6 +46,7 @@ public class RateMovies {
         return status;
     }
 
+    //Updates a rating
     public HttpStatus updateRating(Rating rating){
         Rating r = ratingRepo.getById(rating.getId());
         if (rating.getRating() == r.getRating()){return HttpStatus.ACCEPTED;}
@@ -53,6 +54,7 @@ public class RateMovies {
         return HttpStatus.OK;
     }
 
+    //Deletes a rating from the database
     public HttpStatus removeRating(Rating rating){
         if (rating.getId() != null){
             if(validation.ratingExists(rating.getId())) {
@@ -65,10 +67,12 @@ public class RateMovies {
         return HttpStatus.NOT_ACCEPTABLE;
     }
 
+    //Gets one rating
     public Rating getOneRating(int id){
         return ratingRepo.getById(id);
     }
 
+    //Gets the average rating
     public String getAvgRating(Integer id){
         Movie movie = movieRepo.getById(id);
         DecimalFormat df = new DecimalFormat("0.00");
