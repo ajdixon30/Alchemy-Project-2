@@ -22,7 +22,7 @@ export class RequestService {
     })
   }
 
-  //Get all of the requests
+  //Gets all of the requests
   getRequests(): Observable<Request[]> {
     return this.client.get<Request[]>(this.baseUrl + "/list").pipe(
       retry(1),
@@ -30,7 +30,7 @@ export class RequestService {
     )
   }
 
-  //Get number of requests in the database
+  //Gets the max Id 
   getMax(): Observable<number> {
     return this.client.get<number>(this.baseUrl + "/max").pipe(
       retry(1),
@@ -46,6 +46,7 @@ export class RequestService {
     )
   }
 
+  //Adds a new request
   newRequest(body:string):Observable<Request> {
     return this.client.post<Request>(this.baseUrl, body, this.httpOptions).pipe(
       retry(1), 
@@ -53,6 +54,7 @@ export class RequestService {
     )
   }
 
+  //Method for handling errors/exceptions
   errorHandler(error: any) {
     let message = "";
     if(error.error instanceof ErrorEvent) {

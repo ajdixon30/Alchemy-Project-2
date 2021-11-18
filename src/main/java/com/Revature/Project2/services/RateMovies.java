@@ -1,5 +1,6 @@
 package com.Revature.Project2.services;
 
+import com.Revature.Project2.beans.pojos.Movie;
 import com.Revature.Project2.beans.pojos.Rating;
 import com.Revature.Project2.repos.MovieRepo;
 import com.Revature.Project2.repos.RatingRepo;
@@ -7,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.text.DecimalFormat;
+import java.util.List;
 
 @Service
 @Transactional
@@ -42,6 +46,7 @@ public class RateMovies {
         return status;
     }
 
+    //Updates a rating
     public HttpStatus updateRating(Rating rating){
         Rating r = ratingRepo.getById(rating.getId());
         if (rating.getRating() == r.getRating()){return HttpStatus.ACCEPTED;}
@@ -49,6 +54,7 @@ public class RateMovies {
         return HttpStatus.OK;
     }
 
+    //Deletes a rating from the database
     public HttpStatus removeRating(Rating rating){
         if (rating.getId() != null){
             if(validation.ratingExists(rating.getId())) {
@@ -61,7 +67,22 @@ public class RateMovies {
         return HttpStatus.NOT_ACCEPTABLE;
     }
 
+    //Gets one rating
     public Rating getOneRating(int id){
         return ratingRepo.getById(id);
+    }
+
+    //Gets the average rating
+    public String getAvgRating(Integer id){
+        Movie movie = movieRepo.getById(id);
+        DecimalFormat df = new DecimalFormat("0.00");
+        double average = 1;
+        List<Rating> list = movie.getRatingsByMovie();
+        for (Rating rating : list) {
+            average += rating.getRating();
+        }
+        average = average/list.size();
+
+        return df.format(average);
     }
 }

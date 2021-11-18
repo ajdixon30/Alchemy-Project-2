@@ -25,19 +25,25 @@ public class RatingController {
 
     /**
      * Gets a single rating using the path variable
-     * @param id unique identifier for each Rating entry
+     * @param username unique identifier for each Rating entry
      * @return rating tied to id
      */
     @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
-    @GetMapping(value = "/{id}",produces = APPLICATION_JSON_VALUE)
-    public Rating getUserRating(@PathVariable int id) {
-        return movieRating.getOneRating(id);
+    @GetMapping(value = "/{username}",produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<HttpStatus> getAllUserRating(@PathVariable String username){
+        return new ResponseEntity(HttpStatus.OK);
     }
 
-//    @GetMapping(value = "/{username}",produces = APPLICATION_JSON_VALUE)
-//    public ResponseEntity<HttpStatus> getAllUserRating(@PathVariable String username){
-//        return new ResponseEntity(HttpStatus.OK);
-//    }
+    /**
+     * Gets the average rating for a movie
+     * @param id Requires the movie id
+     * @return Returns a string containing the average formatted to two decimal points
+     */
+    @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
+    @GetMapping(value = "/average",produces = APPLICATION_JSON_VALUE)
+    public String getAverageRating(@RequestParam Integer id){
+        return movieRating.getAvgRating(id);
+    }
 
     /**
      * posts a new rating for the specified movie
