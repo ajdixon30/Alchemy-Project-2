@@ -16,7 +16,6 @@ import { MangageMoviesComponent } from './Admin/Movies/mangage-movies/mangage-mo
 import { AdminMovieTableComponent } from './Admin/Movies/admin-movie-table/admin-movie-table.component';
 import { RequestMovieComponent } from './User/request-movie/request-movie.component';
 import { FilterMovieComponent } from './User/filter-movie/filter-movie.component';
-import { DisplayMoviesComponent } from './User/display-movies/display-movies.component';
 import { MainPageMoviesComponent } from './main-page-movies/main-page-movies.component';
 
 @NgModule({
@@ -34,7 +33,6 @@ import { MainPageMoviesComponent } from './main-page-movies/main-page-movies.com
     AdminMovieTableComponent,
     RequestMovieComponent,
     FilterMovieComponent,
-    DisplayMoviesComponent,
     MainPageMoviesComponent
   ],
   imports: [
