@@ -15,7 +15,7 @@ export class MangageRequestsComponent implements OnInit {
     this.requestService = _requestService;
   }
 
-  //Gets the largest request Id from the database
+  //Gets the largest request Id
   checkMax(){
     this.requestService.getMax().subscribe(data =>{
       this.max = data;

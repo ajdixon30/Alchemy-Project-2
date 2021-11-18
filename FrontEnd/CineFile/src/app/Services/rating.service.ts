@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, retry, throwError } from 'rxjs';
+import { catchError, Observable, retry, throwError } from 'rxjs';
 import { rating } from '../DTOs/rating';
 
 @Injectable({
@@ -12,12 +12,25 @@ export class RatingService {
 
   constructor(private http:HttpClient) {}
 
-  rateMovie(body:rating):void {
-    this.http.post<rating>(this.baseurl, body).pipe(
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
+
+  rateMovie(body:string):Observable<rating> {
+    return this.http.post<rating>(this.baseurl, body, this.httpOptions).pipe(
       retry(0),
       catchError(this.errorHandler)
     );
   }
+
+  getRatings():Observable<rating[]>{
+    return this.http.get<rating[]>(this.baseurl + "/{username}").pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
 
   errorHandler(error: any) {
     let message = "";
