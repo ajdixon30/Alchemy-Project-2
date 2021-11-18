@@ -19,8 +19,8 @@ export class AdminMovieTableComponent implements OnInit {
     this.movieService.getMovies().subscribe(data => {
       console.log(data);
       for(const item of data) {
-        let {id, title, genre, pictureId, year} = item;
-        this.movies.push({id, title, genre, pictureId, year})
+        let {id, title, genre, picture_id, year} = item;
+        this.movies.push({id, title, genre, picture_id, year})
         console.log(item);
       }
     })

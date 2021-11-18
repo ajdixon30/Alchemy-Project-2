@@ -18,13 +18,11 @@ import java.util.List;
 public class MovieController {
     private final DisplayMovies display;
     private final GetMovies get;
-    private final ManageMovies manage;
 
     @Autowired
     public MovieController(DisplayMovies display, GetMovies get, ManageMovies manage) {
         this.display = display;
         this.get = get;
-        this.manage = manage;
     }
 
     /**
@@ -33,9 +31,10 @@ public class MovieController {
      * @return ResponseEntity initialized with addNewMovie provided HttpStatus
      */
     @CrossOrigin
-    @PostMapping(value = "/newMovie", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<HttpStatus> newMovie(@RequestBody Movie movie){//TODO: Clean up controller
-        return new ResponseEntity(get.addNewMovie(movie.getTitle()));
+    @PostMapping(value = "/newMovie", produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<HttpStatus> newMovie(@RequestParam String movie){//TODO: Clean up controller
+        return new ResponseEntity(get.addNewMovie(movie));
     }
 
     /**
@@ -46,7 +45,7 @@ public class MovieController {
      */
     @CrossOrigin
     @GetMapping(value = "/filter", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<String> filterMovie(@RequestParam String filter, String value) {
+    public List<Movie> filterMovie(@RequestParam String filter, String value) {
         return display.filterMovies(filter, value);
     }
 

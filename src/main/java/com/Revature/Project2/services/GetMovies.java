@@ -183,6 +183,7 @@ public class GetMovies {
         for (String movie: movies) {
             addNewMovie(movie);
         }
+        System.out.println("all movies added");
     }
 
 }
