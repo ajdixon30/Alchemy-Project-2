@@ -1,3 +1,10 @@
+.request-form{
+  background-color: rgba(0, 0, 0, 0.788);
+  width: 75%;
+  text-decoration: none;
+  position: relative;
+  left: 4%;
+}
 div {
     text-align: center;
 }
@@ -9,3 +16,4 @@ button {
 p, form {
     padding: 10px 0;
 }
+
