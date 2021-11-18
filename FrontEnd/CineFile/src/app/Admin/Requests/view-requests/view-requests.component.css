@@ -1,6 +1,7 @@
 #view {
   clear: both;
   width: calc(100%);
+  margin-top: -16px;
 }
 
 div {
