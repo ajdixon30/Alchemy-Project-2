@@ -41,7 +41,7 @@ export class MovieService {
   //Add new movie to the database
   newMovie(body:string):Observable<Movie> {
 
-    return this.client.post<Movie>(this.baseUrl + "/newMovie", body, this.httpOptions).pipe(
+    return this.client.post<Movie>(this.baseUrl + "/newMovie?movie=" + body, this.httpOptions).pipe(
       retry(3), 
       catchError(this.errorHandler)
     )
