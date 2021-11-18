@@ -19,7 +19,8 @@ export class MangageMoviesComponent implements OnInit {
 
   newMovie(){
     this._title = (document.getElementById("title") as HTMLInputElement).value;
-    let body = JSON.stringify({title:this._title});
+    // let body = JSON.stringify({title:this._title});
+    let body = this._title;
     this.movieService.newMovie(body).subscribe(data => {
       console.log(data)
     })
