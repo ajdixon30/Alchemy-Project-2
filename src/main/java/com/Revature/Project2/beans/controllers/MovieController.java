@@ -45,7 +45,7 @@ public class MovieController {
      */
     @CrossOrigin
     @GetMapping(value = "/filter", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<String> filterMovie(@RequestParam String filter, String value) {
+    public List<Movie> filterMovie(@RequestParam String filter, String value) {
         return display.filterMovies(filter, value);
     }
 
