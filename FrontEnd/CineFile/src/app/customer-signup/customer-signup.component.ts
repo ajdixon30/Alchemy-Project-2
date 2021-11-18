@@ -1,5 +1,3 @@
-import { Router } from '@angular/router';
-import { LoginService } from './../Services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../Services/login.service';
@@ -54,7 +52,7 @@ export class CustomerSignupComponent implements OnInit {
         localStorage.setItem('user', this.username);
         this.route.navigate(['/user-home']);
       } else{
-        this.username += " is taken";        
+        this.username += " is taken";
       }
     });
   }
