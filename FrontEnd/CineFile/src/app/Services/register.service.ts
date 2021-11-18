@@ -24,7 +24,6 @@ export class RegisterService {
     body = JSON.stringify(body);
     return this.http.post<RegisterUser[]>(this.baseUrl, body, this.httpOptions)
     .pipe(
-      retry(1),
       catchError(this.errorHandler)
     );
    }

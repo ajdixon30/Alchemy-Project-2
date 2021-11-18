@@ -12,7 +12,7 @@ export class FilterMovieComponent implements OnInit {
   movieService: MovieService;
   movieStorage: Movie[] = [];
   genres = new Set();
-  years: string[] = [];
+  years = new Set();
   movies: Movie[] = [];
   filter: string = "genre";
   value!: string;
@@ -27,7 +27,7 @@ export class FilterMovieComponent implements OnInit {
         let {id, title, genre, picture_id, year} = item;
         this.movies.push({id, title, genre, picture_id, year})
         this.genres.add(genre)
-        this.years.push(year.substring(0,4))
+        this.years.add(year.substring(0,4))
       }
     })
     this.movies = [];
