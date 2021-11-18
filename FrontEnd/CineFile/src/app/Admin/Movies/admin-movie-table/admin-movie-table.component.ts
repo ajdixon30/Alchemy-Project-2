@@ -16,7 +16,7 @@ export class AdminMovieTableComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    // Gets the movies from the database and saves them to the movie model object
+    // Gets the movies and saves them to the movie model object
     this.movieService.getMovies().subscribe(data => {
       console.log(data);
       for(const item of data) {
