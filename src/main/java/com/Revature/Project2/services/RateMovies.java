@@ -76,7 +76,7 @@ public class RateMovies {
     public String getAvgRating(Integer id){
         Movie movie = movieRepo.getById(id);
         DecimalFormat df = new DecimalFormat("0.00");
-        double average = 0.00d;
+        double average = 1;
         List<Rating> list = movie.getRatingsByMovie();
         for (Rating rating : list) {
             average += rating.getRating();
