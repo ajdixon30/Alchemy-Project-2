@@ -29,15 +29,10 @@ public class RatingController {
      * @return rating tied to id
      */
     @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
-    @GetMapping(value = "/{id}",produces = APPLICATION_JSON_VALUE)
-    public Rating getUserRating(@PathVariable int id) {
-        return movieRating.getOneRating(id);
+    @GetMapping(value = "/{username}",produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<HttpStatus> getAllUserRating(@PathVariable String username){
+        return new ResponseEntity(HttpStatus.OK);
     }
-
-//    @GetMapping(value = "/{username}",produces = APPLICATION_JSON_VALUE)
-//    public ResponseEntity<HttpStatus> getAllUserRating(@PathVariable String username){
-//        return new ResponseEntity(HttpStatus.OK);
-//    }
 
     /**
      * posts a new rating for the specified movie
