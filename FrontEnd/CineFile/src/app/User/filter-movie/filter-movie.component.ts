@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { MovieService } from 'src/app/Services/movie.service';
-import { Movie } from 'src/app/DTOs/movie';
+import { display } from 'src/app/DTOs/displayMovie';
+import { RatingService } from 'src/app/Services/rating.service';
 
 @Component({
   selector: 'app-filter-movie',
@@ -10,38 +10,48 @@ import { Movie } from 'src/app/DTOs/movie';
 })
 export class FilterMovieComponent implements OnInit {
   movieService: MovieService;
-  movieStorage: Movie[] = [];
+  rateService:RatingService;
   genres = new Set();
   years = new Set();
-  movies: Movie[] = [];
+  movieList:display[] = [];
   filter: string = "genre";
   value!: string;
+  str!:string;
+  
+  
 
-  constructor(_movieService: MovieService) {
+  constructor(_movieService: MovieService, rateService:RatingService) {
     this.movieService = _movieService;
+    this.rateService = rateService;
    }
 
   ngOnInit(): void {
-    this.movieService.getMovies().subscribe(data => {
+    this.movieService.getMoviesWithRating().subscribe(data => {
       for(const item of data) {
-        let {id, title, genre, picture_id, year} = item;
-        this.movies.push({id, title, genre, picture_id, year})
-        this.genres.add(genre)
-        this.years.add(year.substring(0,4))
-      }
-    })
-    this.movies = [];
-  }
+        let {id, title, genre, picture_id, year, ratingsByMovie} = item;
 
-  onSearch(): void {
-    this.movieService.filterMovies(this.filter, this.value).subscribe(data => {
-      for(const item of data) {
-        let {id, title, genre, picture_id, year} = item;
-        this.movies.push({id, title, genre, picture_id, year})
+        this.rateService.getAverage(id).subscribe(data=>{
+          this.str = data.toString();
+        });
+
+        this.movieList.push({id, title, genre, picture_id, year, ratingsByMovie});
+        this.genres.add(genre);
+        this.years.add(year.substring(0,4));
         console.log(item);
       }
     })
-    this.movies = [];
+    this.movieList = [];
+  }
+
+  onSearch(): void {
+    this.movieService.filterRatedMovies(this.filter, this.value).subscribe(data => {
+      for(const item of data) {
+        let {id, title, genre, picture_id, year, ratingsByMovie} = item;
+        this.movieList.push({id, title, genre, picture_id, year, ratingsByMovie})
+        console.log(item);
+      }
+    })
+    this.movieList = [];
   }
 
 }
