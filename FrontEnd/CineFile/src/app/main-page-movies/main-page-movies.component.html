@@ -1,16 +1,16 @@
 <div>
- <table>
-  <tr>
+ <table class="table">
+  <tr class="text-align">
     <th>Movie Poster</th>
     <th>Movie Title</th>
     <th>Genre</th>
     <th>Year</th>
   </tr>
   <tr *ngFor="let movie of movies;">
-    <td><img src="{{movie.picture_id}}" alt="{{movie.title}} movie-poster"></td>
-    <td class = "">{{movie.title}} </td>
-    <td class = "">{{movie.genre}} </td>
-    <td class = "">{{movie.year}} </td>
+    <td class="img-align"><img src="{{movie.picture_id}}" alt="{{movie.title}} movie-poster"></td>
+    <td class = "text-align data-cell">{{movie.title}} </td>
+    <td class = "text-align data-cell">{{movie.genre}} </td>
+    <td class = "text-align data-cell">{{movie.year}} </td>
   </tr>
  </table>
 </div>
