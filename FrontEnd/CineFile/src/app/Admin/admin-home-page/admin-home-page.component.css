@@ -1,3 +1,8 @@
-header {
+menu {
   margin-top: -19px;
+}
+
+a {
+  margin-right: 10px;
+  margin-left: 10px;
 }
