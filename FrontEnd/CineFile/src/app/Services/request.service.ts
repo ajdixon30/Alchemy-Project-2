@@ -31,8 +31,8 @@ export class RequestService {
   }
 
   //Get number of requests in the database
-  getCount(): Observable<number> {
-    return this.client.get<number>(this.baseUrl + "/count").pipe(
+  getMax(): Observable<number> {
+    return this.client.get<number>(this.baseUrl + "/max").pipe(
       retry(1),
       catchError(this.errorHandler)
     )

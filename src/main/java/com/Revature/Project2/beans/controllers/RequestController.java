@@ -44,8 +44,8 @@ public class RequestController {
     }
 
     @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
-    @GetMapping(value = "/request/count", produces = MediaType.APPLICATION_JSON_VALUE)
-    public long getCount(){
+    @GetMapping(value = "/request/max", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int getCount(){
         return manageRequest.maxId();
     }
 

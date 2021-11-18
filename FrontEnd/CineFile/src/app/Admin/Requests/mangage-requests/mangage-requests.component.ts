@@ -16,23 +16,14 @@ export class MangageRequestsComponent implements OnInit {
   }
 
   checkMax(){
-    this.requestService.getCount().subscribe(data =>{
+    this.requestService.getMax().subscribe(data =>{
       this.max = data;
       console.log("count: " + data);
       console.log("max: " + this.max);
     })
   }
 
-  getMax(){
-      console.log("In getMax function");
-      if(this.max===0){
-        console.log("In getMax if statement");
-        this.checkMax();
-      }
-  }
-
   accept() {
-    // this.checkMax();
     this._id = (document.getElementById("request") as HTMLInputElement).valueAsNumber;
     let body = JSON.stringify({id:this._id,requestStatus:"Accepted"});
     this.requestService.updateRequest(body).subscribe(data => {
@@ -41,7 +32,6 @@ export class MangageRequestsComponent implements OnInit {
   }
 
   reject(){
-    this.checkMax();
     this._id = (document.getElementById("request") as HTMLInputElement).valueAsNumber;
     let body = JSON.stringify({id:this._id,requestStatus:"Rejected"});
     this.requestService.updateRequest(body).subscribe(data => {
@@ -50,6 +40,6 @@ export class MangageRequestsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.checkMax();
   }
-
 }

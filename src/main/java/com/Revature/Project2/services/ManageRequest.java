@@ -125,7 +125,8 @@ public class ManageRequest {
         }
     }
 
+    //Finds the max request ID
     public int maxId() {
-
+        return requestRepo.maxRequestId();
     }
 }

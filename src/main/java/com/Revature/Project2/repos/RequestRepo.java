@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface RequestRepo extends JpaRepository<Request, Integer> {
 
-    @Query(value = "SELECT * FROM movie WHERE title = ?1", nativeQuery = true)
-    public String movieSearch(String title);
+    @Query(value = "SELECT MAX(request_id) FROM request", nativeQuery = true)
+    public int maxRequestId();
 }
