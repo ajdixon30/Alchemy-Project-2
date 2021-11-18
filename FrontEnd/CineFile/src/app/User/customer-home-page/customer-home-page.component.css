@@ -6,3 +6,38 @@
   position: relative;
   left: 10%;
 }
+
+.rate-div{
+  position: absolute;
+  left: 55%;
+  top: 20%;
+}
+
+.filter-div{
+  position: absolute;
+  left: 30;
+}
+
+.btn{
+  border-radius: 12px;
+  background-color: #ffcc41; /* Green */
+  border: none;
+  color: black;
+  padding: 5px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: inherit;
+  margin-left: 5%;
+}
+
+.btn:hover{
+  background-color: #eba800;
+  color: black;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+
+.welcome{
+    text-align: center;
+}

@@ -19,6 +19,7 @@ export class RequestMovieComponent implements OnInit {
     this.title = (document.getElementById("title") as HTMLInputElement).value;
     let body = JSON.stringify({addRequest:this.title});
     this.requestService.newRequest(body).subscribe(data => {
+      alert("Request for " + this.title +" has been received. Thank you!")
       console.log(data)
     })
   }

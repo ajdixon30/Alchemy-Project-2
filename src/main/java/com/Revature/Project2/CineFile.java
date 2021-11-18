@@ -1,11 +1,6 @@
 package com.Revature.Project2;
-import com.Revature.Project2.beans.pojos.Movie;
-import com.Revature.Project2.services.DatabaseLogger;
 import com.Revature.Project2.services.GetMovies;
-import com.Revature.Project2.services.ManageRequest;
-import com.Revature.Project2.services.RateMovies;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -25,6 +25,7 @@ export class CustomerHomePageComponent implements OnInit {
     let body = JSON.stringify({rating:this._rating,movie:{id:this._id},user:{username:this._username}});
     console.log(body);
     this.ratingService.rateMovie(body).subscribe(data => {
+      alert("Thank you for your rating!");
       console.log(data);
     })
   }

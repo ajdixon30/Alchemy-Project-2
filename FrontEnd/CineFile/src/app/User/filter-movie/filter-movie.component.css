@@ -21,10 +21,28 @@
   }
 
   .table {
-    float: right;
     width: 100%;
     overflow:auto;
+  }
 
+  .submit-btn{
+    border-radius: 12px;
+  background-color: #ffcc41; /* Green */
+  border: none;
+  color: black;
+  padding: 5px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: inherit;
+  margin-left: 1%;
+  }
+
+  .submit-btn:hover{
+    background-color: #eba800;
+    color: black;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
   }
 
   .Filter {
