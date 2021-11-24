@@ -36,18 +36,18 @@ Rate a movie 1-5 points; Filter movies (search?); Request, add, or remove movies
 ## User Stories
 - [x] As a user, I can login and sign up.. in progress (50%)
 
-- [ ] As a user, I can rate movies
+- [x] As a user, I can rate movies
 
 
-- [ ] As a user, I can request that a movie be added to the list
+- [x] As a user, I can request that a movie be added to the list
 
-- [ ] As a user, I can view the list of movies
+- [x] As a user, I can view the list of movies
 
-- [ ] As a user, I can filter the list of movies
+- [x] As a user, I can filter the list of movies
 
-- [ ] As an administrator, I can add movies
+- [x] As an administrator, I can add movies
 
-- [ ] As an administrator, I can remove movies
+- [x] As an administrator, I can remove movies
 
 ## Bonus Stories
 - [ ] As a user, I can view a synopsis for each movie
