@@ -31,7 +31,7 @@ This project will be done in teams of 5-6 members that will be assigned when we 
 CineFile is a social web service which allows movie lovers to find and rate their favorite films. CineFile displays a list of available films, which users can filter to quickly locate the movie they would like to rate. If the user doesn’t see the movie they are looking for, they can utilize the built-in option for requesting additions to our list.
 
 ## Features
-Rate a movie 1-5 points; Filter movies (search?); Request, add, or remove movies in the list; Display list of movies users can rate
+Rate a movie 1-5 points; Filter movies; Request, add, or remove movies in the list; Display list of movies users can rate
 
 ## User Stories
 - [x] As a user, I can login and sign up
